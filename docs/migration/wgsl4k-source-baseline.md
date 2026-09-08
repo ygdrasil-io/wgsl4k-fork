@@ -120,7 +120,7 @@ Les commandes suivantes sont les gates de la phase 0 et devront être rejouées 
 ./gradlew :shared:jvmTest --no-daemon
 ```
 
-Résultat observé le 2026-09-08 : code retour `0`, `BUILD SUCCESSFUL in 19s`, 20 tâches actionnables dont 3 exécutées et 17 à jour.
+Résultat observé le 2026-09-08 : code retour `0`, `BUILD SUCCESSFUL in 28s`, 20 tâches actionnables, toutes exécutées avec `--rerun-tasks`.
 
 ```bash
 ./gradlew :wgsl:wgsl-cli:jvmTest \
@@ -132,6 +132,6 @@ Résultat observé le 2026-09-08 : code retour `0`, `BUILD SUCCESSFUL in 19s`, 2
           --no-daemon
 ```
 
-Résultat observé le 2026-09-08 sur le commit source gelé : code retour `0`, `BUILD SUCCESSFUL in 21s`, 41 tâches actionnables dont 6 exécutées et 35 à jour. Les cinq tests JVM demandés et `koverVerifyJvm` du parser ont été exécutés avec succès.
+Résultat observé le 2026-09-08 sur le commit source gelé : code retour `0`, `BUILD SUCCESSFUL in 48s`, 41 tâches actionnables, toutes exécutées avec `--rerun-tasks`. Les cinq tests JVM demandés et `koverVerifyJvm` du parser ont été exécutés avec succès.
 
 La baseline source est donc verte avant l’import. Elle produit néanmoins des warnings de configuration Dokka, de version Kotlin embarquée par Gradle et de targets Native dépréciées ; ces points sont explicitement hors périmètre de la phase 0.
