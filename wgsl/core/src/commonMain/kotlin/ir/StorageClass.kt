@@ -36,7 +36,7 @@ enum class StorageClass {
      * Push-constant storage.
      */
     PushConstant,
-    
+
     /**
      * Handle storage (for textures and samplers).
      */

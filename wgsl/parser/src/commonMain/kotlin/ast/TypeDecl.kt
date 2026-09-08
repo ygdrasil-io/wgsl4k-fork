@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * A type declaration in WGSL.
- * 
+ *
  * This represents a type in the WGSL type system, which can be:
  * - Scalar types (bool, i32, u32, f32, etc.)
  * - Vector types (vec2<f32>, vec3<i32>, etc.)
@@ -214,7 +214,7 @@ data class RayQueryType(
 
 /**
  * Abstract integer type.
- * 
+ *
  * Represents an abstract integer value without specifying the underlying
  * representation (could be i32, u32, etc.).
  */
@@ -234,7 +234,7 @@ data class AbstractIntType(
 
 /**
  * Abstract float type.
- * 
+ *
  * Represents an abstract floating-point value without specifying the
  * underlying representation (could be f32, f64, etc.).
  */

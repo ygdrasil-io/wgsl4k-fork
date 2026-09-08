@@ -80,7 +80,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Centralized builder for creating AST nodes.
- * 
+ *
  * This class provides helper methods for creating all types of AST nodes,
  * managing arenas, and tracking statistics.
  */

@@ -39,7 +39,7 @@ class LexerCommentTest : FunSpec({
             val source = "/* outer /* inner */ outer */ identifier"
             val tokens = tokenize(source)
             val filtered = tokens.filter { !it.isWhitespace && !it.isEof }
-            
+
             filtered shouldHaveSize 2
             filtered[0].kind shouldBe TokenKind.MULTI_LINE_COMMENT
             filtered[1].kind shouldBe TokenKind.IDENTIFIER

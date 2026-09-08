@@ -12,7 +12,7 @@ class DirectiveParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val enable = unit.declarations[0] as EnableDirective
         enable.extensions shouldHaveSize 1
@@ -27,7 +27,7 @@ class DirectiveParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 2
         (unit.declarations[0] as EnableDirective).extensions[0] shouldBe "f16"
         (unit.declarations[1] as EnableDirective).extensions[0] shouldBe "ray_query"
@@ -38,7 +38,7 @@ class DirectiveParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val requires = unit.declarations[0] as RequiresDirective
         requires.features shouldHaveSize 1
@@ -50,7 +50,7 @@ class DirectiveParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val diagnostic = unit.declarations[0] as DiagnosticDirective
         diagnostic.severity shouldBe "off"

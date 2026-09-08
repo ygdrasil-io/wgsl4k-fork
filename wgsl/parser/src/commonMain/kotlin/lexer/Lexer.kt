@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Lexical analyzer for the WGSL shader language.
- * 
+ *
  * The lexer converts a WGSL source string into a stream of tokens.
  * It handles:
  * - Whitespace (spaces, tabs, newlines)
@@ -16,7 +16,7 @@ import org.graphiks.wgsl.ir.Span
  * - String literals
  * - Boolean literals (true, false)
  * - Operators and punctuation
- * 
+ *
  * The lexer maintains the current position in the source and produces
  * tokens with accurate span information.
  */
@@ -79,7 +79,7 @@ class Lexer(
 
     /**
      * Consumes the current character if it matches the expected character.
-     * 
+     *
      * @param expected The expected character
      * @return true if the character matched and was consumed
      */
@@ -93,7 +93,7 @@ class Lexer(
 
     /**
      * Consumes characters while the predicate is true.
-     * 
+     *
      * @param predicate The condition for continuing to consume
      * @return The consumed string
      */
@@ -126,7 +126,7 @@ class Lexer(
 
     /**
      * Consumes a specific string if it matches at the current position.
-     * 
+     *
      * @param expected The expected string
      * @return true if the string matched and was consumed
      */
@@ -1034,7 +1034,7 @@ class Lexer(
 
     /**
      * Creates a lexer for the given source and returns all tokens.
-     * 
+     *
      * This is a convenience function for testing and debugging.
      */
     fun tokenize(): List<Token> {
@@ -1050,7 +1050,7 @@ class Lexer(
 
     /**
      * Creates a lexer for the given source and returns all non-whitespace, non-comment tokens.
-     * 
+     *
      * This is a convenience function for getting only the significant tokens.
      */
     fun tokenizeSignificant(): List<Token> {

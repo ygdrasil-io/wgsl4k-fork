@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * The root of the WGSL Abstract Syntax Tree.
- * 
+ *
  * A TranslationUnit contains all the top-level declarations in a WGSL source file.
  */
 data class TranslationUnit(
@@ -21,7 +21,7 @@ data class TranslationUnit(
 
 /**
  * A top-level declaration in a WGSL source file.
- * 
+ *
  * This is the base class for all declarations that can appear at the top level
  * of a WGSL module (functions, structs, variables, type aliases, etc.).
  */

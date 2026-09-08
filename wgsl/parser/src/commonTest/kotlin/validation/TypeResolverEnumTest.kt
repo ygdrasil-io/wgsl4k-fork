@@ -39,13 +39,13 @@ class TypeResolverEnumTest : FunSpec({
         val source = "enum Color { RED, GREEN, BLUE }"
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
         result.resolvedUnit.declarations shouldHaveSize 1
-        
+
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.name shouldBe "Color"
         enumDecl.members shouldHaveSize 3
@@ -55,25 +55,25 @@ class TypeResolverEnumTest : FunSpec({
         val source = "enum Status { ACTIVE = 1, INACTIVE = 0, PENDING }"
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
         result.resolvedUnit.declarations shouldHaveSize 1
-        
+
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.name shouldBe "Status"
         enumDecl.members shouldHaveSize 3
-        
+
         // ACTIVE has explicit value
         enumDecl.members[0].name shouldBe "ACTIVE"
         enumDecl.members[0].value.shouldNotBeNull()
-        
+
         // INACTIVE has explicit value
         enumDecl.members[1].name shouldBe "INACTIVE"
         enumDecl.members[1].value.shouldNotBeNull()
-        
+
         // PENDING has no explicit value
         enumDecl.members[2].name shouldBe "PENDING"
         enumDecl.members[2].value shouldBe null
@@ -86,17 +86,17 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
         result.resolvedUnit.declarations shouldHaveSize 2
-        
+
         // First declaration is the enum
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.name shouldBe "Color"
-        
+
         // Second declaration is the variable
         val varDecl = result.resolvedUnit.declarations[1].shouldBeInstanceOf<VariableDecl>()
         varDecl.name shouldBe "myColor"
@@ -111,18 +111,18 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
         result.resolvedUnit.declarations shouldHaveSize 2
-        
+
         // Second declaration is the function
         val funcDecl = result.resolvedUnit.declarations[1].shouldBeInstanceOf<FunctionDecl>()
         funcDecl.name shouldBe "move"
         funcDecl.parameters shouldHaveSize 1
-        
+
         val param = funcDecl.parameters[0]
         param.name shouldBe "d"
         param.type.shouldBeInstanceOf<EnumType>().name shouldBe "Direction"
@@ -135,13 +135,13 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
         result.resolvedUnit.declarations shouldHaveSize 2
-        
+
         val varDecl = result.resolvedUnit.declarations[1].shouldBeInstanceOf<VariableDecl>()
         varDecl.name shouldBe "c"
         varDecl.initializer.shouldNotBeNull()
@@ -158,10 +158,10 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe false
         result.unresolvedReferences shouldHaveSize 1
         result.unresolvedReferences[0].name shouldBe "YELLOW"
@@ -174,10 +174,10 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe false
         result.unresolvedReferences shouldHaveSize 2
         result.unresolvedReferences[0].name shouldBe "UnknownEnum"
@@ -189,10 +189,10 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe false
         result.unresolvedReferences shouldHaveSize 1
         result.unresolvedReferences[0].name shouldBe "UnknownEnum"
@@ -204,23 +204,23 @@ class TypeResolverEnumTest : FunSpec({
         val source = """
             enum Color { RED, GREEN, BLUE }
             enum Status { ACTIVE = 1, INACTIVE }
-            
+
             let c: Color = Color.RED;
             let s: Status = Status.ACTIVE;
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
         result.resolvedUnit.declarations shouldHaveSize 4
-        
+
         // First two are enums
         result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         result.resolvedUnit.declarations[1].shouldBeInstanceOf<EnumDecl>()
-        
+
         // Last two are variables
         result.resolvedUnit.declarations[2].shouldBeInstanceOf<VariableDecl>()
         result.resolvedUnit.declarations[3].shouldBeInstanceOf<VariableDecl>()
@@ -234,12 +234,12 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
-        
+
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.name shouldBe "MyEnum"
         enumDecl.attributes shouldHaveSize 1
@@ -252,20 +252,20 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
-        
+
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.name shouldBe "MyEnum"
         enumDecl.members shouldHaveSize 2
-        
+
         enumDecl.members[0].name shouldBe "A"
         enumDecl.members[0].attributes shouldHaveSize 1
         enumDecl.members[0].attributes[0].name shouldBe "attr1"
-        
+
         enumDecl.members[1].name shouldBe "B"
         enumDecl.members[1].attributes shouldHaveSize 1
         enumDecl.members[1].attributes[0].name shouldBe "attr2"
@@ -281,12 +281,12 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
-        
+
         // Validate the resolved unit
         val errors = resolver.validateResolution(result.resolvedUnit)
         errors.shouldBeEmpty()
@@ -299,12 +299,12 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe false
-        
+
         // The error should be caught during resolution
         result.unresolvedReferences shouldHaveSize 1
     }
@@ -318,15 +318,15 @@ class TypeResolverEnumTest : FunSpec({
         """
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
-        
+
         val funcDecl = result.resolvedUnit.declarations[1].shouldBeInstanceOf<FunctionDecl>()
         val paramType = funcDecl.parameters[0].type
-        
+
         // When a NamedType references an enum, it should be resolved to EnumType
         paramType.shouldBeInstanceOf<EnumType>().name shouldBe "MyEnum"
     }
@@ -337,12 +337,12 @@ class TypeResolverEnumTest : FunSpec({
         val source = "enum Empty { }"
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
-        
+
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.name shouldBe "Empty"
         enumDecl.members.shouldBeEmpty()
@@ -352,12 +352,12 @@ class TypeResolverEnumTest : FunSpec({
         val source = "enum Color { RED, GREEN, BLUE = 3, }"
         val parser = Parser(Lexer(source))
         val parseResult = parser.parse()
-        
+
         val resolver = TypeResolver()
         val result = resolver.resolve(parseResult)
-        
+
         result.isSuccess shouldBe true
-        
+
         val enumDecl = result.resolvedUnit.declarations[0].shouldBeInstanceOf<EnumDecl>()
         enumDecl.members shouldHaveSize 3
     }

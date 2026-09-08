@@ -47,3 +47,21 @@ tasks.withType<KotlinNativeTest>().configureEach {
     // those sources but has no discoverable Kotlin test runner in this setup.
     failOnNoDiscoveredTests = false
 }
+
+// Keep generated ABI text stable with the repository whitespace policy. The
+// ABI tool emits an extra blank line at EOF, which is not semantically part of
+// the ABI but fails the cumulative `git diff --check` gate.
+tasks.matching { it.name == "internalDumpKotlinAbi" }.configureEach {
+    doLast {
+        layout.buildDirectory.dir("kotlin/abi").get().asFile
+            .walkTopDown()
+            .filter { it.isFile && it.extension == "api" }
+            .forEach { file ->
+                val contents = file.readText()
+                val normalized = contents.replace(Regex("[ \\t\\r\\n]+$"), "\n")
+                if (contents != normalized) {
+                    file.writeText(normalized)
+                }
+            }
+    }
+}

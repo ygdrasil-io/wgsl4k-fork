@@ -28,7 +28,7 @@ class ValidatorTest : FunSpec({
         val f32 = module.types.append(Type(TypeInner.Scalar(ScalarKind.F32, 4)))
         val vec2 = module.types.append(Type(TypeInner.Vector(VectorSize.Bi, f32)))
         module.types.append(Type(TypeInner.Vector(VectorSize.Bi, vec2)))
-        
+
         val validator = Validator()
         val errors = validator.validate(module)
         errors.shouldNotBeEmpty()

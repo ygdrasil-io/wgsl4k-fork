@@ -1,9 +1,19 @@
 package org.graphiks.wgsl.tests.validator
 
+import java.nio.file.Files
+import java.nio.file.Path
+
 /**
  * Validator factory
  */
 object ValidatorFactory {
+
+    private val nativeBackends = listOf(
+        BackendType.GLSL,
+        BackendType.SPIRV,
+        BackendType.HLSL,
+        BackendType.MSL,
+    )
 
     private val validators: MutableMap<BackendType, BackendValidator> = mutableMapOf()
 
@@ -48,5 +58,17 @@ object ValidatorFactory {
      */
     fun isAvailable(backendType: BackendType): Boolean {
         return validators.containsKey(backendType)
+    }
+
+    /** Write optional native validator status for the golden coverage report. */
+    fun writeStatusReport(rootDir: Path) {
+        val report = rootDir.resolve("wgsl/tests/build/reports/golden-coverage/validator-status.txt")
+        Files.createDirectories(report.parent)
+        Files.writeString(
+            report,
+            nativeBackends.joinToString(separator = "\n") { backend ->
+                "$backend=${if (isAvailable(backend)) "available" else "skipped"}"
+            } + "\n"
+        )
     }
 }

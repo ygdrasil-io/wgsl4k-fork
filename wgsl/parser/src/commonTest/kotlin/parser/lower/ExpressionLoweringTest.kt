@@ -13,7 +13,7 @@ import org.graphiks.wgsl.parser.lowerWgsl
 class ExpressionLoweringTest : FunSpec({
     test("T008: should lower integer literal") {
         val module = lowerWgsl("fn main() -> i32 { return 42; }")
-        
+
         // Find the literal expression in the main function
         val foundLiteral = module.findLiteralExpressionInFunction("main", ScalarValue.I32(42))
         foundLiteral shouldNotBe null
@@ -24,7 +24,7 @@ class ExpressionLoweringTest : FunSpec({
 
     test("T009: should lower float literal") {
         val module = lowerWgsl("fn main() -> f32 { return 3.14; }")
-        
+
         val foundLiteral = module.findLiteralExpressionInFunction("main", ScalarValue.F32(3.14f))
         foundLiteral shouldNotBe null
         foundLiteral!!.kind shouldBe ExpressionKind.Literal(
@@ -34,7 +34,7 @@ class ExpressionLoweringTest : FunSpec({
 
     test("T010: should lower bool literal true") {
         val module = lowerWgsl("fn main() -> bool { return true; }")
-        
+
         val foundLiteral = module.findLiteralExpressionInFunction("main", ScalarValue.Bool(true))
         foundLiteral shouldNotBe null
         foundLiteral!!.kind shouldBe ExpressionKind.Literal(
@@ -44,7 +44,7 @@ class ExpressionLoweringTest : FunSpec({
 
     test("T011: should lower bool literal false") {
         val module = lowerWgsl("fn main() -> bool { return false; }")
-        
+
         val foundLiteral = module.findLiteralExpressionInFunction("main", ScalarValue.Bool(false))
         foundLiteral shouldNotBe null
         foundLiteral!!.kind shouldBe ExpressionKind.Literal(
@@ -54,11 +54,11 @@ class ExpressionLoweringTest : FunSpec({
 
     test("T012: should lower binary addition") {
         val module = lowerWgsl("fn main() -> i32 { return 1 + 2; }")
-        
+
         // Find binary expression with Add operator
         val binaryExpr = module.findBinaryExpressionInFunction("main", BinaryOperator.Add)
         binaryExpr shouldNotBe null
-        
+
         // Verify it's a binary expression with Add operator
         val binary = binaryExpr!!.kind as ExpressionKind.Binary
         binary.operator shouldBe BinaryOperator.Add

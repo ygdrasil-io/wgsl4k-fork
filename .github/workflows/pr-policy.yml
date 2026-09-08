@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - master
+      - feat/incubation
+      - 'feat/**'
 
 jobs:
   pr-policy:

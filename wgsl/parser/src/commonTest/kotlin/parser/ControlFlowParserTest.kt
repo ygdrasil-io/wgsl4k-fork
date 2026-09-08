@@ -13,7 +13,7 @@ class ControlFlowParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val ifStmt = func.body!!.statements[0] as IfStatement
@@ -25,7 +25,7 @@ class ControlFlowParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val whileStmt = func.body!!.statements[0] as WhileStatement
@@ -37,7 +37,7 @@ class ControlFlowParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val switchStmt = func.body!!.statements[0] as SwitchStatement
@@ -49,7 +49,7 @@ class ControlFlowParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val forStmt = func.body!!.statements[0] as ForStatement
@@ -68,7 +68,7 @@ class ControlFlowParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val assert = unit.declarations[0] as ConstAssertDecl
         assert.expression.shouldBeInstanceOf<BinaryExpr>()

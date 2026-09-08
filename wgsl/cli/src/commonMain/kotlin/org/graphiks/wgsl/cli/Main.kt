@@ -24,7 +24,13 @@ class ConvertCommand : CliktCommand(name = "convert") {
 
     override fun run() {
         requireInputFile(input)
-        val source = readTextFromPath(input)
+        val source = try {
+            readTextFromPath(input)
+        } catch (error: CliktError) {
+            throw error
+        } catch (error: Exception) {
+            throw CliktError("Unable to read input file: $input", statusCode = 1)
+        }
         val parseResult = org.graphiks.wgsl.parser.parseWgslResult(source)
 
         if (!parseResult.isSuccess) {
@@ -33,13 +39,16 @@ class ConvertCommand : CliktCommand(name = "convert") {
             throw CliktError("Parsing failed", statusCode = 1)
         }
 
-        val resolver = org.graphiks.wgsl.parser.TypeResolver()
-        val resolutionResult = resolver.resolve(parseResult.translationUnit)
+        val resolutionResult = try {
+            org.graphiks.wgsl.parser.TypeResolver().resolve(parseResult.translationUnit)
+        } catch (error: Exception) {
+            throw CliktError("Type resolution failed: ${error.message}", statusCode = 1)
+        }
 
         if (!resolutionResult.isSuccess) {
             echo("Errors during type resolution:", err = true)
             resolutionResult.unresolvedReferences.forEach { echo(it, err = true) }
-            return
+            throw CliktError("Type resolution failed", statusCode = 1)
         }
 
         val lowerer = org.graphiks.wgsl.parser.Lowerer()
@@ -67,7 +76,13 @@ class ConvertCommand : CliktCommand(name = "convert") {
         if (output != null) {
             val outputPath = output!!
             requireOutputFile(outputPath)
-            writeTextToPath(outputPath, result)
+            try {
+                writeTextToPath(outputPath, result)
+            } catch (error: CliktError) {
+                throw error
+            } catch (error: Exception) {
+                throw CliktError("Unable to write output file: $outputPath", statusCode = 1)
+            }
             echo("Written to $output")
         } else {
             echo(result)

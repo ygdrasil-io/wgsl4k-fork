@@ -14,7 +14,7 @@ data class ValidationError(
 
 /**
  * Semantic validator for Naga IR.
- * 
+ *
  * This is a simplified port of Naga's validator.
  */
 class Validator {
@@ -23,31 +23,31 @@ class Validator {
 
     /**
      * Validates a module.
-     * 
+     *
      * @return A list of validation errors. Empty if the module is valid.
      */
     fun validate(module: Module): List<ValidationError> {
         val errors = mutableListOf<ValidationError>()
-        
+
         try {
             // Update layouter and typifier base
             layouter.update(module)
-            
+
             // Validate types
             for (i in 0 until module.types.size) {
                 validateType(Handle.create(i), module, errors)
             }
-            
+
             // Validate constants
             for (constant in module.constants) {
                 validateConstant(constant, module, errors)
             }
-            
+
             // Validate global variables
             for (variable in module.globalVariables) {
                 validateGlobalVariable(variable, module, errors)
             }
-            
+
             // Validate functions
             for (func in module.functions) {
                 validateFunction(func, module, errors)
@@ -55,7 +55,7 @@ class Validator {
         } catch (e: Exception) {
             errors.add(ValidationError("Internal validator error: ${e.message}"))
         }
-        
+
         return errors
     }
 
@@ -109,7 +109,7 @@ class Validator {
     private fun validateFunction(func: Function, module: Module, errors: MutableList<ValidationError>) {
         // Resolve types for all expressions in the function
         typifier.fill(module, func, func.expressions)
-        
+
         // Validate each expression
         func.expressions.forEachWithHandle { handle, expr ->
             val res = typifier[handle]

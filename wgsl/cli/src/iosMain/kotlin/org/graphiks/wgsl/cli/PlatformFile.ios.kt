@@ -7,6 +7,10 @@ import platform.posix.fclose
 import platform.posix.fopen
 import platform.posix.fread
 import platform.posix.fwrite
+import platform.posix.fseek
+import platform.posix.ftell
+import platform.posix.SEEK_END
+import platform.posix.SEEK_SET
 import platform.posix.closedir
 import platform.posix.opendir
 
@@ -29,19 +33,26 @@ internal actual fun filePathKind(path: String): FilePathKind {
 
 @OptIn(ExperimentalForeignApi::class)
 internal actual fun readTextFromPath(path: String): String {
-    val file = fopen(path, "rb") ?: error("Unable to open input file: $path")
+    val file = fopen(path, "rb") ?: error("Unable to read input file: $path")
 
     return try {
-        val buffer = ByteArray(4096)
-        buildString {
-            while (true) {
-                val bytesRead = buffer.usePinned { pinned ->
-                    fread(pinned.addressOf(0), 1UL, buffer.size.toULong(), file)
-                }.toInt()
-                append(buffer.decodeToString(0, bytesRead))
-                if (bytesRead < buffer.size) break
-            }
+        if (fseek(file, 0, SEEK_END) != 0) {
+            error("Unable to read input file: $path")
         }
+        val fileSize = ftell(file)
+        if (fileSize < 0 || fseek(file, 0, SEEK_SET) != 0) {
+            error("Unable to read input file: $path")
+        }
+        if (fileSize == 0L) return ""
+
+        val bytes = ByteArray(fileSize.toInt())
+        val bytesRead = bytes.usePinned { pinned ->
+            fread(pinned.addressOf(0), 1UL, bytes.size.toULong(), file)
+        }.toInt()
+        if (bytesRead != bytes.size) {
+            error("Unable to read input file: $path")
+        }
+        bytes.decodeToString()
     } finally {
         fclose(file)
     }
@@ -49,7 +60,7 @@ internal actual fun readTextFromPath(path: String): String {
 
 @OptIn(ExperimentalForeignApi::class)
 internal actual fun writeTextToPath(path: String, content: String) {
-    val file = fopen(path, "wb") ?: error("Unable to open output file: $path")
+    val file = fopen(path, "wb") ?: error("Unable to write output file: $path")
     val bytes = content.encodeToByteArray()
 
     try {
@@ -57,7 +68,9 @@ internal actual fun writeTextToPath(path: String, content: String) {
             val bytesWritten = bytes.usePinned { pinned ->
                 fwrite(pinned.addressOf(0), 1UL, bytes.size.toULong(), file)
             }.toInt()
-            check(bytesWritten == bytes.size) { "Unable to write output file: $path" }
+            if (bytesWritten != bytes.size) {
+                error("Unable to write output file: $path")
+            }
         }
     } finally {
         fclose(file)

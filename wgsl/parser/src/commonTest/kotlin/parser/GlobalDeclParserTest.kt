@@ -13,7 +13,7 @@ class GlobalDeclParserTest : FunSpec({
             struct S {
                 a: i32,
             }
-            
+
             struct T {
                 b: f32,
             };
@@ -21,7 +21,7 @@ class GlobalDeclParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 2
         unit.declarations[0].shouldBeInstanceOf<StructDecl>()
         unit.declarations[1].shouldBeInstanceOf<StructDecl>()
@@ -32,7 +32,7 @@ class GlobalDeclParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val override = unit.declarations[0] as OverrideDecl
         override.name shouldBe "depth"
@@ -45,7 +45,7 @@ class GlobalDeclParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val override = unit.declarations[0] as OverrideDecl
         override.name shouldBe "width"

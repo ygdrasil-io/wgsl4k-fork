@@ -81,12 +81,12 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Resolves type references and identifier references in a WGSL AST.
- * 
+ *
  * This class takes a parsed AST and resolves:
  * - NamedType references to their actual TypeDecl
  * - IdentExpr references to their actual VariableDecl/FunctionDecl/Param
  * - Template type instantiations
- * 
+ *
  * It produces a resolved AST where all references are concrete.
  */
 class TypeResolver(
@@ -155,19 +155,19 @@ class TypeResolver(
 
     /**
      * Resolve all references in a translation unit.
-     * 
+     *
      * This performs:
      * 1. Indexing of all declarations
      * 2. Topological sorting to handle forward references
      * 3. Type resolution for all NamedType references
      * 4. Identifier resolution for all IdentExpr references
-     * 
+     *
      * @param unit The translation unit to resolve
      * @return ResolutionResult with resolved unit and any errors
      */
     fun resolve(unit: TranslationUnit): ResolutionResult {
         localScopes.clear()
-        
+
         // First, index all declarations
         typeIndex.index(unit)
 
@@ -234,14 +234,14 @@ class TypeResolver(
         unresolved: MutableList<UnresolvedReferenceError>
     ): FunctionDecl {
         val resolvedAttributes = decl.attributes.map { resolveAttribute(it, unresolved) }
-        
+
         pushScope()
-        val resolvedParams = decl.parameters.map { 
+        val resolvedParams = decl.parameters.map {
             val resolved = resolveParam(it, unresolved)
             declareLocal(resolved.name)
             resolved
         }
-        
+
         val resolvedReturnAttributes = decl.returnAttributes.map { resolveAttribute(it, unresolved) }
         val resolvedReturnType = decl.returnType?.let { resolveTypeDecl(it, unresolved) }
         val resolvedBody = decl.body?.let { resolveBlockStatement(it, unresolved) }
@@ -1278,14 +1278,14 @@ class TypeResolver(
 
     /**
      * Check if two type declarations are compatible.
-     * 
+     *
      * Compatibility rules:
      * - AbstractIntType is compatible with all integer scalar types (i8, i16, i32, i64, u8, u16, u32, u64)
      * - AbstractFloatType is compatible with all float scalar types (f16, f32, f64)
      * - AbstractIntType and AbstractFloatType are NOT compatible with each other
      * - Concrete types are compatible with their abstract counterparts
      * - Same types are always compatible with themselves
-     * 
+     *
      * @param type1 The first type declaration
      * @param type2 The second type declaration
      * @return true if the types are compatible, false otherwise
@@ -1293,49 +1293,49 @@ class TypeResolver(
     fun areTypesCompatible(type1: TypeDecl, type2: TypeDecl): Boolean {
         // Same type (by reference equality or structural equality)
         if (type1 == type2) return true
-        
+
         // If both are the same concrete type
         if (type1 is ScalarType && type2 is ScalarType) {
             return type1.kind == type2.kind
         }
-        
+
         // Abstract int compatibility
         val isAbstractInt1 = type1 is AbstractIntType
         val isAbstractInt2 = type2 is AbstractIntType
-        
+
         // Abstract float compatibility
         val isAbstractFloat1 = type1 is AbstractFloatType
         val isAbstractFloat2 = type2 is AbstractFloatType
-        
+
         // If both are abstract int
         if (isAbstractInt1 && isAbstractInt2) return true
-        
+
         // If both are abstract float
         if (isAbstractFloat1 && isAbstractFloat2) return true
-        
+
         // Abstract int is compatible with concrete integer types
         if (isAbstractInt1 && type2 is ScalarType) {
             return type2.kind.isInteger
         }
-        
+
         if (isAbstractInt2 && type1 is ScalarType) {
             return type1.kind.isInteger
         }
-        
+
         // Abstract float is compatible with concrete float types
         if (isAbstractFloat1 && type2 is ScalarType) {
             return type2.kind.isFloat
         }
-        
+
         if (isAbstractFloat2 && type1 is ScalarType) {
             return type1.kind.isFloat
         }
-        
+
         // Abstract types are not compatible with each other
         if ((isAbstractInt1 || isAbstractInt2) && (isAbstractFloat1 || isAbstractFloat2)) {
             return false
         }
-        
+
         // Default: not compatible
         return false
     }

@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Represents a lexical token in the WGSL source code.
- * 
+ *
  * A token has a kind (category), a span (position in source), and optionally
  * a literal text value for identifier and literal tokens.
  */
@@ -19,7 +19,7 @@ data class Token(
     companion object {
         /**
          * Creates a token with the given kind, span, and optional literal.
-         * 
+         *
          * @param kind The token kind
          * @param span The span in source
          * @param literal The literal text (for IDENTIFIER, INT_LITERAL, etc.)
@@ -39,7 +39,7 @@ data class Token(
 
         /**
          * Creates an end-of-file token.
-         * 
+         *
          * @param span The span (typically the end of the source)
          * @return An EOF token
          */
@@ -47,7 +47,7 @@ data class Token(
 
         /**
          * Creates an identifier token.
-         * 
+         *
          * @param text The identifier text
          * @param span The span in source
          * @return An identifier token
@@ -56,7 +56,7 @@ data class Token(
 
         /**
          * Creates an integer literal token.
-         * 
+         *
          * @param text The integer literal text (e.g., "42", "0x2a")
          * @param span The span in source
          * @return An integer literal token
@@ -65,7 +65,7 @@ data class Token(
 
         /**
          * Creates an unsigned integer literal token.
-         * 
+         *
          * @param text The unsigned integer literal text (e.g., "42u", "0x2au")
          * @param span The span in source
          * @return An unsigned integer literal token
@@ -74,7 +74,7 @@ data class Token(
 
         /**
          * Creates a float literal token.
-         * 
+         *
          * @param text The float literal text (e.g., "3.14", "1.0e-5", "0x1.8p1")
          * @param span The span in source
          * @return A float literal token
@@ -83,7 +83,7 @@ data class Token(
 
         /**
          * Creates a boolean literal token.
-         * 
+         *
          * @param value The boolean value
          * @param span The span in source
          * @return A boolean literal token
@@ -93,7 +93,7 @@ data class Token(
 
         /**
          * Creates a string literal token.
-         * 
+         *
          * @param text The string literal text (including quotes)
          * @param span The span in source
          * @return A string literal token
@@ -102,7 +102,7 @@ data class Token(
 
         /**
          * Creates a simple operator or punctuation token.
-         * 
+         *
          * @param kind The token kind
          * @param span The span in source
          * @return A token
@@ -152,7 +152,7 @@ data class Token(
 
 /**
  * A sequence of tokens produced by the lexer.
- * 
+ *
  * This interface provides an iterator-like API for consuming tokens.
  */
 interface TokenStream {
@@ -193,7 +193,7 @@ data class SourcePosition(
 
     /**
      * Returns a new position advanced by the given character.
-     * 
+     *
      * @param char The character consumed
      * @return The new position
      */

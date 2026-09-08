@@ -7,7 +7,7 @@ import kotlinx.serialization.Transient
 
 /**
  * A type in the Naga IR.
- * 
+ *
  * Types are stored in a UniqueArena to ensure that identical types share the same Handle.
  */
 @Serializable

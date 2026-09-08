@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * An expression in the Naga IR.
- * 
+ *
  * Expressions represent computations that produce values.
  */
 @Serializable

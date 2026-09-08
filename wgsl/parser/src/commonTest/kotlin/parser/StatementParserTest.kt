@@ -14,7 +14,7 @@ class StatementParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val loopStmt = func.body!!.statements[0] as LoopStatement
@@ -28,7 +28,7 @@ class StatementParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val switchStmt = func.body!!.statements[0] as SwitchStatement
@@ -55,7 +55,7 @@ class StatementParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val phony = func.body!!.statements[0] as PhonyAssignmentStatement
@@ -67,7 +67,7 @@ class StatementParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         unit.declarations[0].shouldBeInstanceOf<ConstAssertDecl>()
     }

@@ -4,20 +4,20 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Common interface for all enum value declarations (both user-defined and predeclared).
- * 
+ *
  * This interface provides a unified way to access enum value properties regardless
  * of whether the enum is user-defined or predeclared.
  */
 sealed interface EnumValue {
     /** The name of this enum value (e.g., "clamp_to_edge", "VALUE1"). */
     val name: String
-    
+
     /** The value of this enum value as a string for predeclared, or expression for user-defined. */
     val value: String?
-    
+
     /** The source span of this enum value. */
     val span: Span
-    
+
     /**
      * Returns the fully qualified name of this enum value.
      */
@@ -60,21 +60,21 @@ fun PredeclaredEnumerant.toEnumValue(): EnumValue = EnumValueImpl(
 
 /**
  * Base class for all expressions that reference enum values.
- * 
+ *
  * This provides a common interface for both user-defined enum member references
  * and predeclared enumerant references.
  */
 sealed class EnumValueExpr : Expression() {
     /** The underlying enum value being referenced. */
     abstract val enumValue: EnumValue
-    
+
     /**
      * Returns the type name of this enum value.
      * For user-defined enums: the enum declaration name
      * For predeclared enumerants: the category name
      */
     abstract fun getEnumTypeName(): String
-    
+
     /**
      * Returns the qualified name of this enum value reference.
      */
@@ -83,7 +83,7 @@ sealed class EnumValueExpr : Expression() {
 
 /**
  * Reference to a user-defined enum member.
- * 
+ *
  * This is created when accessing a member of a user-defined enum type.
  * For example, in `MyEnum.VALUE`, this represents the `MyEnum.VALUE` reference.
  */
@@ -99,16 +99,16 @@ data class EnumMemberExpr(
             ?.toEnumValue()
             ?: throw IllegalStateException("Member $memberName not found in enum ${enumDecl.name}")
     }
-    
+
     override fun getEnumTypeName(): String = enumDecl.name
 }
 
 /**
  * Resolves a MemberAccessExpr to an appropriate EnumValueExpr if it references an enum.
- * 
+ *
  * This function checks if the member access is accessing a user-defined enum member
  * or a predeclared enumerant, and returns the appropriate expression type.
- * 
+ *
  * @param expr The MemberAccessExpr to resolve
  * @param translationUnit The translation unit containing all declarations
  * @return An EnumValueExpr (either EnumMemberExpr or PredeclaredEnumerantExpr) if this
@@ -118,30 +118,30 @@ fun MemberAccessExpr.tryResolveToEnumExpr(translationUnit: TranslationUnit): Exp
     // Check if the object is an identifier referencing a user-defined enum
     if (objectExpr is IdentExpr) {
         val enumName = objectExpr.name
-        
+
         // Check if there's a user-defined enum with this name
         val enumDecl = translationUnit.declarations
             .filterIsInstance<EnumDecl>()
             .find { it.name == enumName }
-        
+
         if (enumDecl != null) {
             // This is a user-defined enum member access
             return EnumMemberExpr(enumDecl, member, span)
         }
     }
-    
+
     // Not an enum access, keep as MemberAccessExpr
     return this
 }
 
 /**
  * Base class for expression transformers.
- * 
+ *
  * Subclasses can override specific transform methods to modify expressions.
  * The default implementation returns the expression unchanged.
  */
 abstract class ExpressionTransformer {
-    
+
     /**
      * Transform a translation unit by transforming all expressions within it.
      */
@@ -149,7 +149,7 @@ abstract class ExpressionTransformer {
         val declarations = unit.declarations.map { transformDeclaration(it) }
         return TranslationUnit(declarations, unit.span)
     }
-    
+
     private fun transformDeclaration(decl: GlobalDecl): GlobalDecl {
         return when (decl) {
             is VariableDecl -> {
@@ -188,7 +188,7 @@ abstract class ExpressionTransformer {
             is RequiresDirective -> decl
         }
     }
-    
+
     private fun transformStatement(stmt: Statement): Statement {
         return when (stmt) {
             is ExpressionStatement -> {
@@ -281,7 +281,7 @@ abstract class ExpressionTransformer {
         }
         return body.copy(cases = cases)
     }
-    
+
     /**
      * Transform an expression.
      * Override this method in subclasses to handle specific expression types.
@@ -335,7 +335,7 @@ abstract class ExpressionTransformer {
             is EnumMemberExpr -> expr
         }
     }
-    
+
     /**
      * Transform a MemberAccessExpr.
      * Override this to handle member access resolution (e.g., to EnumMemberExpr).

@@ -2,16 +2,18 @@ name: Publish wgsl4k artifacts to Maven Central
 
 on:
   push:
-    branches: [master]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
   workflow_dispatch:
     inputs:
       version:
-        description: Release version override (defaults to 1.0.0-SNAPSHOT)
-        required: false
+        description: Stable release version (for example 1.0.0)
+        required: true
+        type: string
 
 jobs:
   publish:
-    if: github.ref == 'refs/heads/master'
+    if: (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master') || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v'))
     runs-on: ubuntu-latest
     env:
       MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
@@ -36,17 +38,33 @@ jobs:
           :wgsl:wgsl-generator:checkKotlinAbi :wgsl:wgsl-tests:checkKotlinAbi
           :wgsl:wgsl-cli:checkKotlinAbi --no-daemon --stacktrace
 
-      - name: Set publication version
+      - name: Validate release version
         env:
           INPUT_VERSION: ${{ github.event.inputs.version }}
-        run: echo "VERSION=${INPUT_VERSION:-1.0.0-SNAPSHOT}" >> "$GITHUB_ENV"
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            version="${GITHUB_REF_NAME#v}"
+          else
+            version="${INPUT_VERSION:-}"
+          fi
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ || "$version" == *SNAPSHOT* ]]; then
+            echo "A stable semantic release version is required; got '$version'." >&2
+            exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
 
-      - name: Report unavailable publishing credentials
-        if: env.MAVEN_CENTRAL_USERNAME == '' || env.MAVEN_CENTRAL_PASSWORD == '' || env.SIGNING_KEY == '' || env.SIGNING_PASSWORD == ''
-        run: echo "Maven Central or signing credentials are unavailable; publication is skipped."
+      - name: Validate publishing credentials
+        run: |
+          set -euo pipefail
+          for name in MAVEN_CENTRAL_USERNAME MAVEN_CENTRAL_PASSWORD SIGNING_KEY SIGNING_PASSWORD; do
+            if [[ -z "${!name}" ]]; then
+              echo "Required publishing secret $name is unavailable." >&2
+              exit 1
+            fi
+          done
 
       - name: Publish WGSL artifacts
-        if: env.MAVEN_CENTRAL_USERNAME != '' && env.MAVEN_CENTRAL_PASSWORD != '' && env.SIGNING_KEY != '' && env.SIGNING_PASSWORD != ''
         run: >-
           ./gradlew :wgsl:wgsl-core:publishToMavenCentral :wgsl:wgsl-parser:publishToMavenCentral
           :wgsl:wgsl-generator:publishToMavenCentral :wgsl:wgsl-tests:publishToMavenCentral

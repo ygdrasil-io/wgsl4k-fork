@@ -61,7 +61,7 @@ class Lowerer {
     fun lower(unit: TranslationUnit): IrModule {
         // Create a fresh module for this lowering pass
         module = IrModule()
-        
+
         // Reset all state for a new lowering pass
         typeMap.clear()
         structNameMap.clear()
@@ -78,7 +78,7 @@ class Lowerer {
         currentExpressions = null
         currentBlocks = null
         currentLocalVars = null
-        
+
         // 1. Lower structs and types
         for (decl in unit.declarations) {
             when (decl) {
@@ -102,7 +102,7 @@ class Lowerer {
         for (decl in unit.declarations) {
             if (decl is FunctionDecl) {
                 val functionHandle = lowerFunction(decl)
-                
+
                 // Identify entry points
                 for (attr in decl.attributes) {
                     val stage = when (attr.name) {
@@ -111,7 +111,7 @@ class Lowerer {
                         "compute" -> IrShaderStage.Compute
                         else -> null
                     }
-                    
+
                     if (stage != null) {
                         module.entryPoints.add(IrEntryPoint(
                             name = decl.name,
@@ -150,7 +150,7 @@ class Lowerer {
                 return rayIntersectionResultType()
             }
         }
-        
+
         return typeMap.getOrPut(typeDecl) {
             val inner = when (typeDecl) {
                 is ScalarType -> {
@@ -452,15 +452,15 @@ class Lowerer {
         }
         val type = IrType(IrTypeInner.Struct(members), name = decl.name)
         val handle = module.types.append(type)
-        
+
         // Peupler structMemberIndexMap
         structMemberIndexMap[decl.name] = members.withIndex().associate { (idx, member) ->
             member.name to idx.toUInt()
         }
-        
+
         // Peupler structHandleToNameMap pour résoudre le nom à partir du handle
         structHandleToNameMap[handle] = decl.name
-        
+
         typeMap[StructType(decl.name, decl.span)] = handle
         structNameMap[decl.name] = handle
     }
@@ -616,7 +616,7 @@ class Lowerer {
         val expressions = Arena<IrExpression>()
         val blocks = Arena<IrBlock>()
         val localVars = Arena<IrLocalVariable>()
-        
+
         currentExpressions = expressions
         currentBlocks = blocks
         currentLocalVars = localVars
@@ -650,26 +650,26 @@ class Lowerer {
             blocks = blocks,
             body = blocks.append(IrBlock(emptyList())) // Placeholder, will be updated
         )
-        
+
         val handle = module.functions.append(func)
         currentFunction = handle
         functionMap[decl.name] = handle
-        
+
         // Now lower the body with currentFunction set
         val bodyHandle = if (decl.body != null) {
             lowerBlock(decl.body)
         } else {
             blocks.append(IrBlock(emptyList()))
         }
-        
+
         // Update the function body
         module.functions[handle] = func.copy(body = bodyHandle)
-        
+
         currentFunction = null
         currentExpressions = null
         currentBlocks = null
         currentLocalVars = null
-        
+
         return handle
     }
 
@@ -695,7 +695,7 @@ class Lowerer {
             is IfStatement -> {
                 val cond = lowerExpression(astStmt.condition)
                 val accept = lowerBlock(astStmt.thenBranch as? BlockStatement ?: BlockStatement(listOf(astStmt.thenBranch), astStmt.thenBranch.span))
-                val reject = astStmt.elseBranch?.let { 
+                val reject = astStmt.elseBranch?.let {
                     lowerBlock(it as? BlockStatement ?: BlockStatement(listOf(it), it.span))
                 }
                 IrStatement.If(cond, accept, reject)
@@ -744,12 +744,12 @@ class Lowerer {
             is WhileStatement -> {
                 // P008 fix: Handle while loops
                 val condition = lowerExpression(astStmt.condition)
-                
+
                 // Create body block with condition check
                 // The IR Loop statement expects a body block that contains the loop body
                 // The continuing block is optional and runs before checking the condition again
                 val bodyBlockHandle = lowerBlock(astStmt.body)
-                
+
                 // Create a block that checks the condition and breaks if false
                 val conditionCheckBlock = currentBlocks!!.append(
                     IrBlock(listOf(
@@ -760,40 +760,40 @@ class Lowerer {
                         )
                     ))
                 )
-                
+
                 IrStatement.Loop(conditionCheckBlock)
             }
             is ForStatement -> {
                 // P008 fix: Handle for loops
                 // for (init; condition; update) body
                 // Lower as: init; while(condition) { body; update; }
-                
+
                 val statements = mutableListOf<IrStatement>()
-                
+
                 // Lower init if present
                 astStmt.init?.let { initStmt ->
                     statements.add(lowerStatement(initStmt))
                 }
-                
+
                 // Create the body with update at the end
                 val bodyStatements = mutableListOf<IrStatement>()
-                
+
                 // Add the original body
                 val bodyBlock = lowerBlock(astStmt.body)
                 bodyStatements.add(IrStatement.Block(bodyBlock))
-                
+
                 // Add update if present
                 astStmt.update?.let { update ->
                     bodyStatements.add(lowerStatement(update))
                 }
-                
+
                 // Create the body block for the loop
                 val loopBodyBlock = currentBlocks!!.append(IrBlock(bodyStatements))
-                
+
                 // Create the condition check
                 val condition = astStmt.condition?.let { lowerExpression(it) }
                     ?: currentExpressions!!.append(IrExpression(IrExpressionKind.Literal(IrLiteralValue.Scalar(IrScalarValue.Bool(true)))))
-                
+
                 // Create the loop with condition check
                 val conditionCheckBlock = currentBlocks!!.append(
                     IrBlock(listOf(
@@ -804,9 +804,9 @@ class Lowerer {
                         )
                     ))
                 )
-                
+
                 statements.add(IrStatement.Loop(conditionCheckBlock))
-                
+
                 // If we have multiple statements (init + loop), we need to wrap them in a block
                 if (statements.size == 1) {
                     statements.first()
@@ -819,7 +819,7 @@ class Lowerer {
                 IrStatement.Break
             }
             is ContinueStatement -> {
-                // P009: Handle continue statement  
+                // P009: Handle continue statement
                 IrStatement.Continue
             }
             is ExpressionStatement -> {
@@ -832,10 +832,10 @@ class Lowerer {
             is DiscardStatement -> IrStatement.Discard
             is SwitchStatement -> {
                 val selector = lowerExpression(astStmt.expression)
-                
+
                 var defaultBlock: Handle<org.graphiks.wgsl.ir.Block>? = null
                 val irCases = mutableListOf<org.graphiks.wgsl.ir.Case>()
-                
+
                 for (case in astStmt.body.cases) {
                     when (case) {
                         is DefaultCase -> {
@@ -844,29 +844,29 @@ class Lowerer {
                         }
                         is Case -> {
                             val bodyHandle = lowerBlock(case.body)
-                            
+
                             if (case.isDefault) {
                                 defaultBlock = bodyHandle
                             }
-                            
+
                             for (selectorExpr in case.selectors) {
                                 val irSelector = lowerCaseSelector(selectorExpr)
                                 irCases.add(org.graphiks.wgsl.ir.Case(irSelector, bodyHandle))
                             }
-                            
+
                             if (case.selectors.isEmpty() && case.isDefault) {
                                 irCases.add(org.graphiks.wgsl.ir.Case(org.graphiks.wgsl.ir.CaseSelector.Default(), bodyHandle))
                             }
                         }
                     }
                 }
-                
+
                 val switchBodyBlock = currentBlocks!!.append(org.graphiks.wgsl.ir.Block(emptyList()))
                 IrStatement.Switch(selector, switchBodyBlock, defaultBlock, irCases)
             }
             is IncDecStatement -> {
                 val pointer = lowerExpression(astStmt.expr)
-                
+
                 // 1. Resolve type of pointer
                 val objExprKind = currentExpressions!![pointer].kind
                 val objTypeHandle = when (objExprKind) {
@@ -879,7 +879,7 @@ class Lowerer {
                     }
                     else -> null
                 }
-                
+
                 // 2. Choose correct 1 literal based on variable type
                 val scalarValue = when (val inner = objTypeHandle?.let { module.types[it].inner }) {
                     is IrTypeInner.Scalar -> when (inner.kind) {
@@ -889,17 +889,17 @@ class Lowerer {
                     }
                     else -> IrScalarValue.I32(1)
                 }
-                
+
                 val oneExpr = currentExpressions!!.append(
                     IrExpression(IrExpressionKind.Literal(IrLiteralValue.Scalar(scalarValue)))
                 )
-                
+
                 // 3. Create Assign statement with Binary addition/subtraction
                 val op = if (astStmt.isIncrement) IrBinaryOperator.Add else IrBinaryOperator.Subtract
                 val binaryExpr = currentExpressions!!.append(
                     IrExpression(IrExpressionKind.Binary(op, pointer, oneExpr))
                 )
-                
+
                 IrStatement.Assign(pointer, binaryExpr)
             }
             else -> throw LoweringError("Unsupported statement type: ${astStmt::class.simpleName}")
@@ -1122,7 +1122,7 @@ class Lowerer {
                 val isBuiltinType = calleeName != null && isBuiltinConstructorType(calleeName)
                 val isStructType = calleeName != null && structNameMap.containsKey(calleeName)
                 val isAliasType = calleeName != null && typeAliasMap.containsKey(calleeName)
-                
+
                 if (calleeName != null && functionMap.containsKey(calleeName)) {
                     val function = module.functions[functionMap[calleeName]!!]
                     val loweredArgs = astExpr.args.mapIndexed { index, arg ->
@@ -1166,9 +1166,9 @@ class Lowerer {
                     val stubExpressions = Arena<IrExpression>()
                     val stubBlocks = Arena<IrBlock>()
                     val stubLocalVars = Arena<IrLocalVariable>()
-                    
+
                     val returnType = inferBuiltinLikeReturnType(funcName, loweredArgs, astExpr.templateArgs)
-                    
+
                     val dummyFunc = module.functions.append(
                         IrFunction(
                             name = funcName,
@@ -1188,7 +1188,7 @@ class Lowerer {
             is MemberAccessExpr -> {
                 val objExpr = lowerExpression(astExpr.objectExpr)
                 val memberName = astExpr.member
-                
+
                 // Résoudre le type de l'objet de manière récursive
                 val objTypeHandle = resolveExpressionType(objExpr)
                 val objType = module.types[objTypeHandle]
@@ -1202,7 +1202,7 @@ class Lowerer {
                     currentTypeHandle = base
                     inner = module.types[base].inner
                 }
-                
+
                 if (inner is IrTypeInner.Vector) {
                     // Vector swizzling/component access
                     val pattern = memberName.map { char ->
@@ -1214,7 +1214,7 @@ class Lowerer {
                             else -> throw LoweringError("Invalid vector component: '$char'")
                         }
                     }
-                    
+
                     if (pattern.size == 1) {
                         IrExpressionKind.AccessIndex(objExpr, pattern[0].toUInt())
                     } else {
@@ -1224,7 +1224,7 @@ class Lowerer {
                 } else {
                     val structName = structHandleToNameMap[currentTypeHandle]
                         ?: throw LoweringError("Cannot access member on non-struct type or type not found in struct map")
-                    
+
                     // Récupérer l'index du membre
                     val memberIndex = structMemberIndexMap[structName]?.get(memberName)
                         ?: run {
@@ -1248,7 +1248,7 @@ class Lowerer {
                             }
                             throw LoweringError("Member '$memberName' not found in struct '$structName'")
                         }
-                    
+
                     IrExpressionKind.AccessIndex(objExpr, memberIndex)
                 }
             }
@@ -1362,7 +1362,7 @@ class Lowerer {
                         is IrTypeInner.ValuePointer -> inner.base
                     }].inner
                 }
-                
+
                 val elemTypeHandle = when (inner) {
                     is IrTypeInner.Array -> inner.element
                     is IrTypeInner.Vector -> inner.scalar
@@ -1372,7 +1372,7 @@ class Lowerer {
                     }
                     else -> throw LoweringError("Cannot index into non-aggregate type: ${inner::class.simpleName}")
                 }
-                
+
                 val originalInner = baseType.inner
                 if (originalInner is IrTypeInner.Pointer) {
                     val ptrInner = IrTypeInner.Pointer(elemTypeHandle, originalInner.addressSpace, originalInner.accessMode)
@@ -1394,7 +1394,7 @@ class Lowerer {
                         is IrTypeInner.ValuePointer -> inner.base
                     }].inner
                 }
-                
+
                 val elemTypeHandle = when (inner) {
                     is IrTypeInner.Array -> inner.element
                     is IrTypeInner.Vector -> inner.scalar
@@ -1407,7 +1407,7 @@ class Lowerer {
                     }
                     else -> throw LoweringError("Cannot index into non-aggregate type: ${inner::class.simpleName}")
                 }
-                
+
                 val originalInner = baseType.inner
                 if (originalInner is IrTypeInner.Pointer) {
                     val ptrInner = IrTypeInner.Pointer(elemTypeHandle, originalInner.addressSpace, originalInner.accessMode)

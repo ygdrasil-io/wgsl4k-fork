@@ -23,7 +23,7 @@ sealed class TypeResolution {
 
 /**
  * Resolve types for expressions in a module or function.
- * 
+ *
  * The Typifier calculates the type of each expression in an arena.
  * This is a port of Naga's typifier.
  */
@@ -173,7 +173,7 @@ class Typifier {
     private fun resolveBinary(kind: ExpressionKind.Binary, expressions: Arena<Expression>, module: Module): TypeResolution {
         val left = this[kind.left]
         val right = this[kind.right]
-        
+
         return when (kind.operator) {
             BinaryOperator.Equal, BinaryOperator.NotEqual, BinaryOperator.Less, BinaryOperator.LessOrEqual,
             BinaryOperator.Greater, BinaryOperator.GreaterOrEqual -> {

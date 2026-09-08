@@ -12,7 +12,7 @@ class SymbolResolutionTest : FunSpec({
         val exception = kotlin.runCatching {
             lowerWgsl("fn main() -> i32 { return undefined_var; }")
         }.exceptionOrNull()
-        
+
         exception shouldNotBe null
     }
 })

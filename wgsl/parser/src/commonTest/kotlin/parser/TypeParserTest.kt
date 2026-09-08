@@ -108,11 +108,11 @@ class TypeParserTest : FunSpec({
         type.shouldBeInstanceOf<TemplateType>()
         type.name shouldBe "binding_array"
         type.args shouldHaveSize 2
-        
+
         val arg0 = type.args[0]
         arg0.shouldBeInstanceOf<SamplerType>()
         arg0.isComparison shouldBe true
-        
+
         val arg1 = type.args[1]
         arg1.shouldBeInstanceOf<ConstantType>()
         val constantExpr = arg1.expression

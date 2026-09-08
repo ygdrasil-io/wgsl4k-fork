@@ -13,7 +13,7 @@ class ExpressionParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val func = unit.declarations[0] as FunctionDecl
         val phony = func.body!!.statements[0] as PhonyAssignmentStatement
@@ -28,7 +28,7 @@ class ExpressionParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val variable = unit.declarations[0] as VariableDecl
         variable.type.shouldBeInstanceOf<RayQueryType>()
@@ -39,7 +39,7 @@ class ExpressionParserTest : FunSpec({
         val lexer = Lexer(source)
         val parser = Parser(lexer)
         val unit = parser.parse()
-        
+
         unit.declarations shouldHaveSize 1
         val variable = unit.declarations[0] as VariableDecl
         variable.storageClass shouldBe "push_constant"

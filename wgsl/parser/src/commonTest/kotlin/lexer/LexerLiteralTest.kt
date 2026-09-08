@@ -71,7 +71,7 @@ class LexerLiteralTest : FunSpec({
             val source = "\"\" \"hello\" \"he\\\"llo\" \"he\\\\llo\" \"\\n\\r\\t\" \"\\u{1F600}\" \"\\x41\""
             val tokens = tokenizeSignificant(source)
             tokens.forEach { it.kind shouldBe TokenKind.STRING_LITERAL }
-            
+
             tokens[0].literal shouldBe ""
             tokens[1].literal shouldBe "hello"
             tokens[2].literal shouldBe "he\"llo"

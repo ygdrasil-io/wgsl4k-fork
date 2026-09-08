@@ -102,6 +102,31 @@ class ConvertCommandTest : FunSpec({
         stderr.toString() shouldContain "Errors during parsing:"
     }
 
+    test("convert reports type resolution errors as a controlled Clikt error") {
+        val input = createTempFile(suffix = ".wgsl")
+        val stderr = ByteArrayOutputStream()
+        val originalStderr = System.err
+
+        try {
+            input.toFile().writeText("fn main() -> unknown_type { }")
+            System.setErr(PrintStream(stderr))
+
+            val error = shouldThrow<CliktError> {
+                WgslKTypes()
+                    .subcommands(ConvertCommand())
+                    .parse(listOf("convert", input.toString(), "--format", "wgsl"))
+            }
+
+            error.statusCode shouldBe 1
+            error.message shouldBe "Type resolution failed"
+        } finally {
+            System.setErr(originalStderr)
+            input.deleteIfExists()
+        }
+
+        stderr.toString() shouldContain "Errors during type resolution:"
+    }
+
     test("convert rejects a missing input with a controlled Clikt error") {
         val input = createTempFile(suffix = ".wgsl")
         input.deleteIfExists()
@@ -151,6 +176,28 @@ class ConvertCommandTest : FunSpec({
         } finally {
             input.deleteIfExists()
             output.deleteIfExists()
+        }
+    }
+
+    test("convert reports output write errors as a controlled Clikt error") {
+        val input = createTempFile(suffix = ".wgsl")
+        val outputParent = createTempDirectory("wgsl-cli-output")
+        val output = outputParent.resolve("missing/out.wgsl")
+
+        try {
+            input.toFile().writeText(MINIMAL_WGSL)
+
+            val error = shouldThrow<CliktError> {
+                WgslKTypes()
+                    .subcommands(ConvertCommand())
+                    .parse(listOf("convert", input.toString(), "--format", "wgsl", "--output", output.toString()))
+            }
+
+            error.statusCode shouldBe 1
+            error.message shouldContain "Unable to write output file"
+        } finally {
+            input.deleteIfExists()
+            outputParent.deleteIfExists()
         }
     }
 })

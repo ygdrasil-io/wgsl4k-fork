@@ -4,21 +4,21 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Base sealed class for all predeclared enumerant values.
- * 
+ *
  * Predeclared enumerants are built-in enum-like values defined by the WGSL
  * specification. They are used in various WGSL constructs like texture
  * sampling, interpolation, etc.
- * 
+ *
  * Unlike user-defined enums, these are not declared in WGSL code but are
  * available globally.
  */
 sealed class PredeclaredEnumerant {
     /** The category/group this enumerant belongs to (e.g., "AddressMode"). */
     abstract val category: String
-    
+
     /** The string value of this enumerant (e.g., "clamp_to_edge"). */
     abstract val value: String
-    
+
     /** The span of this enumerant in source code (if applicable). */
     abstract val span: Span
 }
@@ -29,7 +29,7 @@ sealed class PredeclaredEnumerant {
 
 /**
  * Address mode for texture sampling.
- * 
+ *
  * Controls how texture coordinates outside the [0, 1] range are handled.
  */
 sealed class AddressMode(override val span: Span) : PredeclaredEnumerant() {
@@ -57,7 +57,7 @@ data class MirrorRepeat(override val span: Span) : AddressMode(span) {
 
 /**
  * Filter mode for texture sampling.
- * 
+ *
  * Controls the filtering method used when sampling a texture.
  */
 sealed class FilterMode(override val span: Span) : PredeclaredEnumerant() {
@@ -80,7 +80,7 @@ data class Linear(override val span: Span) : FilterMode(span) {
 
 /**
  * Mipmap filter mode for texture sampling.
- * 
+ *
  * Controls the filtering method used between mipmap levels.
  */
 sealed class MipmapFilterMode(override val span: Span) : PredeclaredEnumerant() {
@@ -103,7 +103,7 @@ data class MipmapLinear(override val span: Span) : MipmapFilterMode(span) {
 
 /**
  * Interpolation type for fragment shader inputs.
- * 
+ *
  * Controls how values are interpolated across a triangle.
  */
 sealed class InterpolationType(override val span: Span) : PredeclaredEnumerant() {
@@ -131,7 +131,7 @@ data class Flat(override val span: Span) : InterpolationType(span) {
 
 /**
  * Interpolation sampling for fragment shader inputs.
- * 
+ *
  * Controls at which location the interpolated value is sampled.
  */
 sealed class InterpolationSampling(override val span: Span) : PredeclaredEnumerant() {
@@ -159,7 +159,7 @@ data class Sample(override val span: Span) : InterpolationSampling(span) {
 
 /**
  * Built-in values that can be used as struct members.
- * 
+ *
  * These are special values that represent shader inputs/outputs.
  */
 sealed class BuiltinValueEnum(override val span: Span) : PredeclaredEnumerant() {
@@ -353,7 +353,7 @@ data class OpaqueWhite(override val span: Span) : SamplerBorderColor(span) {
 
 /**
  * Get a predeclared enumerant by its category and value.
- * 
+ *
  * @param category The category of the enumerant (e.g., "AddressMode")
  * @param value The value of the enumerant (e.g., "clamp_to_edge")
  * @param span The span of the enumerant in source code

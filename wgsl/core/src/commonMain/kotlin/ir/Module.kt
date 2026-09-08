@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * The root of the Naga IR representation.
- * 
+ *
  * A Module contains all the types, functions, global variables, and entry points
  * needed to represent a shader.
  */

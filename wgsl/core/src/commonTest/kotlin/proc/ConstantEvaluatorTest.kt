@@ -49,7 +49,7 @@ class ConstantEvaluatorTest : FunSpec({
         val e10 = module.globalExpressions.append(Expression(ExpressionKind.Literal(LiteralValue.Scalar(ScalarValue.I32(10)))))
         val e2 = module.globalExpressions.append(Expression(ExpressionKind.Literal(LiteralValue.Scalar(ScalarValue.I32(2)))))
         val e5 = module.globalExpressions.append(Expression(ExpressionKind.Literal(LiteralValue.Scalar(ScalarValue.I32(5)))))
-        
+
         val sub = module.globalExpressions.append(Expression(ExpressionKind.Binary(BinaryOperator.Subtract, e10, e2)))
         val mul = module.globalExpressions.append(Expression(ExpressionKind.Binary(BinaryOperator.Multiply, sub, e5)))
 

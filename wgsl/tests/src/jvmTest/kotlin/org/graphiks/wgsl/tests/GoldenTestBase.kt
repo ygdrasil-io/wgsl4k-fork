@@ -145,6 +145,7 @@ abstract class GoldenTestBase(val backendName: String, val suiteName: String = b
     val inputDir = rootDir.resolve("tests/golden/inputs")
     val outputBaseDir = rootDir.resolve("tests/golden/outputs")
     val expectedFailures = GoldenExpectedFailures.load(rootDir)
+    ValidatorFactory.writeStatusReport(rootDir)
 
     context("$backendName Golden Tests") {
         val inputFiles = Files.list(inputDir)

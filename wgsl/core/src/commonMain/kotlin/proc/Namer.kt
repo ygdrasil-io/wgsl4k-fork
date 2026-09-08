@@ -2,7 +2,7 @@ package org.graphiks.wgsl.proc
 
 /**
  * Generates unique names for identifiers in the target shading language.
- * 
+ *
  * This is a port of Naga's namer.
  */
 class Namer {
@@ -20,18 +20,18 @@ class Namer {
 
     /**
      * Generates a unique name for a suggested identifier.
-     * 
+     *
      * @param suggested The suggested name for the identifier.
      * @return A unique and sanitized name.
      */
     fun call(suggested: String): String {
         var name = suggested
-        
+
         // Basic sanitization: only allow alphanumeric and underscores
         // Replace invalid characters with underscore
         name = name.map { if (it.isLetterOrDigit() || it == '_') it else '_' }
                    .joinToString("")
-        
+
         // Ensure name does not start with a digit
         if (name.isEmpty() || name[0].isDigit()) {
             name = "_$name"
@@ -39,13 +39,13 @@ class Namer {
 
         var candidate = name
         var index = 1
-        
+
         // Loop until we find a name that is not reserved and not used
         while (reserved.contains(candidate) || used.contains(candidate)) {
             candidate = "${name}_$index"
             index++
         }
-        
+
         used.add(candidate)
         return candidate
     }

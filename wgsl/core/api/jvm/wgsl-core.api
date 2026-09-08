@@ -4850,4 +4850,3 @@ public final class org/graphiks/wgsl/valid/ValidationFlags$Companion {
 	public final fun getNONE ()Lorg/graphiks/wgsl/valid/ValidationFlags;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
-

@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * An expression in WGSL.
- * 
+ *
  * Expressions represent computations that produce values.
  */
 sealed class Expression {
@@ -220,9 +220,9 @@ data class BitcastExpr(
 
 /**
  * Represents a reference to a predeclared enumerant value.
- * 
+ *
  * For example: AddressMode.clamp_to_edge, FilterMode.nearest
- * 
+ *
  * @property category The category/type of the enumerant (e.g., "AddressMode")
  * @property enumerant The actual predeclared enumerant value
  * @property span The source span of this expression

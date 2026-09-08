@@ -31,7 +31,7 @@ data class TypeLayout(
 
 /**
  * Calculates the memory layout of types.
- * 
+ *
  * This is a port of Naga's layouter.
  */
 class Layouter {
@@ -75,12 +75,12 @@ class Layouter {
                 val scalarLayout = this[inner.scalar]
                 val rows = inner.rows.value
                 val columns = inner.columns.value
-                
+
                 // Matrix column layout
                 val alignCount = if (rows == 3) 4 else rows
                 val colAlignment = Alignment(scalarLayout.alignment.value * alignCount)
                 val colStride = colAlignment.roundUp(scalarLayout.size * rows)
-                
+
                 TypeLayout(colStride * columns, colAlignment)
             }
             is TypeInner.Array -> {

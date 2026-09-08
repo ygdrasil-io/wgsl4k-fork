@@ -93,10 +93,10 @@ import org.graphiks.wgsl.lexer.isKeyword
 
 /**
  * Parser for the WGSL shader language.
- * 
+ *
  * The parser converts a stream of tokens from the lexer into an Abstract Syntax Tree (AST).
  * It uses recursive descent parsing with operator precedence for expressions.
- * 
+ *
  * The parser maintains the current token and provides methods for parsing
  * different language constructs (expressions, statements, declarations, etc.).
  */
@@ -173,7 +173,7 @@ class Parser(
 
     /**
      * Consumes the current token if it matches the expected kind.
-     * 
+     *
      * @param kind The expected token kind
      * @return true if the token matched and was consumed
      */
@@ -187,7 +187,7 @@ class Parser(
 
     /**
      * Consumes the current token if it matches any of the expected kinds.
-     * 
+     *
      * @param kinds The expected token kinds
      * @return true if the token matched and was consumed
      */
@@ -250,7 +250,7 @@ class Parser(
         val span = Span(start, end)
 
         val unit = TranslationUnit(declarations, span)
-        
+
         // Resolve user-defined enum member accesses to EnumMemberExpr
         // Note: This is done after parsing to allow forward references
         return resolveEnumAccesses(unit)
@@ -258,7 +258,7 @@ class Parser(
 
     /**
      * Resolves MemberAccessExpr to EnumMemberExpr for user-defined enum member accesses.
-     * 
+     *
      * This pass converts MemberAccessExpr nodes that reference user-defined enum members
      * into EnumMemberExpr nodes, providing a unified representation for both user-defined
      * and predeclared enum value references.
@@ -1956,14 +1956,14 @@ class Parser(
                         val member = memberToken.literal ?: memberToken.kind.toString().lowercase()
                         val start = left.span.start
                         val end = memberToken.span.end
-                        
+
                         // Check if this is a predeclared enumerant reference
                         // e.g., AddressMode.clamp_to_edge
                         val objectName = when (left) {
                             is IdentExpr -> left.name
                             else -> null
                         }
-                        
+
                         if (objectName != null) {
                             // Check if the object is a known predeclared enumerant category
                             val category = objectName
@@ -2491,7 +2491,7 @@ class Parser(
         } else {
             null
         }
-        
+
         if (hasParen) {
             expectOrError(TokenKind.RIGHT_PAREN, "Expected ')'")
         }

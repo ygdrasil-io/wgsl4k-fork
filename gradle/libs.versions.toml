@@ -11,7 +11,6 @@ kotlinx-serialization-json = "1.11.0"
 logging = "7.0.4"
 kotest = "6.1.11"
 kover = "0.9.8"
-ksp = "2.4.10-2.0.2"
 clikt = "5.0.2"
 logback = "1.5.16"
 
@@ -30,7 +29,6 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 android-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 kotest = { id = "io.kotest", version.ref = "kotest" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
 

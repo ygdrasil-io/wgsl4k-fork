@@ -60,10 +60,12 @@ tasks.register("goldenCoverageReport") {
     val outputsDir = goldenRoot.dir("outputs")
     val junitResultsDir = layout.buildDirectory.dir("test-results/jvmTest")
     val reportFile = layout.buildDirectory.file("reports/golden-coverage/summary.md")
+    val validatorStatusFile = layout.buildDirectory.file("reports/golden-coverage/validator-status.txt")
 
     inputs.files(inputsDir)
     inputs.files(outputsDir)
     inputs.files(junitResultsDir).optional()
+    inputs.file(validatorStatusFile).optional()
     outputs.file(reportFile)
 
     doLast {
@@ -107,6 +109,28 @@ tasks.register("goldenCoverageReport") {
             )
         }
 
+        report.appendLine()
+        report.appendLine("## Native Validators")
+        report.appendLine()
+        val validatorStatuses = validatorStatusFile.get().asFile
+            .takeIf { it.isFile }
+            ?.readLines()
+            ?.mapNotNull { line -> line.split('=', limit = 2).takeIf { it.size == 2 } }
+            .orEmpty()
+        val availableValidators = validatorStatuses.count { it[1] == "available" }
+        val skippedValidators = validatorStatuses.count { it[1] == "skipped" }
+        report.appendLine("- Available validators: `$availableValidators`")
+        report.appendLine("- Skipped validators: `$skippedValidators`")
+        report.appendLine()
+        report.appendLine("Native validator status is separate from JVM golden assertions; a skipped validator is not a passing runtime test.")
+        if (validatorStatuses.isNotEmpty()) {
+            report.appendLine()
+            report.appendLine("| Validator | Status |")
+            report.appendLine("|-----------|--------|")
+            validatorStatuses.forEach { status ->
+                report.appendLine("| `${status[0]}` | `${status[1]}` |")
+            }
+        }
         report.appendLine()
         report.appendLine("## Missing Outputs")
         report.appendLine()

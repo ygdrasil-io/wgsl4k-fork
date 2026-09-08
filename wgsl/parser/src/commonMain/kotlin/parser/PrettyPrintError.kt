@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * Formats diagnostics for human-readable output.
- * 
+ *
  * This class provides methods for formatting error messages with
  * source context, line numbers, and caret indicators.
  */
@@ -39,7 +39,7 @@ class PrettyPrintError {
 
     /**
      * Format a single diagnostic with source context.
-     * 
+     *
      * @param diagnostic The diagnostic to format
      * @param source The source code
      * @param contextLines Number of context lines to show before and after
@@ -128,7 +128,7 @@ class PrettyPrintError {
 
     /**
      * Format multiple diagnostics.
-     * 
+     *
      * @param diagnostics The diagnostics to format
      * @param source The source code
      * @param contextLines Number of context lines to show
@@ -179,7 +179,7 @@ class PrettyPrintError {
 
     /**
      * Build a caret line for highlighting the error span.
-     * 
+     *
      * @param lineLength The length of the source line
      * @param startColumn The start column (0-based)
      * @param endColumn The end column (0-based)

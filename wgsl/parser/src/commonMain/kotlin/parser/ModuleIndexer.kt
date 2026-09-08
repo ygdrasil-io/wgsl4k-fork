@@ -62,7 +62,7 @@ import org.graphiks.wgsl.ast.WhileStatement
 
 /**
  * Performs topological sorting of WGSL module declarations to handle forward references.
- * 
+ *
  * This class builds a dependency graph and reorders declarations so that
  * all dependencies come before the declarations that use them.
  */
@@ -71,7 +71,7 @@ class ModuleIndexer {
     /**
      * Reorders declarations in a translation unit to ensure all dependencies
      * are declared before they are used.
-     * 
+     *
      * @param unit The translation unit to reorder
      * @return A new translation unit with reordered declarations
      */
@@ -94,7 +94,7 @@ class ModuleIndexer {
 
     /**
      * Builds a dependency graph from a translation unit.
-     * 
+     *
      * @param unit The translation unit
      * @return Map of declaration name to set of names it depends on
      */
@@ -517,7 +517,7 @@ class ModuleIndexer {
 
     /**
      * Perform topological sort using Kahn's algorithm.
-     * 
+     *
      * @param graph Dependency graph (node -> set of dependencies)
      * @return List of node names in topological order
      * @throws CycleDetectedException if a cycle is detected

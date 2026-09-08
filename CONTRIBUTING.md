@@ -56,7 +56,7 @@ Repository settings automatically delete head branches after successful merges.
 These items are reviewed by maintainers when applicable; they are not automatically enforced by CI or the branch ruleset.
 
 - Keep commits atomic when practical.
-- Run local verification before requesting review: `./gradlew :shared:jvmTest`.
+- Run local verification before requesting review: `./gradlew :wgsl:wgsl-tests:jvmTest`.
 - Reference the related issue in the PR description when relevant.
 - Add screenshots when relevant.
 - Keep the `Screenshots (if applicable)` and `Additional Notes` sections when relevant.
@@ -78,7 +78,7 @@ Before submitting a PR, make sure:
 
 **Maintainer-reviewed expectations**
 
-- [ ] Tests pass locally (`./gradlew :shared:jvmTest`)
+- [ ] Tests pass locally (`./gradlew :wgsl:wgsl-tests:jvmTest`)
 - [ ] Commits are atomic when practical
 - [ ] The PR description references the related issue when relevant
 - [ ] Screenshots are included when relevant
@@ -88,7 +88,7 @@ Before submitting a PR, make sure:
 
 ```bash
 # Fast JVM tests
-./gradlew :shared:jvmTest
+./gradlew :wgsl:wgsl-tests:jvmTest
 
 # All tests
 ./gradlew allTests

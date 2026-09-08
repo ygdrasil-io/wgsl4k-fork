@@ -516,16 +516,16 @@ class ConstantEvaluator(
     private fun evaluateAccessExpression(kind: ExpressionKind.Access, context: EvaluationContext): ConstValue {
         val base = evaluateExpression(kind.expr, context)
         val indexVal = evaluateExpression(kind.index, context)
-        
+
         if (indexVal !is ConstValue.Scalar || (indexVal.value !is ScalarValue.I32 && indexVal.value !is ScalarValue.U32)) {
             return ConstValue.NotConst
         }
-        
+
         val index = when (val v = indexVal.value) {
             is ScalarValue.I32 -> v.value
             is ScalarValue.U32 -> v.value.toInt()
         }
-        
+
         return when (base) {
             is ConstValue.Vector -> {
                 if (index >= 0 && index < base.components.size) {

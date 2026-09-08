@@ -2,7 +2,7 @@ package org.graphiks.wgsl.lexer
 
 /**
  * Enumeration of all possible token kinds in the WGSL language.
- * 
+ *
  * This represents the lexical categories that the lexer can produce.
  * Each token has a kind, a span (position in source), and optionally a literal value.
  */

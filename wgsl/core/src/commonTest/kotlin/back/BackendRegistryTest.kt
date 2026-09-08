@@ -18,7 +18,7 @@ class BackendRegistryTest : FunSpec({
             }
             override fun createWithOptions(options: BackendOptions): BackendWriter<*> = create()
         })
-        
+
         val names = registry.listBackendNames()
         names shouldContain "msl"
     }
@@ -33,7 +33,7 @@ class BackendRegistryTest : FunSpec({
             }
             override fun createWithOptions(options: BackendOptions): BackendWriter<*> = create()
         })
-        
+
         val mslBackend = registry.get("msl")
         mslBackend shouldNotBe null
     }

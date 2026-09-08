@@ -13,10 +13,10 @@ import org.graphiks.wgsl.parser.TestUtils.lowerWgsl
 class FunctionLoweringTest : FunSpec({
     test("T017: should lower simple function") {
         val module = lowerWgsl("fn add(a: i32, b: i32) -> i32 { return a + b; }")
-        
+
         module.functions.toList() shouldHaveSize 1
         val addFunc = module.functions.toList()[0]
-        
+
         addFunc.name shouldBe "add"
         addFunc.parameters shouldHaveSize 2
         addFunc.parameters[0].name shouldBe "a"
@@ -31,10 +31,10 @@ class FunctionLoweringTest : FunSpec({
                 return vec4(0.0);
             }
         """)
-        
+
         module.entryPoints shouldHaveSize 1
         val entryPoint = module.entryPoints[0]
-        
+
         entryPoint.name shouldBe "main"
         entryPoint.stage shouldBe ShaderStage.Vertex
     }
@@ -46,7 +46,7 @@ class FunctionLoweringTest : FunSpec({
                 return vec4(1.0);
             }
         """)
-        
+
         module.entryPoints shouldHaveSize 1
         module.entryPoints[0].stage shouldBe ShaderStage.Fragment
     }
@@ -56,7 +56,7 @@ class FunctionLoweringTest : FunSpec({
             @compute @workgroup_size(1)
             fn main() {}
         """)
-        
+
         module.entryPoints shouldHaveSize 1
         module.entryPoints[0].stage shouldBe ShaderStage.Compute
     }

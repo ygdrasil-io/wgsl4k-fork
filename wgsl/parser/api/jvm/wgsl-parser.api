@@ -2781,4 +2781,3 @@ public final class org/graphiks/wgsl/parser/WgslValidationKt {
 	public static final fun validateAndReflectWgsl (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/graphiks/wgsl/proc/WgslReflectionReport;
 	public static synthetic fun validateAndReflectWgsl$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/graphiks/wgsl/proc/WgslReflectionReport;
 }
-

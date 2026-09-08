@@ -13,7 +13,7 @@ import org.graphiks.wgsl.lexer.TokenKind
 
 /**
  * Error recovery strategies for the WGSL parser.
- * 
+ *
  * This class provides methods for recovering from parse errors and continuing
  * to parse the rest of the source file, enabling better error reporting.
  */
@@ -90,9 +90,9 @@ class ErrorRecovery {
 
     /**
      * Recover to the next statement.
-     * 
+     *
      * This skips tokens until we find a statement start token or end token.
-     * 
+     *
      * @param state The recovery state
      * @param currentToken The current token
      * @param advance Function to advance to the next token
@@ -130,9 +130,9 @@ class ErrorRecovery {
 
     /**
      * Recover to the next top-level declaration.
-     * 
+     *
      * This skips tokens until we find a declaration start token.
-     * 
+     *
      * @param state The recovery state
      * @param currentToken The current token
      * @param advance Function to advance to the next token
@@ -161,7 +161,7 @@ class ErrorRecovery {
 
     /**
      * Recover to a specific token kind.
-     * 
+     *
      * @param state The recovery state
      * @param currentToken The current token
      * @param advance Function to advance to the next token
@@ -192,7 +192,7 @@ class ErrorRecovery {
 
     /**
      * Recover to one of several token kinds.
-     * 
+     *
      * @param state The recovery state
      * @param currentToken The current token
      * @param advance Function to advance to the next token
@@ -226,7 +226,7 @@ class ErrorRecovery {
 
     /**
      * Data class for virtual token insertion.
-     * 
+     *
      * This allows the parser to pretend a token exists without actually inserting it
      * into the token stream.
      */
@@ -238,7 +238,7 @@ class ErrorRecovery {
 
     /**
      * Try to insert a virtual token and continue parsing.
-     * 
+     *
      * @param state The recovery state
      * @param kind The token kind to insert
      * @param text The token text
@@ -259,7 +259,7 @@ class ErrorRecovery {
 
     /**
      * Try to replace the current token with a different kind.
-     * 
+     *
      * @param state The recovery state
      * @param currentToken The current token
      * @param newKind The new token kind
@@ -280,7 +280,7 @@ class ErrorRecovery {
 
     /**
      * Skip tokens until we find a token of the given kind.
-     * 
+     *
      * @param currentToken The current token
      * @param advance Function to advance to the next token
      * @param targetKind The token kind to find
@@ -305,7 +305,7 @@ class ErrorRecovery {
 
     /**
      * Skip tokens until we find one of the given kinds.
-     * 
+     *
      * @param currentToken The current token
      * @param advance Function to advance to the next token
      * @param targetKinds The token kinds to find
@@ -331,7 +331,7 @@ class ErrorRecovery {
 
     /**
      * Check if we should attempt recovery after an error.
-     * 
+     *
      * @param state The recovery state
      * @return true if recovery should be attempted
      */
@@ -341,7 +341,7 @@ class ErrorRecovery {
 
     /**
      * Create a dummy statement for error recovery.
-     * 
+     *
      * This creates a placeholder statement that can be used when
      * a statement cannot be parsed.
      */
@@ -352,7 +352,7 @@ class ErrorRecovery {
 
     /**
      * Create a dummy expression for error recovery.
-     * 
+     *
      * This creates a placeholder expression that can be used when
      * an expression cannot be parsed.
      */

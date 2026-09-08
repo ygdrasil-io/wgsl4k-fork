@@ -14,7 +14,7 @@ import org.graphiks.wgsl.ast.VariableDeclKind
 
 /**
  * Index of all types and values declared in a WGSL module.
- * 
+ *
  * This class provides a centralized registry for looking up declarations by name,
  * including built-in WGSL types (scalar, vector, matrix types).
  */
@@ -50,7 +50,7 @@ class TypeIndex {
 
     /**
      * Index all declarations in a translation unit.
-     * 
+     *
      * @param unit The translation unit to index
      */
     fun index(unit: TranslationUnit) {
@@ -162,7 +162,7 @@ class TypeIndex {
             // Attributes and options
             "less_equal", "greater_equal", "any", "unchanged", "force",
             "per_vertex", "error_type",
-            
+
             // Diagnostics
             "warning", "info", "error", "off", "derivative_uniformity",
 

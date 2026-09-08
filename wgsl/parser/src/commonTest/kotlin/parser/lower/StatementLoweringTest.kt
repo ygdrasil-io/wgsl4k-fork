@@ -14,7 +14,7 @@ import io.kotest.matchers.shouldNotBe
 class StatementLoweringTest : FunSpec({
     test("T013: should lower return statement") {
         val module = lowerWgsl("fn main() -> i32 { return 0; }")
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 1
@@ -23,7 +23,7 @@ class StatementLoweringTest : FunSpec({
 
     test("T014: should lower empty block") {
         val module = lowerWgsl("fn main() { { } }")
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 1
@@ -36,7 +36,7 @@ class StatementLoweringTest : FunSpec({
                 let x: i32 = 42;
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 1
@@ -51,7 +51,7 @@ class StatementLoweringTest : FunSpec({
                 x = 42;
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 2
@@ -65,20 +65,20 @@ class StatementLoweringTest : FunSpec({
                 i++;
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 2
-        
+
         val incStmt = bodyBlock.statements[1]
         incStmt should beInstanceOf<Statement.Assign>()
         val assign = incStmt as Statement.Assign
-        
+
         val valExpr = mainFunc.expressions[assign.value]
         valExpr.kind should beInstanceOf<org.graphiks.wgsl.ir.ExpressionKind.Binary>()
         val binary = valExpr.kind as org.graphiks.wgsl.ir.ExpressionKind.Binary
         binary.operator shouldBe org.graphiks.wgsl.ir.BinaryOperator.Add
-        
+
         val rightExpr = mainFunc.expressions[binary.right]
         rightExpr.kind should beInstanceOf<org.graphiks.wgsl.ir.ExpressionKind.Literal>()
         val literal = rightExpr.kind as org.graphiks.wgsl.ir.ExpressionKind.Literal
@@ -95,20 +95,20 @@ class StatementLoweringTest : FunSpec({
                 u--;
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 2
-        
+
         val decStmt = bodyBlock.statements[1]
         decStmt should beInstanceOf<Statement.Assign>()
         val assign = decStmt as Statement.Assign
-        
+
         val valExpr = mainFunc.expressions[assign.value]
         valExpr.kind should beInstanceOf<org.graphiks.wgsl.ir.ExpressionKind.Binary>()
         val binary = valExpr.kind as org.graphiks.wgsl.ir.ExpressionKind.Binary
         binary.operator shouldBe org.graphiks.wgsl.ir.BinaryOperator.Subtract
-        
+
         val rightExpr = mainFunc.expressions[binary.right]
         rightExpr.kind should beInstanceOf<org.graphiks.wgsl.ir.ExpressionKind.Literal>()
         val literal = rightExpr.kind as org.graphiks.wgsl.ir.ExpressionKind.Literal
@@ -126,41 +126,41 @@ class StatementLoweringTest : FunSpec({
                 }
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 1
-        
+
         // The for loop is lowered into a Block containing the init statement and the Loop statement
         bodyBlock.statements[0] should beInstanceOf<Statement.Block>()
         val outerBlockStmt = bodyBlock.statements[0] as Statement.Block
         val outerBlock = mainFunc.blocks[outerBlockStmt.block]
         outerBlock.statements shouldHaveSize 2
-        
+
         // 1st is init statement
         outerBlock.statements[0] should beInstanceOf<Statement.Init>()
-        
+
         // 2nd is loop
         outerBlock.statements[1] should beInstanceOf<Statement.Loop>()
         val loop = outerBlock.statements[1] as Statement.Loop
-        
+
         // The loop condition check block contains the If statement
         val condBlock = mainFunc.blocks[loop.body]
         condBlock.statements shouldHaveSize 1
         condBlock.statements[0] should beInstanceOf<Statement.If>()
         val ifStmt = condBlock.statements[0] as Statement.If
-        
+
         // The If then block is the loop body which contains original body + update
         val bodyAndUpdateBlock = mainFunc.blocks[ifStmt.accept]
         bodyAndUpdateBlock.statements shouldHaveSize 2
-        
+
         // 1st statement in body is the original block containing var x: i32 = i;
         bodyAndUpdateBlock.statements[0] should beInstanceOf<Statement.Block>()
-        
+
         // 2nd statement in body is the increment update: i++
         bodyAndUpdateBlock.statements[1] should beInstanceOf<Statement.Assign>()
         val assign = bodyAndUpdateBlock.statements[1] as Statement.Assign
-        
+
         val valExpr = mainFunc.expressions[assign.value]
         valExpr.kind should beInstanceOf<org.graphiks.wgsl.ir.ExpressionKind.Binary>()
     }
@@ -172,11 +172,11 @@ class StatementLoweringTest : FunSpec({
             }
             @group(2) @binding(5) var<uniform> grid: Grid;
         """)
-        
+
         module.globalVariables.size shouldBe 1
         val globalVar = module.globalVariables.toList()[0]
         globalVar.name shouldBe "grid"
-        
+
         globalVar.binding shouldNotBe null
         val binding = globalVar.binding!!
         binding.group shouldBe 2
@@ -190,7 +190,7 @@ class StatementLoweringTest : FunSpec({
                 discard;
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 1
@@ -209,40 +209,40 @@ class StatementLoweringTest : FunSpec({
                 }
             }
         """)
-        
+
         val mainFunc = module.functions.toList().first { func -> func.name == "main" }
         val bodyBlock = mainFunc.blocks[mainFunc.body]
         bodyBlock.statements shouldHaveSize 3
-        
+
         bodyBlock.statements[2] should beInstanceOf<org.graphiks.wgsl.ir.Statement.Switch>()
         val switchStmt = bodyBlock.statements[2] as org.graphiks.wgsl.ir.Statement.Switch
-        
+
         // Assert cases
         switchStmt.cases shouldHaveSize 4 // case 1, case 2, case 3, and default (Naga maps multiple selectors and default as separate cases)
-        
+
         // 1st case: value 1
         val case1 = switchStmt.cases[0]
         case1.selector should beInstanceOf<org.graphiks.wgsl.ir.CaseSelector.Value>()
         val val1 = case1.selector as org.graphiks.wgsl.ir.CaseSelector.Value
         val1.value should beInstanceOf<org.graphiks.wgsl.ir.ScalarValue.I32>()
         (val1.value as org.graphiks.wgsl.ir.ScalarValue.I32).value shouldBe 1
-        
+
         // 2nd case: value 2
         val case2 = switchStmt.cases[1]
         case2.selector should beInstanceOf<org.graphiks.wgsl.ir.CaseSelector.Value>()
         val val2 = case2.selector as org.graphiks.wgsl.ir.CaseSelector.Value
         (val2.value as org.graphiks.wgsl.ir.ScalarValue.I32).value shouldBe 2
-        
+
         // 3rd case: value 3
         val case3 = switchStmt.cases[2]
         case3.selector should beInstanceOf<org.graphiks.wgsl.ir.CaseSelector.Value>()
         val val3 = case3.selector as org.graphiks.wgsl.ir.CaseSelector.Value
         (val3.value as org.graphiks.wgsl.ir.ScalarValue.I32).value shouldBe 3
-        
+
         // 4th case: default
         val case4 = switchStmt.cases[3]
         case4.selector should beInstanceOf<org.graphiks.wgsl.ir.CaseSelector.Default>()
-        
+
         // Default case handle must not be null
         switchStmt.default shouldNotBe null
     }

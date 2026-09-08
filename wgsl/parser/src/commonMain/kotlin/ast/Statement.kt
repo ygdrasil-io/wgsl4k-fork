@@ -4,7 +4,7 @@ import org.graphiks.wgsl.ir.Span
 
 /**
  * A statement in WGSL.
- * 
+ *
  * Statements represent executable code that can appear in function bodies.
  */
 sealed class Statement {
