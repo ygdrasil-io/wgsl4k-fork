@@ -1,0 +1,194 @@
+package org.graphiks.wgsl.parser.lower
+
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.types.beInstanceOf
+import org.graphiks.wgsl.ir.ScalarKind
+import org.graphiks.wgsl.ir.TypeInner
+import org.graphiks.wgsl.ir.VectorSize
+import org.graphiks.wgsl.parser.lowerWgsl
+import org.graphiks.wgsl.parser.Lowerer
+import org.graphiks.wgsl.parser.LoweringError
+import org.graphiks.wgsl.parser.findScalarType
+import org.graphiks.wgsl.parser.findType
+import org.graphiks.wgsl.parser.findVectorType
+import org.graphiks.wgsl.parser.parseWgsl
+
+class TypeLoweringTest : FunSpec({
+    test("T001: should lower simple function with i32 return type") {
+        val module = lowerWgsl("fn main() -> i32 { return 0; }")
+        
+        module.types.toList() shouldHaveSize 1
+        val type = module.types.toList()[0]
+        type.inner shouldBe TypeInner.Scalar(ScalarKind.Sint, 4)
+    }
+
+    test("T002: should lower function with f32 return type") {
+        val module = lowerWgsl("fn main() -> f32 { return 0.0; }")
+        
+        module.types.toList() shouldHaveSize 1
+        val type = module.types.toList()[0]
+        type.inner shouldBe TypeInner.Scalar(ScalarKind.F32, 4)
+    }
+
+    test("T003: should lower function with bool return type") {
+        val module = lowerWgsl("fn main() -> bool { return true; }")
+        
+        // Find the bool type by kind and width
+        val boolType = module.findScalarType(ScalarKind.Bool, 1)
+        boolType shouldNotBe null
+    }
+
+    test("all scalar return types preserve kind and width") {
+        val cases = listOf(
+            "bool" to TypeInner.Scalar(ScalarKind.Bool, 1),
+            "i8" to TypeInner.Scalar(ScalarKind.Sint, 1),
+            "u8" to TypeInner.Scalar(ScalarKind.Uint, 1),
+            "i16" to TypeInner.Scalar(ScalarKind.Sint, 2),
+            "u16" to TypeInner.Scalar(ScalarKind.Uint, 2),
+            "i32" to TypeInner.Scalar(ScalarKind.Sint, 4),
+            "u32" to TypeInner.Scalar(ScalarKind.Uint, 4),
+            "i64" to TypeInner.Scalar(ScalarKind.Sint, 8),
+            "u64" to TypeInner.Scalar(ScalarKind.Uint, 8),
+            "f16" to TypeInner.Scalar(ScalarKind.F16, 2),
+            "f32" to TypeInner.Scalar(ScalarKind.F32, 4),
+            "f64" to TypeInner.Scalar(ScalarKind.F64, 8),
+        )
+
+        cases.forEach { (typeName, expected) ->
+            val module = lowerWgsl("fn main() -> $typeName { return 0; }")
+            val function = module.functions.toList().single { it.name == "main" }
+            module.types[function.returnType!!].inner shouldBe expected
+        }
+    }
+
+    test("scalar constructors preserve target scalar type") {
+        val module = lowerWgsl("""
+            fn main() {
+                let half = f16(1.0);
+                let short = i16(1);
+            }
+        """.trimIndent())
+        val function = module.functions.toList().single { it.name == "main" }
+
+        val half = function.localVariables.toList().single { it.name == "half" }
+        module.types[half.type].inner shouldBe TypeInner.Scalar(ScalarKind.F16, 2)
+
+        val short = function.localVariables.toList().single { it.name == "short" }
+        module.types[short.type].inner shouldBe TypeInner.Scalar(ScalarKind.Sint, 2)
+    }
+
+    test("T004: should lower vec2<f32> type") {
+        val module = lowerWgsl("fn main() -> vec2<f32> { return vec2(0.0); }")
+        
+        module.types.toList() shouldHaveSize 2 // f32 + vec2<f32>
+        
+        // Find the vector type
+        val vec2Type = module.types.toList().find { type: org.graphiks.wgsl.ir.Type ->
+            type.inner is TypeInner.Vector && 
+            (type.inner as TypeInner.Vector).size == VectorSize.Bi
+        }
+        vec2Type shouldNotBe null
+    }
+
+    test("T005: should lower vec3<f32> type") {
+        val module = lowerWgsl("fn main() -> vec3<f32> { return vec3(0.0); }")
+        
+        val vec3Type = module.types.toList().find { type: org.graphiks.wgsl.ir.Type ->
+            type.inner is TypeInner.Vector && 
+            (type.inner as TypeInner.Vector).size == VectorSize.Tri
+        }
+        vec3Type shouldNotBe null
+    }
+
+    test("T006: should lower vec4<f32> type") {
+        val module = lowerWgsl("fn main() -> vec4<f32> { return vec4(0.0); }")
+        
+        val vec4Type = module.types.toList().find { type: org.graphiks.wgsl.ir.Type ->
+            type.inner is TypeInner.Vector && 
+            (type.inner as TypeInner.Vector).size == VectorSize.Quad
+        }
+        vec4Type shouldNotBe null
+    }
+
+    test("T007: should lower simple struct") {
+        // Note: There's a known bug where struct parsing creates an extra empty member
+        // between members with trailing commas. This test verifies the struct is lowered
+        // and has the expected members (ignoring empty ones).
+        val module = lowerWgsl("""
+            struct S {
+                x: i32,
+                y: f32
+            }
+            fn main() -> S { return S(0, 0.0); }
+        """)
+        
+        val structType = module.findType { inner -> inner is TypeInner.Struct }
+        structType shouldNotBe null
+        
+        val irStruct = structType!!.inner as TypeInner.Struct
+        // Verified: struct has exactly 2 members after the parsing fix
+        // Verify that x and y members exist
+        irStruct.members.size shouldBe 2
+        
+        // Find members by name
+        val xMember = irStruct.members.find { it.name == "x" }
+        val yMember = irStruct.members.find { it.name == "y" }
+        
+        xMember shouldNotBe null
+        yMember shouldNotBe null
+    }
+
+    test("vec3_should_not_duplicate_scalar_types") {
+        val module = lowerWgsl("fn main() -> vec3<f32> { return vec3(1.0); }")
+        
+        val scalarF32Count = module.types.toList().count {
+            it.inner is TypeInner.Scalar && 
+            (it.inner as TypeInner.Scalar).kind == ScalarKind.F32
+        }
+        
+        // Bug: crée un nouveau F32 pour chaque vec3
+        scalarF32Count shouldBe 1
+    }
+
+    test("nested_struct_members_should_resolve_to_actual_types") {
+        val module = lowerWgsl("""
+            struct Inner { a: i32 }
+            struct Outer { inner: Inner }
+        """)
+        
+        // Trouver Outer (celui qui a un membre 'inner')
+        val outerType = module.types.toList().find { type ->
+            type.inner is TypeInner.Struct && 
+            (type.inner as TypeInner.Struct).members.any { it.name == "inner" }
+        }
+        outerType shouldNotBe null
+        
+        val innerMember = (outerType!!.inner as TypeInner.Struct).members.find { it.name == "inner" }
+        innerMember shouldNotBe null
+        
+        // Le type du membre inner doit pointer vers Inner (pas un struct vide)
+        val innerType = module.types[innerMember!!.type]
+        (innerType.inner as? TypeInner.Struct)?.members?.isEmpty() shouldBe false
+    }
+
+    test("unknown_named_type_should_fail_lowering_instead_of_defaulting_to_f32") {
+        val error = shouldThrow<LoweringError> {
+            Lowerer().lower(parseWgsl("type Bad = definitely_unknown;"))
+        }
+
+        error.message shouldContain "Unknown named type"
+    }
+
+    test("empty_array_constructor_should_fail_when_element_type_cannot_be_inferred") {
+        val error = shouldThrow<LoweringError> {
+            lowerWgsl("fn main() { let values = array(); }")
+        }
+
+        error.message shouldContain "Cannot infer element type for empty array constructor"
+    }
+})
