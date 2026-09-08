@@ -1,11 +1,11 @@
 // Klib ABI Dump
-// Targets: [androidNativeArm64, androidNativeX64, iosArm64, iosSimulatorArm64, iosX64, js, linuxArm64, linuxX64, macosArm64, macosX64, mingwX64, wasmJs, watchosArm64, watchosSimulatorArm64, watchosX64]
+// Targets: [iosArm64, iosSimulatorArm64]
 // Rendering settings:
 // - Signature version: 2
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <org.graphiks:wgsl-parser>
+// Library unique name: <wgsl4k-fork.wgsl:wgsl-parser>
 final enum class org.graphiks.wgsl.ast/BinaryOperator : kotlin/Enum<org.graphiks.wgsl.ast/BinaryOperator> { // org.graphiks.wgsl.ast/BinaryOperator|null[0]
     enum entry ADD // org.graphiks.wgsl.ast/BinaryOperator.ADD|null[0]
     enum entry ARROW // org.graphiks.wgsl.ast/BinaryOperator.ARROW|null[0]
