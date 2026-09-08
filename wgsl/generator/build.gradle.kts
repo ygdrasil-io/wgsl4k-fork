@@ -23,3 +23,14 @@ kotlin {
 tasks.named<org.gradle.api.tasks.testing.Test>("jvmTest") {
     useJUnitPlatform()
 }
+
+tasks.named("internalDumpKotlinAbi") {
+    doLast {
+        val abiFile = layout.buildDirectory.file("kotlin/abi/jvm/wgsl-generator.api").get().asFile
+        val content = abiFile.readText()
+        val normalizedContent = content.trimEnd() + "\n"
+        if (content != normalizedContent) {
+            abiFile.writeText(normalizedContent)
+        }
+    }
+}
