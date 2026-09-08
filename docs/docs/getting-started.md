@@ -1,46 +1,64 @@
-# Getting Started — From Template to Your Project
+# Getting started with wgsl4k
 
-Checklist of files to modify when starting a new project from this template.
+## Repository layout
 
-## Project Identity
+The migration keeps the WGSL code in `wgsl/` and leaves the template's `:shared`
+project in place until the final cleanup phase. Work on the WGSL projects by
+their Gradle paths:
 
-- [ ] `settings.gradle.kts:23` — set `rootProject.name`
-- [ ] `build.gradle.kts:1` — set `group`
-- [ ] `buildSrc/.../kmp-library.gradle.kts:25` — set Android `namespace`
-- [ ] `buildSrc/.../kmp-library.gradle.kts:13` — set `jvmToolchain` version
-- [ ] `buildSrc/.../kmp-library.gradle.kts:26-27` — set `compileSdk` / `minSdk`
-- [ ] `buildSrc/.../kmp-publish.gradle.kts` — update `group`, `coordinates`, and all POM fields (name, description, url, licenses, developers, scm)
-- [ ] `buildSrc/.../kmp-dokka.gradle.kts` — update `moduleName` and source link `remoteUrl`
+```text
+wgsl/
+├── core/       :wgsl:wgsl-core
+├── parser/     :wgsl:wgsl-parser
+├── generator/  :wgsl:wgsl-generator
+├── tests/      :wgsl:wgsl-tests
+└── cli/        :wgsl:wgsl-cli
+```
 
-## Source Code
+The dependency flow is `core → parser → generator`; `tests` and `cli` consume
+those three modules. The golden corpus is stored at `tests/golden/` so it is
+shared by the JVM test module without becoming a published runtime dependency.
 
-- [ ] Rename package `io.ygdrasil` to your own across all source sets (`commonMain`, `androidMain`, `iosMain`, `jvmMain`)
-- [ ] Move source files to match the new package directory layout
-- [ ] Update imports in `Koin.kt` if module/package names changed
-- [ ] Update `commonTest` package references if applicable
+## Run the JVM workflow
 
-## CI / GitHub
+```bash
+./gradlew :shared:jvmTest \
+  :wgsl:wgsl-core:jvmTest \
+  :wgsl:wgsl-parser:jvmTest \
+  :wgsl:wgsl-generator:jvmTest \
+  :wgsl:wgsl-tests:jvmTest \
+  :wgsl:wgsl-cli:jvmTest --no-daemon
+```
 
-- [ ] Review/update `.github/workflows/` CI files (repo references, badges)
-- [ ] Update `README.md` badges (status, repo URLs)
-- [ ] Update `README.md` content and description
+The golden coverage report is available with:
 
-## Documentation
+```bash
+./gradlew :wgsl:wgsl-tests:goldenCoverageReport --no-daemon
+```
 
-- [ ] `docs/mkdocs.yml` — update `site_name`, `site_url`, `repo_url`, `repo_name`
-- [ ] `docs/docs/index.md` — rewrite for your project
-- [ ] `docs/docs/index.fr.md` — rewrite for your project (or delete if not needed)
+## Import strategy
 
-## License
+Each migration phase preserves the source package namespace
+`org.graphiks.wgsl.*` and its corresponding module boundary. Import source and
+tests into the matching module, keep the generated ABI files aligned with the
+compiled public API, and run the module's JVM task before advancing the stack.
 
-- [ ] `LICENSE` — update copyright holder
+The source baseline, golden fixtures, and Kotlin package names are deliberately
+kept stable. Later cleanup removes the starter sample only after all WGSL
+modules, documentation, CI, and publication metadata have been validated.
 
-## Dependencies
+## Build documentation
 
-- [ ] `gradle/libs.versions.toml` — review/update library versions as needed
+The `:docs` project collects Dokka output from all five WGSL modules and embeds
+it into MkDocs Material:
 
-## Final Verification
+```bash
+./gradlew :docs:embedDokkaIntoMkDocs --no-daemon
+mkdocs build -f docs/mkdocs.yml
+```
 
-- [ ] `./gradlew build` succeeds
-- [ ] `./gradlew :shared:jvmTest` passes
-- [ ] `mkdocs build -f docs/mkdocs.yml` works
+## Publication
+
+WGSL artifacts use the `org.graphiks` group and the `wgsl-*` artifact names.
+Publication runs only from the protected release branch after ABI validation and
+only when Maven Central and signing credentials are available.

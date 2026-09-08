@@ -3,6 +3,9 @@ import java.util.TreeMap
 
 plugins {
     id("ygdrasil.conventions.wgsl-library")
+    id("ygdrasil.conventions.kmp-publish")
+    id("ygdrasil.conventions.kmp-dokka")
+    id("dev.opensavvy.dokka-mkdocs") version "0.6.3"
 }
 
 kotlin {

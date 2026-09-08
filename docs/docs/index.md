@@ -1,54 +1,43 @@
-# Welcome to the KMP Starter Pack Documentation
+# wgsl4k documentation
 
-This site centralizes all technical documentation, architecture guidelines, and API references for the **Kotlin Multiplatform (KMP) Starter Pack**.
+`wgsl4k` is an incubating Kotlin Multiplatform toolkit for working with WebGPU
+Shading Language (WGSL). It parses WGSL into a typed intermediate representation
+(IR), validates and transforms that representation, then emits WGSL, GLSL, HLSL,
+MSL, or a JSON IR representation.
 
----
+## Project structure
 
-## 🚀 Key Features
+The WGSL implementation is split into five Gradle projects under `wgsl/`:
 
-*   **Complete Multiplatform Support**: Code sharing targeting **Android**, **iOS**, and **Desktop (JVM)**.
-*   **Guided Architecture (Clean Architecture / DDD)**: Strict separation of business logic (Domain), infrastructure (Data), and user interface (Presentation).
-*   **Modern Tech Stack**: **Kotlin 2.4.0**, **Gradle 9.5.0**, **AGP 9.0.0**, and **Java 25**.
-*   **Conditional Continuous Integration**: A double-speed CI/CD workflow (10-second JVM Fast-Track vs full Deep-Testing suite before merging into `master`).
-*   **API Documentation Engine**: Automated API doc generation via **Dokka v2** and beautiful rendering through **MkDocs Material**.
+| Project | Role |
+| --- | --- |
+| `:wgsl:wgsl-core` | IR, arenas, validation, layout, and backend contracts. |
+| `:wgsl:wgsl-parser` | Lexer, AST, parser diagnostics, resolution, and lowering. |
+| `:wgsl:wgsl-generator` | WGSL, GLSL, HLSL, and MSL writers. |
+| `:wgsl:wgsl-tests` | JVM golden corpus and coverage reports for every backend. |
+| `:wgsl:wgsl-cli` | JVM CLI for shader conversion. |
 
----
+Public Kotlin packages remain under `org.graphiks.wgsl.*`. During the staged
+migration, the template's `:shared` project remains only as a compatibility
+sample and is tested alongside the WGSL modules.
 
-## 🧱 Architectural Organization of the Project
+## Useful commands
 
-The shared module `:shared` strictly follows the guidelines of the **Kotlin Architect** skill:
-
-1.  **Domain Layer**:
-    *   Written in pure Kotlin (zero external framework dependencies).
-    *   Contains self-contained UseCases modeling distinct business features.
-    *   Robust, self-validating data models (using inline `value class` patterns).
-2.  **Data Layer**:
-    *   Repository implementations and low-level communication (networking via Ktor, database/persistence).
-    *   Transparent Flow exception handling (ensuring `AbortFlowException` is never caught by accident).
-3.  **Presentation Layer**:
-    *   Reactive user interface driven by immutable `StateFlow` structures.
-    *   Properly managed coroutine scopes and decoupled ViewModels.
-
----
-
-## 💻 Useful Commands
-
-### Run tests (Fast-Track JVM)
 ```bash
-./gradlew :shared:jvmTest
+./gradlew :shared:jvmTest \
+  :wgsl:wgsl-core:jvmTest \
+  :wgsl:wgsl-parser:jvmTest \
+  :wgsl:wgsl-generator:jvmTest \
+  :wgsl:wgsl-tests:jvmTest \
+  :wgsl:wgsl-cli:jvmTest --no-daemon
 ```
 
-### Run all tests (All Platforms)
-```bash
-./gradlew allTests
-```
+Generate and embed the Dokka API modules, then build this site:
 
-### Generate and embed API documentation locally (Dokka → MkDocs)
 ```bash
-./gradlew :docs:embedDokkaIntoMkDocs
-```
-
-### Compile the MkDocs site locally
-```bash
+./gradlew :docs:embedDokkaIntoMkDocs --no-daemon
 mkdocs build -f docs/mkdocs.yml
 ```
+
+See [Getting Started](getting-started.md) for the migration strategy, local
+development workflow, and CLI commands.

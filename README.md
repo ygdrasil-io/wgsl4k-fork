@@ -1,43 +1,52 @@
-# 🚀 Project Template - Kotlin Multiplatform (KMP)
+# wgsl4k
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.4.0-purple?logo=kotlin)](https://kotlinlang.org)
-[![Gradle](https://img.shields.io/badge/Gradle-9.5.0-blue?logo=gradle)](https://gradle.org)
-[![AGP](https://img.shields.io/badge/AGP-9.0.0-green?logo=android)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Java](https://img.shields.io/badge/Java-25-red?logo=openjdk)](https://openjdk.org)
-[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?logo=github-actions)](https://github.com/features/actions)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.4.10-purple?logo=kotlin)](https://kotlinlang.org)
+[![Gradle](https://img.shields.io/badge/Gradle-9.6.1-blue?logo=gradle)](https://gradle.org)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?logo=github-actions)](https://github.com/ygdrasil-io/wgsl4k-fork/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Contributing](https://img.shields.io/badge/Contributing-guide-purple)](CONTRIBUTING.md)
-[![Projet: Planning](https://img.shields.io/badge/Statut-Planning-blue)](https://github.com)
-[![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com)
-[![Projet: Stable](https://img.shields.io/badge/Statut-Stable-green)](https://github.com)
-[![Projet: Deprecated](https://img.shields.io/badge/Statut-Deprecated-red)](https://github.com)
-[![Projet: Archived](https://img.shields.io/badge/Statut-Archived-lightgrey)](https://github.com)
+[![Project status: Incubating](https://img.shields.io/badge/Status-Incubating-orange)](https://github.com/ygdrasil-io/wgsl4k-fork)
 
----
+`wgsl4k` is an incubating Kotlin Multiplatform toolkit for reading, validating,
+transforming, and emitting WebGPU Shading Language (WGSL) programs. It keeps a
+typed intermediate representation (IR) between parsing and code generation so
+the same shader program can target WGSL, GLSL, HLSL, MSL, and a JSON IR view.
 
-This project is a **state-of-the-art Kotlin Multiplatform (KMP) Starter Pack** targeting **Android**, **iOS**, and **Desktop (JVM)**. It leverages the latest ecosystem technologies (Kotlin 2.4.0, Gradle 9.5.0, AGP 9.0, Java 25) and rigorously applies **Clean Architecture** and **Domain-Driven Design (DDD)** principles.
+## Modules
 
----
+| Gradle project | Artifact | Purpose |
+| --- | --- | --- |
+| `:wgsl:wgsl-core` | `org.graphiks:wgsl-core` | IR, arenas, validation, layout, and backend abstractions. |
+| `:wgsl:wgsl-parser` | `org.graphiks:wgsl-parser` | Lexer, AST, diagnostics, parser, resolution, and lowering to the IR. |
+| `:wgsl:wgsl-generator` | `org.graphiks:wgsl-generator` | Generators for WGSL, GLSL, HLSL, and MSL. |
+| `:wgsl:wgsl-tests` | `org.graphiks:wgsl-tests` | JVM golden-test corpus and backend coverage tooling. |
+| `:wgsl:wgsl-cli` | `org.graphiks:wgsl-cli` | JVM command-line conversion tool. |
 
-<!-- ==========================================
-     BADGES DE STATUT DE PROJET PERSONNALISABLES
-     Décommentez/copiez simplement le badge correspondant au statut actuel de votre projet.
-     ========================================== -->
+The project is incubating: public APIs and supported targets may evolve while
+the migration and ABI baselines are completed.
 
-<!-- STATUT : EN PLANIFICATION (PLANNING) -->
-<!-- [![Projet: Planning](https://img.shields.io/badge/Statut-Planning-blue)](https://github.com) -->
+## Development
 
-<!-- STATUT : INCUBATION / EN DÉVELOPPEMENT (INCUBATING) -->
-<!-- [![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com) -->
+Run the fast JVM suite for the currently integrated modules:
 
-<!-- STATUT : STABLE / PRÊT PRODUCTION (STABLE) -->
-<!-- [![Projet: Stable](https://img.shields.io/badge/Statut-Stable-green)](https://github.com) -->
+```bash
+./gradlew :shared:jvmTest \
+  :wgsl:wgsl-core:jvmTest \
+  :wgsl:wgsl-parser:jvmTest \
+  :wgsl:wgsl-generator:jvmTest \
+  :wgsl:wgsl-tests:jvmTest \
+  :wgsl:wgsl-cli:jvmTest --no-daemon
+```
 
-<!-- STATUT : DEPRÉCIÉ (DEPRECATED) -->
-<!-- [![Projet: Deprecated](https://img.shields.io/badge/Statut-Deprecated-red)](https://github.com) -->
+Generate API documentation and build the documentation site:
 
-<!-- STATUT : ARCHIVÉ (ARCHIVED) -->
-<!-- [![Projet: Archived](https://img.shields.io/badge/Statut-Archived-lightgrey)](https://github.com) -->
+```bash
+./gradlew :docs:embedDokkaIntoMkDocs --no-daemon
+mkdocs build -f docs/mkdocs.yml
+```
+
+The published documentation is built from the `:docs` project. See the site
+for the [getting-started guide](https://ygdrasil-io.github.io/wgsl4k-fork/getting-started/)
+and generated API references.
 
 ## 🤝 Contribuer / Contributing
 
@@ -50,50 +59,3 @@ Contributions are welcome! See:
 - [🇬🇧 Security Policy](SECURITY.md) / [🇫🇷 Politique de Sécurité](SECURITY.fr.md)
 - [🇬🇧 Support](SUPPORT.md) / [🇫🇷 Assistance](SUPPORT.fr.md)
 - [Changelog](CHANGELOG.md)
-
----
-
-## 🏗️ Project Architecture
-
-The `:shared` module is organized into distinct layers to maximize testability, maintainability, and decoupling:
-
-```mermaid
-graph TD
-    UI[Presentation Layer: Compose Multiplatform / ViewModel] --> Domain[Domain Layer: Use Cases / Models / Repository Interfaces]
-    Data[Data Layer: Repository Impls / Ktor / Local SQL] --> Domain
-    Data --> Platform[Platform-Specific Code: expect/actual]
-```
-
-### Design Layers (`shared/src/commonMain`)
-*   **Domain**: Contains pure business rules with zero framework dependencies (Use Cases with `invoke` operator, self-validating models, repository interfaces).
-*   **Data**: Concrete repository implementations, network communication, and database layer.
-*   **Presentation**: Immutable `UiState` modeling and ViewModels using asynchronous `StateFlow`.
-*   **Dependency Injection (DI)**: Centralized multiplatform configuration via **Koin**.
-
----
-
-## ⚡ CI/CD Workflow
-
-The GitHub Actions pipeline ([ci.yml](file:///.github/workflows/ci.yml)) implements a dual-speed system optimized for bandwidth and compute time:
-
-- **Fast-Track (Feature branches)**: Compiles and tests only the local JVM target (`./gradlew :shared:jvmTest`). Runs in under 10 seconds.
-- **Deep-Testing (Branches / Pull Requests to `master`)**: Runs the full test suite (`./gradlew allTests`) on all simulators and target platforms to validate code quality before production.
-
----
-
-## 🛠️ Useful Development Commands
-
-### Run local tests (JVM Fast-Track)
-```bash
-./gradlew :shared:jvmTest
-```
-
-### Run all tests (All targets)
-```bash
-./gradlew allTests
-```
-
-### Generate Gradle Wrapper
-```bash
-gradle wrapper
-```
