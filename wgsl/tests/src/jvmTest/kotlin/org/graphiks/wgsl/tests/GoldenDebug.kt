@@ -43,6 +43,7 @@ fun main(args: Array<String>) {
     val debugMode = System.getenv("GOLDEN_DEBUG")?.toBoolean()
         ?: System.getenv("DEBUG")?.toBoolean()
         ?: false
+    val updateMode = System.getenv("GOLDEN_UPDATE")?.toBoolean() ?: false
 
     // Initialize backends
     registerAllBackends()
@@ -66,7 +67,13 @@ fun main(args: Array<String>) {
     }
 
     try {
-        runGoldenDebug(fileName, source, backend, debugMode)
+        val output = runGoldenDebug(fileName, source, backend, debugMode)
+        if (updateMode) {
+            val outputFile = GoldenCorpus.outputPath(rootDir, backend.lowercase(), fileName)
+            Files.createDirectories(outputFile.parent)
+            Files.writeString(outputFile, output)
+            println("Updated golden output: ${rootDir.relativize(outputFile)}")
+        }
         println("\n✓ All phases completed successfully!")
     } catch (e: GoldenTestException) {
         println("\n✗ FAILED: [${e.backend}] ${e.phase} failed for ${e.fileName}")
@@ -88,7 +95,7 @@ fun main(args: Array<String>) {
 /**
  * Execute all golden test phases for a single file with detailed logging.
  */
-fun runGoldenDebug(fileName: String, source: String, backend: String, debugMode: Boolean) {
+fun runGoldenDebug(fileName: String, source: String, backend: String, debugMode: Boolean): String {
     // 1. Parse
     logger.info { "Phase 1: Parsing..." }
     val unit = parseWgsl(source)
@@ -153,4 +160,6 @@ fun runGoldenDebug(fileName: String, source: String, backend: String, debugMode:
     } else if (type != null) {
         logger.info { "  ⊘ Native validation not available for $backend" }
     }
+
+    return output
 }
