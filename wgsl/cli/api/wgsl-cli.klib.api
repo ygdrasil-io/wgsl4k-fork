@@ -1,0 +1,41 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <wgsl4k-fork.wgsl:wgsl-cli>
+final enum class org.graphiks.wgsl.cli/OutputFormat : kotlin/Enum<org.graphiks.wgsl.cli/OutputFormat> { // org.graphiks.wgsl.cli/OutputFormat|null[0]
+    enum entry glsl // org.graphiks.wgsl.cli/OutputFormat.glsl|null[0]
+    enum entry hlsl // org.graphiks.wgsl.cli/OutputFormat.hlsl|null[0]
+    enum entry msl // org.graphiks.wgsl.cli/OutputFormat.msl|null[0]
+    enum entry wgsl // org.graphiks.wgsl.cli/OutputFormat.wgsl|null[0]
+
+    final val entries // org.graphiks.wgsl.cli/OutputFormat.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<org.graphiks.wgsl.cli/OutputFormat> // org.graphiks.wgsl.cli/OutputFormat.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): org.graphiks.wgsl.cli/OutputFormat // org.graphiks.wgsl.cli/OutputFormat.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<org.graphiks.wgsl.cli/OutputFormat> // org.graphiks.wgsl.cli/OutputFormat.values|values#static(){}[0]
+}
+
+final class org.graphiks.wgsl.cli/ConvertCommand : com.github.ajalt.clikt.core/CliktCommand { // org.graphiks.wgsl.cli/ConvertCommand|null[0]
+    constructor <init>() // org.graphiks.wgsl.cli/ConvertCommand.<init>|<init>(){}[0]
+
+    final val format // org.graphiks.wgsl.cli/ConvertCommand.format|{}format[0]
+        final fun <get-format>(): org.graphiks.wgsl.cli/OutputFormat // org.graphiks.wgsl.cli/ConvertCommand.format.<get-format>|<get-format>(){}[0]
+    final val input // org.graphiks.wgsl.cli/ConvertCommand.input|{}input[0]
+        final fun <get-input>(): kotlin/String // org.graphiks.wgsl.cli/ConvertCommand.input.<get-input>|<get-input>(){}[0]
+    final val output // org.graphiks.wgsl.cli/ConvertCommand.output|{}output[0]
+        final fun <get-output>(): kotlin/String? // org.graphiks.wgsl.cli/ConvertCommand.output.<get-output>|<get-output>(){}[0]
+
+    final fun run() // org.graphiks.wgsl.cli/ConvertCommand.run|run(){}[0]
+}
+
+final class org.graphiks.wgsl.cli/WgslKTypes : com.github.ajalt.clikt.core/CliktCommand { // org.graphiks.wgsl.cli/WgslKTypes|null[0]
+    constructor <init>() // org.graphiks.wgsl.cli/WgslKTypes.<init>|<init>(){}[0]
+
+    final fun run() // org.graphiks.wgsl.cli/WgslKTypes.run|run(){}[0]
+}
+
+final fun org.graphiks.wgsl.cli/main(kotlin/Array<kotlin/String>) // org.graphiks.wgsl.cli/main|main(kotlin.Array<kotlin.String>){}[0]
