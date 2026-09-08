@@ -26,13 +26,15 @@ Le commit est utilisé comme baseline (état de référence) pour le premier imp
 
 ## Modules à importer
 
-| Projet source | Artifact prévu | Dépendances projet | Fichiers Kotlin main |
-|---|---|---|---:|
-| `wgsl/core` | `wgsl-core` | aucune | 12 |
-| `wgsl/parser` | `wgsl-parser` | `wgsl-core` | 11 |
-| `wgsl/generator` | `wgsl-generator` | `wgsl-core`, `wgsl-parser` | 10 |
-| `wgsl/tests` | `wgsl-tests` | `wgsl-core`, `wgsl-parser`, `wgsl-generator` | 5 |
-| `wgsl/cli` | `wgsl-cli` | `wgsl-core`, `wgsl-parser`, `wgsl-generator` | 2 |
+| Projet source | Artifact prévu | Dépendances projet | `commonMain` | Tests Kotlin |
+|---|---|---|---:|---:|
+| `wgsl/core` | `wgsl-core` | aucune | 39 | 12 `commonTest` |
+| `wgsl/parser` | `wgsl-parser` | `wgsl-core` | 22 | 63 `commonTest` |
+| `wgsl/generator` | `wgsl-generator` | `wgsl-core`, `wgsl-parser` | 13 | 4 `commonTest` |
+| `wgsl/tests` | `wgsl-tests` | `wgsl-core`, `wgsl-parser`, `wgsl-generator` | — | 21 `jvmTest` |
+| `wgsl/cli` | `wgsl-cli` | `wgsl-core`, `wgsl-parser`, `wgsl-generator` | 1 | 1 `jvmTest` |
+
+Les comptes sont calculés depuis les répertoires source du commit gelé, en distinguant les sources de production et les sources de test.
 
 Ordre d’intégration retenu :
 
@@ -51,20 +53,22 @@ wgsl-core → wgsl-parser → wgsl-generator → wgsl-tests → wgsl-cli
 - `org.graphiks.wgsl.lexer`
 - `org.graphiks.wgsl.parser`
 - `org.graphiks.wgsl.generator.*`
+- `org.graphiks.wgsl.wgsl`
 - `org.graphiks.wgsl.cli`
 
-Ces packages sont la cible convenue et ne seront pas renommés pendant la migration.
+Répartition observée : `core` fournit `arena`, `back`, `ir`, `proc` et `valid` ; `parser` fournit `ast`, `lexer` et `parser` ; `generator` fournit `generator.glsl`, `generator.hlsl`, `generator.msl` et `wgsl` ; `cli` fournit `cli`. Ces packages sont la cible convenue et ne seront pas renommés pendant la migration.
 
 ## Tests golden
 
-Le corpus source contient 52 entrées WGSL et 52 sorties attendues pour chacun des backends suivants :
+Le corpus source contient 160 entrées WGSL et 160 sorties attendues pour chacun des cinq backends suivants :
 
+- WGSL (`.wgsl`)
 - GLSL (`.glsl`)
 - HLSL (`.hlsl`)
 - MSL (`.metal`)
 - IR (`.json`)
 
-Le module `wgsl-tests` dépend des trois modules fonctionnels et porte les tests golden, le rapport de couverture et l’outil de diagnostic `goldenDebug`.
+Les fichiers sont répartis sous `tests/golden/inputs` et `tests/golden/outputs/{wgsl,glsl,hlsl,msl,ir}` ; chaque entrée possède une sortie dans chacun des cinq répertoires. Le module `wgsl-tests` dépend des trois modules fonctionnels et porte les tests golden, le contrôle de complétude, le rapport de couverture et l’outil de diagnostic `goldenDebug`.
 
 ## Versions et targets source
 
@@ -83,7 +87,14 @@ Les modules `core`, `parser` et `generator` déclarent JVM, Android Library, JS,
 
 ## Audit des fichiers d’API
 
-Treize fichiers `.api` sont suivis dans les modules source. L’audit montre deux générations de signatures :
+Dix-neuf fichiers `.api` sont suivis dans les modules source. L’inventaire complet est le suivant :
+
+- `core` : `android/core.api` et `jvm/core.api` utilisent `io/ygdrasil/wgsl` ; `android/wgsl-core.api`, `jvm/wgsl-core.api`, `core.klib.api` et `wgsl-core.klib.api` utilisent `org/graphiks/wgsl`.
+- `parser` : `android/parser.api`, `jvm/parser.api`, `android/wgsl.api` et `jvm/wgsl.api` utilisent `io/ygdrasil/wgsl` ; `android/wgsl-parser.api`, `jvm/wgsl-parser.api`, `parser.klib.api`, `wgsl.klib.api` et `wgsl-parser.klib.api` utilisent `org/graphiks/wgsl`.
+- `generator` : `android/generator.api` et `jvm/generator.api` utilisent `io/ygdrasil/wgsl` ; `generator.klib.api` utilise `org/graphiks/wgsl`.
+- `cli` : `cli.api` utilise `io/ygdrasil/wgsl`.
+
+L’audit montre donc deux générations de signatures :
 
 - plusieurs fichiers historiques exposent `io/ygdrasil/wgsl/...` ;
 - les fichiers `wgsl-*.api` plus récents exposent `org/graphiks/wgsl/...`.
@@ -109,6 +120,8 @@ Les commandes suivantes sont les gates de la phase 0 et devront être rejouées 
 ./gradlew :shared:jvmTest --no-daemon
 ```
 
+Résultat observé le 2026-09-08 : code retour `0`, `BUILD SUCCESSFUL in 19s`, 20 tâches actionnables dont 3 exécutées et 17 à jour.
+
 ```bash
 ./gradlew :wgsl:wgsl-cli:jvmTest \
           :wgsl:wgsl-core:jvmTest \
@@ -119,4 +132,6 @@ Les commandes suivantes sont les gates de la phase 0 et devront être rejouées 
           --no-daemon
 ```
 
-La baseline source exécutée avant l’import est verte. Elle produit néanmoins des warnings de configuration Dokka et de targets Native dépréciées ; ces points sont explicitement hors périmètre de la phase 0.
+Résultat observé le 2026-09-08 sur le commit source gelé : code retour `0`, `BUILD SUCCESSFUL in 21s`, 41 tâches actionnables dont 6 exécutées et 35 à jour. Les cinq tests JVM demandés et `koverVerifyJvm` du parser ont été exécutés avec succès.
+
+La baseline source est donc verte avant l’import. Elle produit néanmoins des warnings de configuration Dokka, de version Kotlin embarquée par Gradle et de targets Native dépréciées ; ces points sont explicitement hors périmètre de la phase 0.
