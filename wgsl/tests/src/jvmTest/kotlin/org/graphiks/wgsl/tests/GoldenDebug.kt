@@ -40,7 +40,9 @@ fun main(args: Array<String>) {
     }
 
     val backend = args.getOrNull(1) ?: "wgsl"
-    val debugMode = System.getenv("DEBUG")?.toBoolean() ?: false
+    val debugMode = System.getenv("GOLDEN_DEBUG")?.toBoolean()
+        ?: System.getenv("DEBUG")?.toBoolean()
+        ?: false
 
     // Initialize backends
     registerAllBackends()

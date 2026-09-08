@@ -178,6 +178,17 @@ val goldenDebug by tasks.registering(JavaExec::class) {
     classpath = sourceSets["jvmTest"].runtimeClasspath
     mainClass = "org.graphiks.wgsl.tests.GoldenDebugKt"
 
+    val goldenDebugEnabled = providers.gradleProperty("GOLDEN_DEBUG")
+        .orElse(providers.environmentVariable("GOLDEN_DEBUG"))
+        .orElse("false")
+    val goldenUpdateEnabled = providers.gradleProperty("GOLDEN_UPDATE")
+        .orElse(providers.environmentVariable("GOLDEN_UPDATE"))
+        .orElse("false")
+
+    environment("GOLDEN_DEBUG", goldenDebugEnabled.get())
+    environment("GOLDEN_UPDATE", goldenUpdateEnabled.get())
+    environment("DEBUG", goldenDebugEnabled.get())
+
     // Pass arguments to the main function
     args = project.properties.getOrDefault("args", "").toString().split("\\s+".toRegex())
 
