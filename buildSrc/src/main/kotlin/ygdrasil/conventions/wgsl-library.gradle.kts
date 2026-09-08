@@ -43,9 +43,23 @@ extensions.configure<KotlinMultiplatformAndroidComponentsExtension> {
 }
 
 tasks.withType<KotlinNativeTest>().configureEach {
-    // Kotest powers the common tests and is executed on JVM; Native compiles
-    // those sources but has no discoverable Kotlin test runner in this setup.
-    failOnNoDiscoveredTests = false
+    val requireNativeTests = providers.gradleProperty("requireNativeTests")
+        .map(String::toBoolean)
+        .orElse(false)
+        .get()
+
+    // Common Kotest sources compile for Native, but this repository currently
+    // has no discoverable Native runner. Default CI reports those runtime
+    // tasks as skipped; strict callers can require discovery explicitly.
+    failOnNoDiscoveredTests = requireNativeTests
+    if (!requireNativeTests) {
+        doFirst {
+            logger.lifecycle(
+                "SKIPPED Native runtime tests for $path: no discoverable runner; " +
+                    "Native compilation is still checked. Use -PrequireNativeTests=true to require one."
+            )
+        }
+    }
 }
 
 // Keep generated ABI text stable with the repository whitespace policy. The

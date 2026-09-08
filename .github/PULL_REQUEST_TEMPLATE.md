@@ -26,7 +26,7 @@ Before submitting this PR:
 - [ ] CHANGELOG.md has been updated
 - [ ] No changelog update needed: explain why no changelog entry is required
 - [ ] Documentation updated if needed
-- [ ] Target compatibility was assessed for the supported targets (Android, iOS, JVM)
+- [ ] Target compatibility was assessed for the supported targets (Android, iOS, JVM); Native runtime skips are documented when applicable
 
 ## Screenshots (if applicable)
 
