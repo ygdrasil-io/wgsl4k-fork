@@ -10,6 +10,10 @@ on:
       - 'buildSrc/**'
       - 'gradle/**'
       - 'settings.gradle.kts'
+      - 'build.gradle.kts'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'LICENSE'
       - '.github/workflows/docs.yml'
   workflow_dispatch:
 

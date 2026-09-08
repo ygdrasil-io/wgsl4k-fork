@@ -38,7 +38,7 @@ jobs:
       - name: Run JVM fast-track tests
         if: steps.test-strategy.outputs.strategy == 'fast-track'
         run: >-
-          ./gradlew :shared:jvmTest :wgsl:wgsl-core:jvmTest :wgsl:wgsl-parser:jvmTest
+          ./gradlew :wgsl:wgsl-core:jvmTest :wgsl:wgsl-parser:jvmTest
           :wgsl:wgsl-generator:jvmTest :wgsl:wgsl-tests:jvmTest :wgsl:wgsl-cli:jvmTest
           --no-daemon --stacktrace
 

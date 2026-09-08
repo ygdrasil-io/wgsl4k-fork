@@ -1,11 +1,11 @@
 // Klib ABI Dump
-// Targets: [iosArm64, iosSimulatorArm64]
+// Targets: [iosArm64, iosSimulatorArm64, iosX64]
 // Rendering settings:
 // - Signature version: 2
 // - Show manifest properties: true
 // - Show declarations: true
 
-// Library unique name: <wgsl4k-fork.wgsl:wgsl-core>
+// Library unique name: <org.graphiks:wgsl-core>
 open annotation class org.graphiks.wgsl.ir/DiagnosticBuilderDsl : kotlin/Annotation { // org.graphiks.wgsl.ir/DiagnosticBuilderDsl|null[0]
     constructor <init>() // org.graphiks.wgsl.ir/DiagnosticBuilderDsl.<init>|<init>(){}[0]
 }

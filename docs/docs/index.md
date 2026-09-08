@@ -17,15 +17,13 @@ The WGSL implementation is split into five Gradle projects under `wgsl/`:
 | `:wgsl:wgsl-tests` | JVM golden corpus and coverage reports for every backend. |
 | `:wgsl:wgsl-cli` | JVM CLI for shader conversion. |
 
-Public Kotlin packages remain under `org.graphiks.wgsl.*`. During the staged
-migration, the template's `:shared` project remains only as a compatibility
-sample and is tested alongside the WGSL modules.
+Public Kotlin packages remain under `org.graphiks.wgsl.*`. The starter sample
+has been removed; only the WGSL modules are built and tested.
 
 ## Useful commands
 
 ```bash
-./gradlew :shared:jvmTest \
-  :wgsl:wgsl-core:jvmTest \
+./gradlew :wgsl:wgsl-core:jvmTest \
   :wgsl:wgsl-parser:jvmTest \
   :wgsl:wgsl-generator:jvmTest \
   :wgsl:wgsl-tests:jvmTest \
@@ -41,3 +39,11 @@ mkdocs build -f docs/mkdocs.yml
 
 See [Getting Started](getting-started.md) for the migration strategy, local
 development workflow, and CLI commands.
+
+## Supported targets
+
+The library modules compile for JVM, Android, iOS Arm64, iOS Simulator Arm64,
+and iOS X64. Golden tests and CLI smoke tests run on JVM. JS, WasmJs, watchOS,
+macOS, Linux, MinGW, and Android Native are not declared because the CLI does
+not yet provide the required platform file implementations; non-Apple Native
+targets also lack a compatible CI runner.

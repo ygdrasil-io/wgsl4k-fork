@@ -26,11 +26,10 @@ the migration and ABI baselines are completed.
 
 ## Development
 
-Run the fast JVM suite for the currently integrated modules:
+Run the fast JVM suite:
 
 ```bash
-./gradlew :shared:jvmTest \
-  :wgsl:wgsl-core:jvmTest \
+./gradlew :wgsl:wgsl-core:jvmTest \
   :wgsl:wgsl-parser:jvmTest \
   :wgsl:wgsl-generator:jvmTest \
   :wgsl:wgsl-tests:jvmTest \
@@ -47,6 +46,14 @@ mkdocs build -f docs/mkdocs.yml
 The published documentation is built from the `:docs` project. See the site
 for the [getting-started guide](https://ygdrasil-io.github.io/wgsl4k-fork/getting-started/)
 and generated API references.
+
+## Supported targets
+
+All modules support JVM, Android, iOS Arm64, iOS Simulator Arm64, and iOS X64.
+The `wgsl-tests` golden corpus and the `wgsl-cli` smoke tests are JVM-only.
+JS, WasmJs, watchOS, macOS, Linux, MinGW, and Android Native are intentionally
+not declared: the current CLI lacks their platform file implementations, and
+the non-Apple Native runners are not available in the project CI environment.
 
 ## 🤝 Contribuer / Contributing
 

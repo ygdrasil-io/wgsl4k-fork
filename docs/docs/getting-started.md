@@ -2,9 +2,8 @@
 
 ## Repository layout
 
-The migration keeps the WGSL code in `wgsl/` and leaves the template's `:shared`
-project in place until the final cleanup phase. Work on the WGSL projects by
-their Gradle paths:
+The final migration keeps the WGSL code in `wgsl/`; the starter sample has been
+removed. Work on the WGSL projects by their Gradle paths:
 
 ```text
 wgsl/
@@ -22,8 +21,7 @@ shared by the JVM test module without becoming a published runtime dependency.
 ## Run the JVM workflow
 
 ```bash
-./gradlew :shared:jvmTest \
-  :wgsl:wgsl-core:jvmTest \
+./gradlew :wgsl:wgsl-core:jvmTest \
   :wgsl:wgsl-parser:jvmTest \
   :wgsl:wgsl-generator:jvmTest \
   :wgsl:wgsl-tests:jvmTest \
@@ -44,8 +42,8 @@ tests into the matching module, keep the generated ABI files aligned with the
 compiled public API, and run the module's JVM task before advancing the stack.
 
 The source baseline, golden fixtures, and Kotlin package names are deliberately
-kept stable. Later cleanup removes the starter sample only after all WGSL
-modules, documentation, CI, and publication metadata have been validated.
+kept stable. The final cleanup has removed the starter sample after validating
+all WGSL modules, documentation, CI, and publication metadata.
 
 ## Build documentation
 

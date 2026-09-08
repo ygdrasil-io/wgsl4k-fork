@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "wgsl4k-fork"
-include(":shared", ":docs")
+include(":docs")
 
 listOf("core", "parser", "generator", "tests", "cli").forEach { module ->
     include(":wgsl:$module")

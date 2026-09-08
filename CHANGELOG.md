@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added blocking pull request policy checks aligned with `CONTRIBUTING.md`.
 
 ### Added
+- `wgsl-core`, `wgsl-parser`, `wgsl-generator`, `wgsl-tests`, and `wgsl-cli`
+  under the `org.graphiks.wgsl.*` package namespace.
 - KMP project template (Android, iOS, Desktop)
 - Clean Architecture / DDD
 - Maven Central publishing via Vanniktech
@@ -30,4 +32,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Built with
 - Kotlin 2.4.10, Gradle 9.6.1, AGP 9.0.0
-- Koin 4.0.0, Ktor 3.0.3, Compose Multiplatform 1.11.1
