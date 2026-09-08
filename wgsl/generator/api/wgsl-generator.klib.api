@@ -1,0 +1,93 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <wgsl4k-fork.wgsl:wgsl-generator>
+final class org.graphiks.wgsl.generator.glsl/GlslWriter : org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/GlslOptions>, org.graphiks.wgsl.back/WriterBase<org.graphiks.wgsl.back/GlslOptions> { // org.graphiks.wgsl.generator.glsl/GlslWriter|null[0]
+    constructor <init>(kotlin.text/StringBuilder, org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo, org.graphiks.wgsl.back/GlslOptions, org.graphiks.wgsl.proc/Namer, org.graphiks.wgsl.proc/Layouter) // org.graphiks.wgsl.generator.glsl/GlslWriter.<init>|<init>(kotlin.text.StringBuilder;org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.GlslOptions;org.graphiks.wgsl.proc.Namer;org.graphiks.wgsl.proc.Layouter){}[0]
+
+    final fun canHandle(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/Boolean // org.graphiks.wgsl.generator.glsl/GlslWriter.canHandle|canHandle(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+    final fun withOptions(org.graphiks.wgsl.back/GlslOptions): org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/GlslOptions> // org.graphiks.wgsl.generator.glsl/GlslWriter.withOptions|withOptions(org.graphiks.wgsl.back.GlslOptions){}[0]
+    final fun write(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/String // org.graphiks.wgsl.generator.glsl/GlslWriter.write|write(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+}
+
+final class org.graphiks.wgsl.generator.glsl/GlslWriterFactory : org.graphiks.wgsl.back/BackendRegistry.BackendFactory { // org.graphiks.wgsl.generator.glsl/GlslWriterFactory|null[0]
+    constructor <init>() // org.graphiks.wgsl.generator.glsl/GlslWriterFactory.<init>|<init>(){}[0]
+
+    final fun create(): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.generator.glsl/GlslWriterFactory.create|create(){}[0]
+    final fun createWithOptions(org.graphiks.wgsl.back/BackendOptions): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.generator.glsl/GlslWriterFactory.createWithOptions|createWithOptions(org.graphiks.wgsl.back.BackendOptions){}[0]
+}
+
+final class org.graphiks.wgsl.generator.hlsl/HlslWriter : org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/HlslOptions>, org.graphiks.wgsl.back/WriterBase<org.graphiks.wgsl.back/HlslOptions> { // org.graphiks.wgsl.generator.hlsl/HlslWriter|null[0]
+    constructor <init>(kotlin.text/StringBuilder, org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo, org.graphiks.wgsl.back/HlslOptions, org.graphiks.wgsl.proc/Namer, org.graphiks.wgsl.proc/Layouter) // org.graphiks.wgsl.generator.hlsl/HlslWriter.<init>|<init>(kotlin.text.StringBuilder;org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.HlslOptions;org.graphiks.wgsl.proc.Namer;org.graphiks.wgsl.proc.Layouter){}[0]
+
+    final fun canHandle(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/Boolean // org.graphiks.wgsl.generator.hlsl/HlslWriter.canHandle|canHandle(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+    final fun withOptions(org.graphiks.wgsl.back/HlslOptions): org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/HlslOptions> // org.graphiks.wgsl.generator.hlsl/HlslWriter.withOptions|withOptions(org.graphiks.wgsl.back.HlslOptions){}[0]
+    final fun write(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/String // org.graphiks.wgsl.generator.hlsl/HlslWriter.write|write(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+}
+
+final class org.graphiks.wgsl.generator.hlsl/HlslWriterFactory : org.graphiks.wgsl.back/BackendRegistry.BackendFactory { // org.graphiks.wgsl.generator.hlsl/HlslWriterFactory|null[0]
+    constructor <init>() // org.graphiks.wgsl.generator.hlsl/HlslWriterFactory.<init>|<init>(){}[0]
+
+    final fun create(): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.generator.hlsl/HlslWriterFactory.create|create(){}[0]
+    final fun createWithOptions(org.graphiks.wgsl.back/BackendOptions): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.generator.hlsl/HlslWriterFactory.createWithOptions|createWithOptions(org.graphiks.wgsl.back.BackendOptions){}[0]
+}
+
+final class org.graphiks.wgsl.generator.msl/MslWriter : org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/MslOptions>, org.graphiks.wgsl.back/WriterBase<org.graphiks.wgsl.back/MslOptions> { // org.graphiks.wgsl.generator.msl/MslWriter|null[0]
+    constructor <init>(kotlin.text/StringBuilder, org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo, org.graphiks.wgsl.back/MslOptions, org.graphiks.wgsl.proc/Namer, org.graphiks.wgsl.proc/Layouter) // org.graphiks.wgsl.generator.msl/MslWriter.<init>|<init>(kotlin.text.StringBuilder;org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.MslOptions;org.graphiks.wgsl.proc.Namer;org.graphiks.wgsl.proc.Layouter){}[0]
+
+    final fun canHandle(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/Boolean // org.graphiks.wgsl.generator.msl/MslWriter.canHandle|canHandle(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+    final fun withOptions(org.graphiks.wgsl.back/MslOptions): org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/MslOptions> // org.graphiks.wgsl.generator.msl/MslWriter.withOptions|withOptions(org.graphiks.wgsl.back.MslOptions){}[0]
+    final fun write(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/String // org.graphiks.wgsl.generator.msl/MslWriter.write|write(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+}
+
+final class org.graphiks.wgsl.generator.msl/MslWriterFactory : org.graphiks.wgsl.back/BackendRegistry.BackendFactory { // org.graphiks.wgsl.generator.msl/MslWriterFactory|null[0]
+    constructor <init>() // org.graphiks.wgsl.generator.msl/MslWriterFactory.<init>|<init>(){}[0]
+
+    final fun create(): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.generator.msl/MslWriterFactory.create|create(){}[0]
+    final fun createWithOptions(org.graphiks.wgsl.back/BackendOptions): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.generator.msl/MslWriterFactory.createWithOptions|createWithOptions(org.graphiks.wgsl.back.BackendOptions){}[0]
+}
+
+final class org.graphiks.wgsl.wgsl/WgslWriter : org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/WgslOptions>, org.graphiks.wgsl.back/WriterBase<org.graphiks.wgsl.back/WgslOptions> { // org.graphiks.wgsl.wgsl/WgslWriter|null[0]
+    constructor <init>(kotlin.text/StringBuilder, org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo, org.graphiks.wgsl.back/WgslOptions, org.graphiks.wgsl.proc/Namer, org.graphiks.wgsl.proc/Layouter) // org.graphiks.wgsl.wgsl/WgslWriter.<init>|<init>(kotlin.text.StringBuilder;org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.WgslOptions;org.graphiks.wgsl.proc.Namer;org.graphiks.wgsl.proc.Layouter){}[0]
+
+    final fun canHandle(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/Boolean // org.graphiks.wgsl.wgsl/WgslWriter.canHandle|canHandle(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+    final fun withOptions(org.graphiks.wgsl.back/WgslOptions): org.graphiks.wgsl.back/BackendWriter<org.graphiks.wgsl.back/WgslOptions> // org.graphiks.wgsl.wgsl/WgslWriter.withOptions|withOptions(org.graphiks.wgsl.back.WgslOptions){}[0]
+    final fun write(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo): kotlin/String // org.graphiks.wgsl.wgsl/WgslWriter.write|write(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo){}[0]
+}
+
+final class org.graphiks.wgsl.wgsl/WgslWriterFactory : org.graphiks.wgsl.back/BackendRegistry.BackendFactory { // org.graphiks.wgsl.wgsl/WgslWriterFactory|null[0]
+    constructor <init>() // org.graphiks.wgsl.wgsl/WgslWriterFactory.<init>|<init>(){}[0]
+
+    final fun create(): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.wgsl/WgslWriterFactory.create|create(){}[0]
+    final fun createWithOptions(org.graphiks.wgsl.back/BackendOptions): org.graphiks.wgsl.back/BackendWriter<*> // org.graphiks.wgsl.wgsl/WgslWriterFactory.createWithOptions|createWithOptions(org.graphiks.wgsl.back.BackendOptions){}[0]
+}
+
+final object org.graphiks.wgsl.generator.glsl/GlslModule { // org.graphiks.wgsl.generator.glsl/GlslModule|null[0]
+    final fun writeString(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo = ..., org.graphiks.wgsl.back/GlslOptions = ...): kotlin/String // org.graphiks.wgsl.generator.glsl/GlslModule.writeString|writeString(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.GlslOptions){}[0]
+}
+
+final object org.graphiks.wgsl.generator.hlsl/HlslModule { // org.graphiks.wgsl.generator.hlsl/HlslModule|null[0]
+    final fun writeString(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo = ..., org.graphiks.wgsl.back/HlslOptions = ...): kotlin/String // org.graphiks.wgsl.generator.hlsl/HlslModule.writeString|writeString(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.HlslOptions){}[0]
+}
+
+final object org.graphiks.wgsl.generator.msl/Keywords { // org.graphiks.wgsl.generator.msl/Keywords|null[0]
+    final val MSL_RESERVED // org.graphiks.wgsl.generator.msl/Keywords.MSL_RESERVED|{}MSL_RESERVED[0]
+        final fun <get-MSL_RESERVED>(): kotlin.collections/Set<kotlin/String> // org.graphiks.wgsl.generator.msl/Keywords.MSL_RESERVED.<get-MSL_RESERVED>|<get-MSL_RESERVED>(){}[0]
+}
+
+final object org.graphiks.wgsl.generator.msl/MslModule { // org.graphiks.wgsl.generator.msl/MslModule|null[0]
+    final fun writeString(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo = ..., org.graphiks.wgsl.back/MslOptions = ...): kotlin/String // org.graphiks.wgsl.generator.msl/MslModule.writeString|writeString(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.MslOptions){}[0]
+}
+
+final object org.graphiks.wgsl.wgsl/WgslModule { // org.graphiks.wgsl.wgsl/WgslModule|null[0]
+    final fun writeString(org.graphiks.wgsl.ir/Module, org.graphiks.wgsl.valid/ModuleInfo = ..., org.graphiks.wgsl.back/WgslOptions = ...): kotlin/String // org.graphiks.wgsl.wgsl/WgslModule.writeString|writeString(org.graphiks.wgsl.ir.Module;org.graphiks.wgsl.valid.ModuleInfo;org.graphiks.wgsl.back.WgslOptions){}[0]
+}
+
+final fun org.graphiks.wgsl.generator.glsl/registerGlslBackend() // org.graphiks.wgsl.generator.glsl/registerGlslBackend|registerGlslBackend(){}[0]
+final fun org.graphiks.wgsl.generator.hlsl/registerHlslBackend() // org.graphiks.wgsl.generator.hlsl/registerHlslBackend|registerHlslBackend(){}[0]
+final fun org.graphiks.wgsl.generator.msl/registerMslBackend() // org.graphiks.wgsl.generator.msl/registerMslBackend|registerMslBackend(){}[0]
+final fun org.graphiks.wgsl.wgsl/registerWgslBackend() // org.graphiks.wgsl.wgsl/registerWgslBackend|registerWgslBackend(){}[0]
