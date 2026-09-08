@@ -128,14 +128,14 @@ class HlslWriter(
         val outputStructName = writeOutputStruct(ep)
 
         val stageAttr = when (ep.stage) {
-            ShaderStage.Vertex -> "" 
+            ShaderStage.Vertex -> ""
             ShaderStage.Fragment -> ""
             ShaderStage.Compute -> {
                 val (x, y, z) = ep.workgroupSize ?: listOf(1, 1, 1)
                 "[numthreads($x, $y, $z)]"
             }
         }
-        
+
         if (ep.stage == ShaderStage.Compute) {
             writeLine(stageAttr)
         }
@@ -143,9 +143,9 @@ class HlslWriter(
         val func = module.functions[ep.function]
         currentFunction = func
         val returnType = outputStructName ?: (func.returnType?.let { getTypeName(it) } ?: "void")
-        
+
         write("$returnType ${ep.name}(")
-        
+
         val args = mutableListOf<String>()
         if (inputStructName != null) {
             args.add("$inputStructName stage_in")
@@ -167,7 +167,7 @@ class HlslWriter(
             if (outputStructName != null) {
                 writeLine("$outputStructName stage_out;")
             }
-            
+
             // Assign inputs to local variables or function arguments
             func.parameters.forEach { param ->
                 val binding = param.binding
@@ -175,9 +175,9 @@ class HlslWriter(
                     writeLine("${getTypeName(param.type)} ${param.name} = stage_in.${param.name};")
                 }
             }
-            
+
             writeBlock(func.body)
-            
+
             if (outputStructName != null) {
                 // If the return type was a struct, we need to map its fields to stage_out
                 // This assumes the function body assigned values to something that will be returned
@@ -197,7 +197,7 @@ class HlslWriter(
     protected fun writeInputStruct(ep: EntryPoint): String? {
         val func = module.functions[ep.function]
         val members = mutableListOf<String>()
-        
+
         func.parameters.forEach { param ->
             val binding = param.binding
             if (binding is BindingAttribute.Location) {
@@ -334,7 +334,7 @@ class HlslWriter(
         BuiltinValue.Position -> "float4"
         BuiltinValue.VertexIndex, BuiltinValue.InstanceIndex, BuiltinValue.SampleIndex -> "uint"
         BuiltinValue.FrontFacing -> "bool"
-        BuiltinValue.LocalInvocationId, BuiltinValue.GlobalInvocationId, 
+        BuiltinValue.LocalInvocationId, BuiltinValue.GlobalInvocationId,
         BuiltinValue.WorkgroupId -> "uint3"
         BuiltinValue.LocalInvocationIndex, BuiltinValue.SampleMask -> "uint"
         else -> "uint"
@@ -459,7 +459,7 @@ class HlslWriter(
             AtomicFunction.Exchange -> "InterlockedExchange"
             AtomicFunction.CompSwap -> "InterlockedCompareExchange"
         }
-        // HLSL Interlocked functions are statements, not expressions. 
+        // HLSL Interlocked functions are statements, not expressions.
         // This is a major difference with WGSL/MSL.
         return "$hlslFunc($pointer, ${arguments.joinToString()}, /* old_value */)"
     }

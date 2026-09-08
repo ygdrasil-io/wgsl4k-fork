@@ -98,4 +98,3 @@ public final class org/graphiks/wgsl/wgsl/WgslWriterFactory : org/graphiks/wgsl/
 public final class org/graphiks/wgsl/wgsl/WgslWriterFactoryKt {
 	public static final fun registerWgslBackend ()V
 }
-

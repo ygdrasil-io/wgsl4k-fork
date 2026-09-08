@@ -41,12 +41,12 @@ class MslWriter(
             for (member in structInner.members) {
                 val memberLayout = layouter[member.type]
                 val offset = member.offset
-                
+
                 if (offset > currentOffset) {
                     val padding = offset - currentOffset
                     writeLine("char _pad$currentOffset[$padding];")
                 }
-                
+
                 val memberName = member.name
                 val typeName = getTypeName(member.type)
                 writeLine("$typeName $memberName;")
@@ -99,22 +99,22 @@ class MslWriter(
             ShaderStage.Fragment -> "[[fragment]]"
             ShaderStage.Compute -> "[[kernel]]"
         }
-        
+
         val inputStructName = writeInputStruct(ep)
         val outputStructName = writeOutputStruct(ep)
-        
+
         writeLine("$stageAttr")
         val func = module.functions[ep.function]
         currentFunction = func
         val returnType = outputStructName ?: (func.returnType?.let { getTypeName(it) } ?: "void")
-        
+
         write("$returnType ${ep.name}(")
-        
+
         val args = mutableListOf<String>()
         if (inputStructName != null) {
             args.add("$inputStructName in [[stage_in]]")
         }
-        
+
         // 1. Built-ins that are not in stage_in
         func.parameters.forEach { param ->
             val binding = param.binding
@@ -133,7 +133,7 @@ class MslWriter(
                 val type = module.types[variable.type]
                 val typeName = getTypeName(variable.type)
                 val target = options.bindingMap[binding]
-                
+
                 val mslAttr = when (val inner = type.inner) {
                     is TypeInner.Pointer -> {
                         val bufferIndex = target?.buffer ?: binding.index
@@ -170,7 +170,7 @@ class MslWriter(
         val func = module.functions[ep.function]
         val inputs = func.parameters.filter { it.binding is BindingAttribute.Location }
         if (inputs.isEmpty()) return null
-        
+
         val structName = "${ep.name}_Input"
         writeLine("struct $structName {")
         indent {
@@ -190,7 +190,7 @@ class MslWriter(
         val returnTypeHandle = func.returnType ?: return null
         val returnType = module.types[returnTypeHandle]
         val inner = returnType.inner
-        
+
         if (inner is TypeInner.Struct) {
             val structName = "${ep.name}_Output"
             writeLine("struct $structName {")
@@ -257,7 +257,7 @@ class MslWriter(
         val args = mutableListOf<String>()
         args.add(sampler ?: "/* error */")
         args.add(coordinate)
-        
+
         when (level) {
             is SampleLevel.Zero -> args.add("level(0)")
             is SampleLevel.MIPMAP -> {
@@ -266,12 +266,12 @@ class MslWriter(
             }
             else -> {}
         }
-        
+
         if (depthRef != null) {
             val d = writeExpression(depthRef)
             args.add("compare_value($d)")
         }
-        
+
         val method = if (depthRef != null) "sample_compare" else "sample"
         return "$texture.$method(${args.joinToString()})"
     }
@@ -364,7 +364,7 @@ class MslWriter(
         BuiltinValue.Position -> "float4"
         BuiltinValue.VertexIndex, BuiltinValue.InstanceIndex, BuiltinValue.SampleIndex -> "uint"
         BuiltinValue.FrontFacing -> "bool"
-        BuiltinValue.LocalInvocationId, BuiltinValue.GlobalInvocationId, 
+        BuiltinValue.LocalInvocationId, BuiltinValue.GlobalInvocationId,
         BuiltinValue.WorkgroupId, BuiltinValue.NumWorkgroups -> "uint3"
         BuiltinValue.LocalInvocationIndex, BuiltinValue.SampleMask -> "uint"
         else -> "uint"
@@ -447,7 +447,7 @@ class MslWriter(
                     inner.name == "texture_2d<i32>" -> "texture2d<int>"
                     inner.name.startsWith("texture_depth") -> "depth2d<float>"
                     inner.name.startsWith("texture") -> {
-                         "texture2d<float>" 
+                         "texture2d<float>"
                     }
                     else -> inner.name
                 }

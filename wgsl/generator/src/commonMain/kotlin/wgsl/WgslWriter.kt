@@ -109,11 +109,11 @@ class WgslWriter(
         }
         val func = module.functions[ep.function]
         val returnType = func.returnType?.let { " -> ${getTypeName(it)}" } ?: ""
-        
+
         currentFunction = func
-        
+
         write("fn ${ep.name}(")
-        
+
         val args = mutableListOf<String>()
         func.parameters.forEach { param ->
             val typeName = getTypeName(param.type)
@@ -133,7 +133,7 @@ class WgslWriter(
             writeBlock(func.body)
         }
         writeLine("}")
-        
+
         currentFunction = null
     }
 
@@ -178,7 +178,7 @@ class WgslWriter(
                 return "-($magnitude)"
             }
         }
-        
+
         return super.writeExpression(handle)
     }
 
@@ -228,7 +228,7 @@ class WgslWriter(
         BuiltinValue.Position -> "vec4<f32>"
         BuiltinValue.VertexIndex, BuiltinValue.InstanceIndex, BuiltinValue.SampleIndex -> "u32"
         BuiltinValue.FrontFacing -> "bool"
-        BuiltinValue.LocalInvocationId, BuiltinValue.GlobalInvocationId, 
+        BuiltinValue.LocalInvocationId, BuiltinValue.GlobalInvocationId,
         BuiltinValue.WorkgroupId, BuiltinValue.NumWorkgroups -> "vec3<u32>"
         BuiltinValue.LocalInvocationIndex, BuiltinValue.SampleMask -> "u32"
         else -> "u32"

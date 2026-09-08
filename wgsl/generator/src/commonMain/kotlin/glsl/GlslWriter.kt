@@ -228,7 +228,7 @@ class GlslWriter(
     override fun writeEntryPoint(ep: EntryPoint, index: Int) {
         writeLine()
         val func = module.functions[ep.function]
-        
+
         // 1. Generate inputs (in) and outputs (out) for the entry point
         func.parameters.forEach { param ->
             val binding = param.binding
@@ -263,17 +263,17 @@ class GlslWriter(
                 }
             }
         }
-        
+
         if (ep.stage == ShaderStage.Compute && ep.workgroupSize != null) {
             val (x, y, z) = ep.workgroupSize!!
             writeLine("layout(local_size_x = $x, local_size_y = $y, local_size_z = $z) in;")
         }
-        
+
         writeLine("void main() {")
         indent {
             // Mapping inputs to parameters and calling the function
             val args = func.parameters.map { it.name }
-            
+
             val call = "${getFunctionName(ep.function)}(${args.joinToString()})"
             if (returnType != null) {
                 if (ep.stage == ShaderStage.Vertex) {
