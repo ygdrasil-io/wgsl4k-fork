@@ -6,7 +6,7 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
-val repositoryUrl = "https://github.com/ygdrasil-io/wgsl4k-fork"
+val repositoryUrl = "https://github.com/Graphiks-org/wgsl4k"
 val projectPath = project.projectDir.relativeTo(project.rootDir).invariantSeparatorsPath
 
 dokka {
