@@ -4,13 +4,6 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-group = "org.graphiks"
-version = (project.findProperty("releaseVersion") as? String)
-    ?.takeIf { it.isNotBlank() }
-    ?: (project.findProperty("VERSION") as? String)
-        ?.takeIf { it.isNotBlank() }
-        ?: "1.0.0-SNAPSHOT"
-
 val artifactId = project.name
 val repositoryUrl = "https://github.com/ygdrasil-io/wgsl4k-fork"
 val hasPublishingCredentials = project.findProperty("mavenCentralUsername")?.toString()?.isNotBlank() == true
