@@ -20,7 +20,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "wgsl4k-fork"
+rootProject.name = "wgsl4k"
 include(":docs")
 
 listOf("core", "parser", "generator", "tests", "cli").forEach { module ->
