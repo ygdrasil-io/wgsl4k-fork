@@ -2,7 +2,7 @@ name: Deploy wgsl4k docs (Dokka MkDocs → MkDocs Material → Pages)
 
 on:
   push:
-    branches: [feat/incubation, master]
+    branches: [master]
     paths:
       - 'wgsl/**'
       - 'tests/golden/**'
