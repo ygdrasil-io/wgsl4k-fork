@@ -20,6 +20,13 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "kmp-starter-pack"
-include(":shared")
+rootProject.name = "wgsl4k"
 include(":docs")
+
+listOf("core", "parser", "generator", "tests", "cli").forEach { module ->
+    include(":wgsl:$module")
+    project(":wgsl:$module").apply {
+        name = "wgsl-$module"
+        projectDir = file("wgsl/$module")
+    }
+}

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to `wgsl4k` will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -9,25 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-- Kotlin 2.4.0 → 2.4.10
-- Gradle 9.5.0 → 9.6.1
-- Added blocking pull request policy checks aligned with `CONTRIBUTING.md`.
-
 ### Added
-- KMP project template (Android, iOS, Desktop)
-- Clean Architecture / DDD
-- Maven Central publishing via Vanniktech
-- Multilingual docs (EN/FR) MkDocs + Dokka
-- GitHub templates (issues, PR)
-- Code of Conduct, CONTRIBUTING, SECURITY, SUPPORT, CHANGELOG
+
+- `wgsl-core`: typed intermediate representation, arenas, validation, layout,
+  and backend abstractions.
+- `wgsl-parser`: WGSL lexer, AST, diagnostics, parser, type resolution, and
+  lowering to the intermediate representation.
+- `wgsl-generator`: WGSL, GLSL, HLSL, and MSL code generators, with a JSON IR
+  view.
+- `wgsl-tests`: JVM golden corpus, round-trip tests, and backend coverage
+  reporting.
+- `wgsl-cli`: JVM command-line conversion tool.
+- Kotlin Multiplatform targets for JVM, Android, iOS Arm64, iOS X64, and iOS
+  Simulator Arm64.
 
 ### Changed
-- Replaced the Dokka GFM and Python post-processing pipeline with Dokka for Material for MkDocs.
 
-### Fixed
-- Default snapshot publication version when no workflow version is provided.
-
-### Built with
-- Kotlin 2.4.10, Gradle 9.6.1, AGP 9.0.0
-- Koin 4.0.0, Ktor 3.0.3, Compose Multiplatform 1.11.1
+- Organized the project into the `wgsl-core`, `wgsl-parser`, `wgsl-generator`,
+  `wgsl-tests`, and `wgsl-cli` modules.
+- Public Kotlin packages are now under the `org.graphiks.wgsl.*` namespace.
+- Shader programs are processed through a typed intermediate representation
+  between parsing and code generation.

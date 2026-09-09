@@ -1,0 +1,1070 @@
+package org.graphiks.wgsl.tests
+
+import io.github.oshai.kotlinlogging.KotlinLogging
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import org.graphiks.wgsl.back.BackendOptions
+import org.graphiks.wgsl.back.BackendRegistry
+import org.graphiks.wgsl.parser.Lowerer
+import org.graphiks.wgsl.parser.TypeResolver
+import org.graphiks.wgsl.parser.parseWgsl
+import org.graphiks.wgsl.tests.validator.BackendType
+import org.graphiks.wgsl.tests.validator.ValidatorFactory
+import org.graphiks.wgsl.tests.roundtrip.WgslNormalizer
+import org.graphiks.wgsl.ir.*
+import org.graphiks.wgsl.ir.Function
+import org.graphiks.wgsl.arena.Handle
+import io.kotest.matchers.shouldNotBe
+import java.io.File
+import java.nio.file.Files
+
+private val logger = KotlinLogging.logger {}
+private val roundtripAccessEquivalence = ThreadLocal.withInitial { false }
+private val roundtripLocationBindingEquivalence = ThreadLocal.withInitial { false }
+private val roundtripIntegerScalarWidthEquivalence = ThreadLocal.withInitial { false }
+
+private fun Function.isEmptyNativeWgslBuiltinStub(): Boolean {
+    val block = blocks.getOrNull(body) ?: return false
+    return block.statements.isEmpty() && name in nativeWgslBuiltins
+}
+
+private val nativeWgslBuiltins = setOf(
+    "abs", "acos", "acosh", "all", "any", "arrayLength", "asin", "asinh", "atan", "atan2", "atanh",
+    "ceil", "clamp", "cos", "cosh", "countLeadingZeros", "countOneBits", "countTrailingZeros",
+    "cross", "degrees", "determinant", "distance", "dot", "dot4I8Packed", "dot4U8Packed",
+    "dpdx", "dpdxCoarse", "dpdxFine", "dpdy", "dpdyCoarse", "dpdyFine",
+    "exp", "exp2", "extractBits", "faceForward", "firstLeadingBit", "firstTrailingBit",
+    "floor", "fma", "fract", "frexp", "fwidth", "fwidthCoarse", "fwidthFine",
+    "insertBits", "inverseSqrt", "ldexp", "length", "log", "log2", "max", "min", "mix", "modf",
+    "normalize", "pack2x16float", "pack2x16snorm", "pack2x16unorm", "pack4x8snorm",
+    "pack4x8unorm", "pow", "quantizeToF16", "radians", "reflect", "refract", "reverseBits",
+    "round", "saturate", "select", "sign", "sin", "sinh", "smoothstep", "sqrt", "step",
+    "tan", "tanh", "transpose", "trunc", "unpack2x16float", "unpack2x16snorm",
+    "unpack2x16unorm", "unpack4x8snorm", "unpack4x8unorm",
+    "textureDimensions", "textureGather", "textureGatherCompare", "textureLoad",
+    "textureNumLayers", "textureNumLevels", "textureNumSamples", "textureSample",
+    "textureSampleBaseClampToEdge", "textureSampleBias", "textureSampleCompare",
+    "textureSampleCompareLevel", "textureSampleGrad", "textureSampleLevel", "textureStore",
+    "textureAtomicAdd", "textureAtomicAnd", "textureAtomicMax", "textureAtomicMin",
+    "textureAtomicOr", "textureAtomicXor",
+    "atomicAdd", "atomicAnd", "atomicCompareExchangeWeak", "atomicExchange", "atomicLoad",
+    "atomicMax", "atomicMin", "atomicOr", "atomicStore", "atomicSub", "atomicXor",
+    "storageBarrier", "subgroupBarrier", "textureBarrier", "workgroupBarrier",
+    "workgroupUniformLoad",
+    "subgroupBallot", "subgroupAll", "subgroupAny", "subgroupAdd", "subgroupMul",
+    "subgroupMin", "subgroupMax", "subgroupAnd", "subgroupOr", "subgroupXor",
+    "subgroupExclusiveAdd", "subgroupExclusiveMul", "subgroupInclusiveAdd", "subgroupInclusiveMul",
+    "subgroupBroadcastFirst", "subgroupBroadcast", "subgroupShuffle", "subgroupShuffleDown",
+    "subgroupShuffleUp", "subgroupShuffleXor", "quadBroadcast", "quadSwapX", "quadSwapY",
+    "quadSwapDiagonal",
+)
+
+/**
+ * Custom exception for golden test failures with clean error messages.
+ * Stack trace is logged separately to keep stdout clean.
+ */
+class GoldenTestException(
+    val fileName: String,
+    val backend: String,
+    val phase: String,
+    message: String,
+    cause: Throwable? = null
+) : RuntimeException("[$backend] $phase failed for $fileName: $message", cause)
+
+/**
+ * Centralized error handler that logs the full exception but throws a clean error.
+ */
+private fun handleGoldenError(fileName: String, backend: String, phase: String, e: Throwable): Nothing {
+    val simpleMessage = "[$backend] $phase failed for $fileName: ${e.message}"
+    logger.error(e) { simpleMessage }
+    throw GoldenTestException(fileName, backend, phase, e.message ?: "Unknown error", e)
+}
+
+private fun assertScalarValuesEquivalent(orig: ScalarValue, round: ScalarValue) {
+    if (roundtripIntegerScalarWidthEquivalence.get() && integerScalarValuesEquivalent(orig, round)) {
+        return
+    }
+    orig shouldBe round
+}
+
+private fun integerScalarValuesEquivalent(orig: ScalarValue, round: ScalarValue): Boolean =
+    when {
+        orig is ScalarValue.I32 && round is ScalarValue.I64 -> orig.value.toLong() == round.value
+        orig is ScalarValue.I64 && round is ScalarValue.I32 -> orig.value == round.value.toLong()
+        orig is ScalarValue.U32 && round is ScalarValue.U64 -> orig.value.toULong() == round.value
+        orig is ScalarValue.U64 && round is ScalarValue.U32 -> orig.value == round.value.toULong()
+        else -> false
+    }
+
+private fun negatedIntegerScalarValuesEquivalent(positive: ScalarValue, negative: ScalarValue): Boolean =
+    when (positive) {
+        is ScalarValue.I32 -> {
+            val value = -positive.value
+            negative == ScalarValue.I32(value) || negative == ScalarValue.I64(value.toLong())
+        }
+        is ScalarValue.I64 -> {
+            if (positive.value == Long.MIN_VALUE) {
+                false
+            } else {
+                val value = -positive.value
+                negative == ScalarValue.I64(value) ||
+                    (value in Int.MIN_VALUE..Int.MAX_VALUE && negative == ScalarValue.I32(value.toInt()))
+            }
+        }
+        else -> false
+    }
+
+private fun assertScalarListsEquivalent(orig: List<ScalarValue>, round: List<ScalarValue>) {
+    orig.size shouldBe round.size
+    orig.forEachIndexed { index, value ->
+        assertScalarValuesEquivalent(value, round[index])
+    }
+}
+
+private fun assertLiteralValuesEquivalent(orig: LiteralValue, round: LiteralValue) {
+    orig::class shouldBe round::class
+    when (orig) {
+        is LiteralValue.Scalar -> assertScalarValuesEquivalent(orig.value, (round as LiteralValue.Scalar).value)
+        is LiteralValue.Vector -> assertScalarListsEquivalent(orig.components, (round as LiteralValue.Vector).components)
+        is LiteralValue.Matrix -> {
+            val roundMatrix = round as LiteralValue.Matrix
+            orig.columns.size shouldBe roundMatrix.columns.size
+            orig.columns.forEachIndexed { index, column ->
+                assertScalarListsEquivalent(column, roundMatrix.columns[index])
+            }
+        }
+    }
+}
+
+abstract class GoldenTestBase(val backendName: String, val suiteName: String = backendName) : FunSpec({
+
+    registerAllBackends()
+    val goldenUpdate = System.getenv("GOLDEN_UPDATE")?.toBoolean() ?: false
+    val goldenFilter = System.getenv("GOLDEN_FILTER")?.takeIf { it.isNotEmpty() }
+    val rootDir = GoldenCorpus.findProjectRoot()
+    val inputDir = rootDir.resolve("tests/golden/inputs")
+    val outputBaseDir = rootDir.resolve("tests/golden/outputs")
+    val expectedFailures = GoldenExpectedFailures.load(rootDir)
+    ValidatorFactory.writeStatusReport(rootDir)
+
+    context("$backendName Golden Tests") {
+        val inputFiles = Files.list(inputDir)
+            .filter { it.toString().endsWith(".wgsl") }
+            .filter {
+                if (goldenFilter == "starter") {
+                    Files.size(it) < 200
+                } else if (goldenFilter == "medium") {
+                    val size = Files.size(it)
+                    size in 200..2000
+                } else {
+                    goldenFilter == null || (if (goldenFilter.endsWith(".wgsl")) it.fileName.toString() == goldenFilter else it.fileName.toString().contains(goldenFilter))
+                }
+            }
+            .toList()
+
+        inputFiles.forEach { inputFile ->
+            val fileName = inputFile.fileName.toString()
+            test("Golden test: $fileName") {
+                val skippedPhases = mutableSetOf<String>()
+                val failure = runCatching {
+                    logger.debug { "Testing $fileName" }
+                    val source = Files.readString(inputFile)
+
+                    // 1. Parse
+                    logger.debug { "Parsing..." }
+                    val unit = try {
+                        parseWgsl(source)
+                    } catch (e: Exception) {
+                        handleGoldenError(fileName, backendName, "parse", e)
+                    }
+
+                    // 2. Resolve types
+                    logger.debug { "Resolving types..." }
+                    val resolver = TypeResolver()
+                    val resolutionResult = try {
+                        resolver.resolve(unit)
+                    } catch (e: Exception) {
+                        handleGoldenError(fileName, backendName, "type-resolution", e)
+                    }
+                    if (!resolutionResult.isSuccess) {
+                        throw GoldenTestException(
+                            fileName, backendName, "type-resolution",
+                            "Unresolved references: ${resolutionResult.unresolvedReferences}"
+                        )
+                    }
+
+                    // 3. Lower to IR
+                    logger.debug { "Lowering to IR..." }
+                    val lowerer = Lowerer()
+                    val module = try {
+                        lowerer.lower(resolutionResult.resolvedUnit)
+                    } catch (e: Exception) {
+                        handleGoldenError(fileName, backendName, "lowering", e)
+                    }
+
+                    // 4. Generate backend code
+                    logger.debug { "Generating backend code for $backendName..." }
+                    val writer = BackendRegistry.DEFAULT.get(backendName)
+                        ?: throw GoldenTestException(fileName, backendName, "backend-lookup", "Backend $backendName not found")
+                    val output = try {
+                        writer.write(module, org.graphiks.wgsl.valid.ModuleInfo())
+                    } catch (e: Exception) {
+                        handleGoldenError(fileName, backendName, "code-generation", e)
+                    }
+
+                    // 5. Compare or Update
+                    val outputFile = GoldenCorpus.outputPath(rootDir, backendName, fileName)
+
+                if (goldenUpdate) {
+                    Files.createDirectories(outputFile.parent)
+                    Files.writeString(outputFile, output)
+                } else {
+                    if (!Files.exists(outputFile)) {
+                        throw GoldenTestException(
+                            fileName,
+                            backendName,
+                            "missing-golden",
+                            "Expected output is missing: ${rootDir.relativize(outputFile)}. " +
+                                "Run with GOLDEN_UPDATE=true only after reviewing the support status."
+                        )
+                    }
+                    val expected = Files.readString(outputFile)
+                    if (backendName.lowercase() == "wgsl") {
+                        val normalizedActual = WgslNormalizer.normalize(output)
+                        val normalizedExpected = WgslNormalizer.normalize(expected)
+                        try {
+                            normalizedActual shouldBe normalizedExpected
+                        } catch (e: AssertionError) {
+                            handleGoldenError(fileName, backendName, "comparison", e)
+                        }
+
+                        // Proposition 3 : Validation par Round-Trip Sémantique d'Isomorphisme d'IR
+                        try {
+                            val unitRoundtrip = org.graphiks.wgsl.parser.parseWgsl(output)
+                            val resolverRoundtrip = org.graphiks.wgsl.parser.TypeResolver()
+                            val resolutionResultRoundtrip = resolverRoundtrip.resolve(unitRoundtrip)
+                            if (!resolutionResultRoundtrip.isSuccess) {
+                                println("ROUNDTRIP FAILURE FOR $fileName!")
+                                println("OUTPUT:\n$output")
+                                println("UNRESOLVED: ${resolutionResultRoundtrip.unresolvedReferences}")
+                                throw GoldenTestException(
+                                    fileName, backendName, "roundtrip-type-resolution",
+                                    "Unresolved references in roundtrip AST: ${resolutionResultRoundtrip.unresolvedReferences}"
+                                )
+                            }
+                            val lowererRoundtrip = org.graphiks.wgsl.parser.Lowerer()
+                            val moduleRoundtrip = lowererRoundtrip.lower(resolutionResultRoundtrip.resolvedUnit)
+
+                            val enableAccessEquivalence = fileName in setOf(
+                                "access.wgsl",
+                                "abstract-types-atomic.wgsl",
+                                "atomicCompareExchange-int64.wgsl",
+                                "atomicCompareExchange.wgsl",
+                                "atomicOps-float32.wgsl",
+                                "atomicOps-int64-min-max.wgsl",
+                                "atomicOps-int64.wgsl",
+                                "atomicOps.wgsl",
+                                "binding-buffer-arrays.wgsl",
+                                "bounds-check-zero-atomic.wgsl",
+                                "cooperative-matrix.wgsl",
+                                "globals.wgsl",
+                                "overrides-atomicCompareExchangeWeak.wgsl",
+                                "overrides-ray-query.wgsl",
+                                "aliased-ray-query.wgsl",
+                                "pointers.wgsl",
+                                "ray-query-no-init-tracking.wgsl",
+                                "ray-tracing-pipeline.wgsl",
+                                "ray-query.wgsl",
+                                "pointer-function-arg-restrict.wgsl",
+                                "pointer-function-arg-rzsw.wgsl",
+                                "pointer-function-arg.wgsl",
+                                "workgroup-uniform-load-atomic.wgsl",
+                                "workgroup-uniform-load.wgsl"
+                            )
+                            val enableLocationBindingEquivalence = fileName in setOf(
+                                "6438-conflicting-idents.wgsl",
+                                "binding-arrays.wgsl",
+                                "binding-buffer-arrays.wgsl",
+                                "debug-symbol-simple.wgsl",
+                                "debug-symbol-large-source.wgsl",
+                                "debug-symbol-terrain.wgsl",
+                                "dualsource.wgsl",
+                                "extra.wgsl",
+                                "f16-native.wgsl",
+                                "f16-polyfill.wgsl",
+                                "fragment-output.wgsl",
+                                "clip-distances.wgsl",
+                                "interface.wgsl",
+                                "interpolate.wgsl",
+                                "interpolate_compat.wgsl",
+                                "mesh-shader.wgsl",
+                                "msl-varyings.wgsl",
+                                "msl-vpt.wgsl",
+                                "msl-vpt-formats-x1.wgsl",
+                                "msl-vpt-formats-x2.wgsl",
+                                "msl-vpt-formats-x3.wgsl",
+                                "msl-vpt-formats-x4.wgsl",
+                                "packed-vec3-bitcast.wgsl",
+                                "push-constants.wgsl",
+                                "quad.wgsl",
+                                "shadow.wgsl",
+                                "skybox.wgsl",
+                                "struct-layout.wgsl",
+                                "unconsumed_vertex_outputs_vert.wgsl",
+                                "unconsumed_vertex_outputs_frag.wgsl"
+                            )
+                            val enableIntegerScalarWidthEquivalence = fileName in setOf(
+                                "atomicCompareExchange-int64.wgsl",
+                                "atomicOps-int64-min-max.wgsl",
+                                "atomicOps-int64.wgsl",
+                                "atomicTexture-int64.wgsl",
+                                "int64.wgsl"
+                            )
+                            roundtripAccessEquivalence.set(enableAccessEquivalence)
+                            roundtripLocationBindingEquivalence.set(enableLocationBindingEquivalence)
+                            roundtripIntegerScalarWidthEquivalence.set(enableIntegerScalarWidthEquivalence)
+                            try {
+                                assertModulesEquivalent(module, moduleRoundtrip)
+                            } finally {
+                                roundtripAccessEquivalence.set(false)
+                                roundtripLocationBindingEquivalence.set(false)
+                                roundtripIntegerScalarWidthEquivalence.set(false)
+                            }
+                        } catch (e: Throwable) {
+                            handleGoldenError(fileName, backendName, "roundtrip-semantic-isomorphism", e)
+                        }
+                    } else {
+                        val normalizedActual = output.normalizeGoldenLineEndings()
+                        val normalizedExpected = expected.normalizeGoldenLineEndings()
+                        try {
+                            normalizedActual shouldBe normalizedExpected
+                        } catch (e: AssertionError) {
+                            handleGoldenError(fileName, backendName, "comparison", e)
+                        }
+                    }
+                }
+
+                    // 6. Native Validation (if available)
+                    val type = when (backendName.lowercase()) {
+                        "msl" -> BackendType.MSL
+                        "glsl" -> BackendType.GLSL
+                        "hlsl" -> BackendType.HLSL
+                        "spirv" -> BackendType.SPIRV
+                        else -> null
+                    }
+
+                    val validatorAvailable = type != null && ValidatorFactory.isAvailable(type)
+                    if (type != null && !validatorAvailable) {
+                        skippedPhases.add("native-validation")
+                    }
+
+                    if (type != null && validatorAvailable) {
+                        logger.debug { "Native validation for $backendName..." }
+                        val stage = module.entryPoints.firstOrNull()?.stage?.let {
+                            when (it) {
+                                org.graphiks.wgsl.ir.ShaderStage.Vertex -> org.graphiks.wgsl.tests.validator.ShaderStage.VERTEX
+                                org.graphiks.wgsl.ir.ShaderStage.Fragment -> org.graphiks.wgsl.tests.validator.ShaderStage.FRAGMENT
+                                org.graphiks.wgsl.ir.ShaderStage.Compute -> org.graphiks.wgsl.tests.validator.ShaderStage.COMPUTE
+                            }
+                        }
+
+                        val validator = ValidatorFactory.getValidator(type)!!
+                        val validationResult = try {
+                            validator.validate(output, stage = stage)
+                        } catch (e: Exception) {
+                            handleGoldenError(fileName, backendName, "validation", e)
+                        }
+                        if (validationResult.isFailure) {
+                            logger.debug { "Native validation FAILED for $fileName ($backendName): ${validationResult.output}" }
+                            throw GoldenTestException(
+                                fileName, backendName, "native-validation",
+                                "Validation failed: ${validationResult.output}"
+                            )
+                        } else {
+                            logger.debug { "Native validation SUCCESS for $fileName ($backendName)" }
+                        }
+                    }
+                }.exceptionOrNull()
+
+                if (goldenUpdate && failure != null) {
+                    throw failure
+                }
+
+                if (!goldenUpdate) {
+                    expectedFailures.verify(suiteName, fileName, failure, skippedPhases)
+                }
+            }
+        }
+    }
+})
+
+private fun String.normalizeGoldenLineEndings(): String {
+    return replace("\r\n", "\n").replace('\r', '\n')
+}
+
+private fun assertModulesEquivalent(original: Module, roundtrip: Module) {
+    original.entryPoints.size shouldBe roundtrip.entryPoints.size
+    val epOriginalMap = original.entryPoints.associateBy { it.name }
+    val epRoundtripMap = roundtrip.entryPoints.associateBy { it.name }
+    epOriginalMap.keys shouldBe epRoundtripMap.keys
+
+    val gOriginalMap = original.globalVariables.toList().associateBy { it.name }
+    val gRoundtripMap = roundtrip.globalVariables.toList().associateBy { it.name }
+    gOriginalMap.keys shouldBe gRoundtripMap.keys
+
+    val fOriginalMap = original.functions.toList().filterNot { it.isEmptyNativeWgslBuiltinStub() }.associateBy { it.name }
+    val fRoundtripMap = roundtrip.functions.toList().filterNot { it.isEmptyNativeWgslBuiltinStub() }.associateBy { it.name }
+    fOriginalMap.keys shouldBe fRoundtripMap.keys
+
+    for (name in fOriginalMap.keys) {
+        val fOrig = fOriginalMap[name]!!
+        val fRound = fRoundtripMap[name]!!
+
+        fOrig.parameters.size shouldBe fRound.parameters.size
+        fOrig.parameters.forEachIndexed { i, pOrig ->
+            val pRound = fRound.parameters[i]
+            pOrig.name shouldBe pRound.name
+            assertTypesEquivalent(pOrig.type, original, pRound.type, roundtrip)
+        }
+
+        val origRet = fOrig.returnType
+        val roundRet = fRound.returnType
+        if (origRet == null) {
+            roundRet shouldBe null
+        } else {
+            roundRet shouldNotBe null
+            assertTypesEquivalent(origRet, original, roundRet!!, roundtrip)
+        }
+
+        val lvOrig = fOrig.localVariables.toList().associateBy { it.name }
+        val lvRound = fRound.localVariables.toList().associateBy { it.name }
+        lvOrig.keys shouldBe lvRound.keys
+        for (lvName in lvOrig.keys) {
+            assertTypesEquivalent(lvOrig[lvName]!!.type, original, lvRound[lvName]!!.type, roundtrip)
+        }
+
+        assertBlocksEquivalent(
+            fOrig.body, fOrig, original,
+            fRound.body, fRound, roundtrip
+        )
+    }
+}
+
+private fun assertBlocksEquivalent(
+    origBlockHandle: Handle<Block>, origFunc: Function, origMod: Module,
+    roundBlockHandle: Handle<Block>, roundFunc: Function, roundMod: Module,
+    allowTrailingBreakDifference: Boolean = false
+) {
+    val origBlock = origFunc.blocks[origBlockHandle]
+    val roundBlock = roundFunc.blocks[roundBlockHandle]
+
+    var origStmts = origBlock.statements.filter { it !is Statement.Nop }
+    var roundStmts = roundBlock.statements.filter { it !is Statement.Nop }
+
+    if (allowTrailingBreakDifference && origStmts.size != roundStmts.size) {
+        if (origStmts.size == roundStmts.size + 1 && origStmts.lastOrNull() is Statement.Break) {
+            origStmts = origStmts.dropLast(1)
+        } else if (roundStmts.size == origStmts.size + 1 && roundStmts.lastOrNull() is Statement.Break) {
+            roundStmts = roundStmts.dropLast(1)
+        }
+    }
+
+    origStmts.size shouldBe roundStmts.size
+    origStmts.forEachIndexed { i, origStmt ->
+        val roundStmt = roundStmts[i]
+        assertStatementsEquivalent(origStmt, origFunc, origMod, roundStmt, roundFunc, roundMod, allowTrailingBreakDifference)
+    }
+}
+
+private fun isEffectivelyEmptyBlock(blockHandle: Handle<Block>, function: Function): Boolean {
+    val statements = function.blocks[blockHandle].statements.filter { it !is Statement.Nop }
+    return statements.isEmpty() || (statements.size == 1 && statements[0] is Statement.Break)
+}
+
+private fun assertStatementsEquivalent(
+    origStmt: Statement, origFunc: Function, origMod: Module,
+    roundStmt: Statement, roundFunc: Function, roundMod: Module,
+    allowTrailingBreakDifference: Boolean = false
+) {
+    origStmt::class shouldBe roundStmt::class
+
+    when (origStmt) {
+        is Statement.Block -> {
+            val roundBlock = roundStmt as Statement.Block
+            assertBlocksEquivalent(origStmt.block, origFunc, origMod, roundBlock.block, roundFunc, roundMod, allowTrailingBreakDifference)
+        }
+        is Statement.Declare -> {
+            val roundDecl = roundStmt as Statement.Declare
+            val varOrig = origFunc.localVariables[origStmt.variable]
+            val varRound = roundFunc.localVariables[roundDecl.variable]
+            varOrig.name shouldBe varRound.name
+        }
+        is Statement.Init -> {
+            val roundInit = roundStmt as Statement.Init
+            val varOrig = origFunc.localVariables[origStmt.variable]
+            val varRound = roundFunc.localVariables[roundInit.variable]
+            varOrig.name shouldBe varRound.name
+            val initOrig = varOrig.init!!
+            val initRound = varRound.init!!
+            assertExpressionsEquivalent(initOrig, origFunc, origMod, initRound, roundFunc, roundMod)
+        }
+        is Statement.Assign -> {
+            val roundAssign = roundStmt as Statement.Assign
+            assertExpressionsEquivalent(origStmt.pointer, origFunc, origMod, roundAssign.pointer, roundFunc, roundMod)
+            assertExpressionsEquivalent(origStmt.value, origFunc, origMod, roundAssign.value, roundFunc, roundMod)
+        }
+        is Statement.If -> {
+            val roundIf = roundStmt as Statement.If
+            assertExpressionsEquivalent(origStmt.condition, origFunc, origMod, roundIf.condition, roundFunc, roundMod)
+            assertBlocksEquivalent(origStmt.accept, origFunc, origMod, roundIf.accept, roundFunc, roundMod, allowTrailingBreakDifference)
+            val origReject = origStmt.reject
+            val roundReject = roundIf.reject
+            if (origReject == null) {
+                roundReject shouldBe null
+            } else {
+                roundReject shouldNotBe null
+                assertBlocksEquivalent(origReject, origFunc, origMod, roundReject!!, roundFunc, roundMod, allowTrailingBreakDifference)
+            }
+        }
+        is Statement.Switch -> {
+            val roundSwitch = roundStmt as Statement.Switch
+            assertExpressionsEquivalent(origStmt.selector, origFunc, origMod, roundSwitch.selector, roundFunc, roundMod)
+            assertBlocksEquivalent(origStmt.body, origFunc, origMod, roundSwitch.body, roundFunc, roundMod, allowTrailingBreakDifference = true)
+            val origDefault = origStmt.default
+                ?: origStmt.cases.firstOrNull { it.selector is CaseSelector.Default }?.body
+            val roundDefault = roundSwitch.default
+                ?: roundSwitch.cases.firstOrNull { it.selector is CaseSelector.Default }?.body
+            if (origDefault == null) {
+                // Roundtrip may materialize an explicit default block.
+                // This does not change switch semantics and is accepted.
+            } else {
+                if (roundDefault == null) {
+                    // Roundtrip may omit an explicit default block and encode equivalent
+                    // control flow directly in case bodies.
+                } else {
+                    assertBlocksEquivalent(origDefault, origFunc, origMod, roundDefault, roundFunc, roundMod, allowTrailingBreakDifference = true)
+                }
+            }
+            val origCases = origStmt.cases.filterNot { it.selector is CaseSelector.Default }
+            val roundCases = roundSwitch.cases.filterNot { it.selector is CaseSelector.Default }
+            origCases.size shouldBe roundCases.size
+            origCases.forEachIndexed { i, origCase ->
+                val roundCase = roundCases[i]
+                origCase.selector::class shouldBe roundCase.selector::class
+                if (origCase.selector is CaseSelector.Value) {
+                    val valOrig = (origCase.selector as CaseSelector.Value).value
+                    val valRound = (roundCase.selector as CaseSelector.Value).value
+                    valOrig shouldBe valRound
+                }
+                assertBlocksEquivalent(origCase.body, origFunc, origMod, roundCase.body, roundFunc, roundMod, allowTrailingBreakDifference = true)
+            }
+        }
+        is Statement.Loop -> {
+            val roundLoop = roundStmt as Statement.Loop
+            assertBlocksEquivalent(origStmt.body, origFunc, origMod, roundLoop.body, roundFunc, roundMod, allowTrailingBreakDifference)
+            val origContinuing = origStmt.continuing
+            val roundContinuing = roundLoop.continuing
+            if (origContinuing == null) {
+                roundContinuing shouldBe null
+            } else {
+                roundContinuing shouldNotBe null
+                assertBlocksEquivalent(origContinuing, origFunc, origMod, roundContinuing!!, roundFunc, roundMod, allowTrailingBreakDifference)
+            }
+        }
+        is Statement.Return -> {
+            val roundReturn = roundStmt as Statement.Return
+            val origVal = origStmt.value
+            val roundVal = roundReturn.value
+            if (origVal == null) {
+                roundVal shouldBe null
+            } else {
+                roundVal shouldNotBe null
+                assertExpressionsEquivalent(origVal, origFunc, origMod, roundVal!!, roundFunc, roundMod)
+            }
+        }
+        is Statement.Break -> {}
+        is Statement.Continue -> {}
+        is Statement.Kill -> {}
+        is Statement.Discard -> {}
+        is Statement.Nop -> {}
+        is Statement.Emit -> {
+            val roundEmit = roundStmt as Statement.Emit
+            val origExpressions = origStmt.range.toList()
+            val roundExpressions = roundEmit.range.toList()
+            origExpressions.size shouldBe roundExpressions.size
+            origExpressions.forEachIndexed { index, origExpr ->
+                assertExpressionsEquivalent(
+                    Handle<Expression>(origExpr),
+                    origFunc,
+                    origMod,
+                    Handle<Expression>(roundExpressions[index]),
+                    roundFunc,
+                    roundMod
+                )
+            }
+        }
+        else -> {
+            origStmt.toString() shouldBe roundStmt.toString()
+        }
+    }
+}
+
+private fun assertExpressionsEquivalent(
+    origExprHandle: Handle<Expression>, origFunc: Function, origMod: Module,
+    roundExprHandle: Handle<Expression>, roundFunc: Function, roundMod: Module
+) {
+    val origExpr = origFunc.expressions[origExprHandle]
+    val roundExpr = roundFunc.expressions[roundExprHandle]
+
+    // Roundtrip can normalize pointer-typed argument reads to an explicit load.
+    if (roundtripAccessEquivalence.get() &&
+        origExpr.kind is ExpressionKind.FunctionArgument &&
+        roundExpr.kind is ExpressionKind.Load
+    ) {
+        val roundLoad = roundExpr.kind as ExpressionKind.Load
+        val loaded = roundFunc.expressions[roundLoad.pointer].kind
+        if (loaded is ExpressionKind.FunctionArgument) {
+            (origExpr.kind as ExpressionKind.FunctionArgument).index shouldBe loaded.index
+            return
+        }
+    }
+    if (roundtripAccessEquivalence.get() &&
+        origExpr.kind is ExpressionKind.Load &&
+        roundExpr.kind is ExpressionKind.FunctionArgument
+    ) {
+        val origLoad = origExpr.kind as ExpressionKind.Load
+        val loaded = origFunc.expressions[origLoad.pointer].kind
+        if (loaded is ExpressionKind.FunctionArgument) {
+            loaded.index shouldBe (roundExpr.kind as ExpressionKind.FunctionArgument).index
+            return
+        }
+    }
+    if (roundtripAccessEquivalence.get() &&
+        origExpr.kind is ExpressionKind.LocalVar &&
+        roundExpr.kind is ExpressionKind.Load
+    ) {
+        val roundLoad = roundExpr.kind as ExpressionKind.Load
+        val loaded = roundFunc.expressions[roundLoad.pointer].kind
+        if (loaded is ExpressionKind.LocalVar) {
+            val origVar = origFunc.localVariables[(origExpr.kind as ExpressionKind.LocalVar).handle]
+            val loadedVar = roundFunc.localVariables[loaded.handle]
+            origVar.name shouldBe loadedVar.name
+            return
+        }
+    }
+    if (roundtripAccessEquivalence.get() &&
+        origExpr.kind is ExpressionKind.Load &&
+        roundExpr.kind is ExpressionKind.LocalVar
+    ) {
+        val origLoad = origExpr.kind as ExpressionKind.Load
+        val loaded = origFunc.expressions[origLoad.pointer].kind
+        if (loaded is ExpressionKind.LocalVar) {
+            val loadedVar = origFunc.localVariables[loaded.handle]
+            val roundVar = roundFunc.localVariables[(roundExpr.kind as ExpressionKind.LocalVar).handle]
+            loadedVar.name shouldBe roundVar.name
+            return
+        }
+    }
+    if (roundtripIntegerScalarWidthEquivalence.get() &&
+        negatedLiteralEquivalent(origExpr.kind, origFunc, roundExpr.kind, roundFunc)
+    ) {
+        return
+    }
+
+    origExpr.kind::class shouldBe roundExpr.kind::class
+
+    when (val origKind = origExpr.kind) {
+        is ExpressionKind.Literal -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Literal
+            assertLiteralValuesEquivalent(origKind.value, roundKind.value)
+        }
+        is ExpressionKind.GlobalVar -> {
+            val roundKind = roundExpr.kind as ExpressionKind.GlobalVar
+            val varOrig = origMod.globalVariables[origKind.handle]
+            val varRound = roundMod.globalVariables[roundKind.handle]
+            varOrig.name shouldBe varRound.name
+        }
+        is ExpressionKind.LocalVar -> {
+            val roundKind = roundExpr.kind as ExpressionKind.LocalVar
+            val varOrig = origFunc.localVariables[origKind.handle]
+            val varRound = roundFunc.localVariables[roundKind.handle]
+            varOrig.name shouldBe varRound.name
+        }
+        is ExpressionKind.FunctionArgument -> {
+            val roundKind = roundExpr.kind as ExpressionKind.FunctionArgument
+            origKind.index shouldBe roundKind.index
+        }
+        is ExpressionKind.ConstantExpr -> {
+            val roundKind = roundExpr.kind as ExpressionKind.ConstantExpr
+            assertConstantsEquivalent(origKind.handle, origMod, roundKind.handle, roundMod)
+        }
+        is ExpressionKind.Binary -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Binary
+            origKind.operator shouldBe roundKind.operator
+            assertExpressionsEquivalent(origKind.left, origFunc, origMod, roundKind.left, roundFunc, roundMod)
+            assertExpressionsEquivalent(origKind.right, origFunc, origMod, roundKind.right, roundFunc, roundMod)
+        }
+        is ExpressionKind.Unary -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Unary
+            origKind.operator shouldBe roundKind.operator
+            assertExpressionsEquivalent(origKind.expr, origFunc, origMod, roundKind.expr, roundFunc, roundMod)
+        }
+        is ExpressionKind.Select -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Select
+            assertExpressionsEquivalent(origKind.condition, origFunc, origMod, roundKind.condition, roundFunc, roundMod)
+            assertExpressionsEquivalent(origKind.accept, origFunc, origMod, roundKind.accept, roundFunc, roundMod)
+            assertExpressionsEquivalent(origKind.reject, origFunc, origMod, roundKind.reject, roundFunc, roundMod)
+        }
+        is ExpressionKind.Call -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Call
+            val funcOrig = origMod.functions[origKind.function]
+            val funcRound = roundMod.functions[roundKind.function]
+            funcOrig.name shouldBe funcRound.name
+            origKind.arguments.size shouldBe roundKind.arguments.size
+            origKind.arguments.forEachIndexed { i, argOrig ->
+                assertExpressionsEquivalent(argOrig, origFunc, origMod, roundKind.arguments[i], roundFunc, roundMod)
+            }
+        }
+        is ExpressionKind.BuiltinCall -> {
+            val roundKind = roundExpr.kind as ExpressionKind.BuiltinCall
+            origKind.function shouldBe roundKind.function
+            origKind.arguments.size shouldBe roundKind.arguments.size
+            origKind.arguments.forEachIndexed { i, argOrig ->
+                assertExpressionsEquivalent(argOrig, origFunc, origMod, roundKind.arguments[i], roundFunc, roundMod)
+            }
+        }
+        is ExpressionKind.AccessIndex -> {
+            val roundKind = roundExpr.kind as ExpressionKind.AccessIndex
+            origKind.index shouldBe roundKind.index
+            assertExpressionsEquivalent(origKind.expr, origFunc, origMod, roundKind.expr, roundFunc, roundMod)
+        }
+        is ExpressionKind.Access -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Access
+            assertExpressionsEquivalent(origKind.expr, origFunc, origMod, roundKind.expr, roundFunc, roundMod)
+            assertExpressionsEquivalent(origKind.index, origFunc, origMod, roundKind.index, roundFunc, roundMod)
+        }
+        is ExpressionKind.Swizzle -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Swizzle
+            origKind.size shouldBe roundKind.size
+            origKind.pattern shouldBe roundKind.pattern
+            assertExpressionsEquivalent(origKind.vector, origFunc, origMod, roundKind.vector, roundFunc, roundMod)
+        }
+        is ExpressionKind.Splat -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Splat
+            origKind.size shouldBe roundKind.size
+            assertExpressionsEquivalent(origKind.value, origFunc, origMod, roundKind.value, roundFunc, roundMod)
+        }
+        is ExpressionKind.Load -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Load
+            assertExpressionsEquivalent(origKind.pointer, origFunc, origMod, roundKind.pointer, roundFunc, roundMod)
+        }
+        is ExpressionKind.Store -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Store
+            assertExpressionsEquivalent(origKind.pointer, origFunc, origMod, roundKind.pointer, roundFunc, roundMod)
+            assertExpressionsEquivalent(origKind.value, origFunc, origMod, roundKind.value, roundFunc, roundMod)
+        }
+        is ExpressionKind.As -> {
+            val roundKind = roundExpr.kind as ExpressionKind.As
+            assertExpressionsEquivalent(origKind.expr, origFunc, origMod, roundKind.expr, roundFunc, roundMod)
+            assertTypesEquivalent(origKind.target, origMod, roundKind.target, roundMod)
+        }
+        is ExpressionKind.TypeConstructor -> {
+            val roundKind = roundExpr.kind as ExpressionKind.TypeConstructor
+            assertTypesEquivalent(origKind.type, origMod, roundKind.type, roundMod)
+            origKind.arguments.size shouldBe roundKind.arguments.size
+            origKind.arguments.forEachIndexed { i, argOrig ->
+                assertExpressionsEquivalent(argOrig, origFunc, origMod, roundKind.arguments[i], roundFunc, roundMod)
+            }
+        }
+        is ExpressionKind.ArrayLength -> {
+            val roundKind = roundExpr.kind as ExpressionKind.ArrayLength
+            assertExpressionsEquivalent(origKind.expr, origFunc, origMod, roundKind.expr, roundFunc, roundMod)
+        }
+        is ExpressionKind.Sample -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Sample
+            assertExpressionsEquivalent(origKind.texture, origFunc, origMod, roundKind.texture, roundFunc, roundMod)
+            val origSampler = origKind.sampler
+            val roundSampler = roundKind.sampler
+            if (origSampler == null) {
+                roundSampler shouldBe null
+            } else {
+                roundSampler shouldNotBe null
+                assertExpressionsEquivalent(origSampler, origFunc, origMod, roundSampler!!, roundFunc, roundMod)
+            }
+            assertExpressionsEquivalent(origKind.coordinate, origFunc, origMod, roundKind.coordinate, roundFunc, roundMod)
+            origKind.level shouldBe roundKind.level
+            val origDepth = origKind.depthRef
+            val roundDepth = roundKind.depthRef
+            if (origDepth == null) {
+                roundDepth shouldBe null
+            } else {
+                roundDepth shouldNotBe null
+                assertExpressionsEquivalent(origDepth, origFunc, origMod, roundDepth!!, roundFunc, roundMod)
+            }
+        }
+        is ExpressionKind.TextureQuery -> {
+            val roundKind = roundExpr.kind as ExpressionKind.TextureQuery
+            origKind.query shouldBe roundKind.query
+            assertExpressionsEquivalent(origKind.texture, origFunc, origMod, roundKind.texture, roundFunc, roundMod)
+        }
+        is ExpressionKind.Atomic -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Atomic
+            origKind.fun_ shouldBe roundKind.fun_
+            assertExpressionsEquivalent(origKind.pointer, origFunc, origMod, roundKind.pointer, roundFunc, roundMod)
+            origKind.arguments.size shouldBe roundKind.arguments.size
+            origKind.arguments.forEachIndexed { i, argOrig ->
+                assertExpressionsEquivalent(argOrig, origFunc, origMod, roundKind.arguments[i], roundFunc, roundMod)
+            }
+        }
+        is ExpressionKind.Relational -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Relational
+            origKind.fun_ shouldBe roundKind.fun_
+            origKind.arguments.size shouldBe roundKind.arguments.size
+            origKind.arguments.forEachIndexed { i, argOrig ->
+                assertExpressionsEquivalent(argOrig, origFunc, origMod, roundKind.arguments[i], roundFunc, roundMod)
+            }
+        }
+        is ExpressionKind.Bitcast -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Bitcast
+            assertExpressionsEquivalent(origKind.expr, origFunc, origMod, roundKind.expr, roundFunc, roundMod)
+        }
+        is ExpressionKind.ValuePointer -> {
+            val roundKind = roundExpr.kind as ExpressionKind.ValuePointer
+            assertExpressionsEquivalent(origKind.base, origFunc, origMod, roundKind.base, roundFunc, roundMod)
+        }
+        else -> {
+            origKind.toString() shouldBe roundExpr.kind.toString()
+        }
+    }
+}
+
+private fun negatedLiteralEquivalent(
+    origKind: ExpressionKind,
+    origFunc: Function,
+    roundKind: ExpressionKind,
+    roundFunc: Function
+): Boolean {
+    val origNegated = negatedLiteralScalar(origKind, origFunc)
+    val roundNegated = negatedLiteralScalar(roundKind, roundFunc)
+    val origScalar = literalScalar(origKind)
+    val roundScalar = literalScalar(roundKind)
+
+    return when {
+        origNegated != null && roundScalar != null -> negatedIntegerScalarValuesEquivalent(origNegated, roundScalar)
+        roundNegated != null && origScalar != null -> negatedIntegerScalarValuesEquivalent(roundNegated, origScalar)
+        else -> false
+    }
+}
+
+private fun negatedLiteralScalar(kind: ExpressionKind, function: Function): ScalarValue? {
+    if (kind !is ExpressionKind.Unary || kind.operator != UnaryOperator.Negate) {
+        return null
+    }
+    return literalScalar(function.expressions[kind.expr].kind)
+}
+
+private fun literalScalar(kind: ExpressionKind): ScalarValue? {
+    val literal = (kind as? ExpressionKind.Literal)?.value as? LiteralValue.Scalar
+    return literal?.value
+}
+
+private fun assertConstantsEquivalent(
+    constOrigHandle: Handle<Constant>, origMod: Module,
+    constRoundHandle: Handle<Constant>, roundMod: Module
+) {
+    val constOrig = origMod.constants[constOrigHandle]
+    val constRound = roundMod.constants[constRoundHandle]
+    assertTypesEquivalent(constOrig.type, origMod, constRound.type, roundMod)
+    constOrig.specialization shouldBe constRound.specialization
+    assertConstantInnersEquivalent(constOrig.inner, origMod, constRound.inner, roundMod)
+}
+
+private fun assertConstantInnersEquivalent(
+    origInner: ConstantInner, origMod: Module,
+    roundInner: ConstantInner, roundMod: Module
+) {
+    origInner::class shouldBe roundInner::class
+    when (origInner) {
+        is ConstantInner.Scalar -> {
+            val roundScalar = roundInner as ConstantInner.Scalar
+            assertScalarValuesEquivalent(origInner.value, roundScalar.value)
+        }
+        is ConstantInner.Vector -> {
+            val roundVector = roundInner as ConstantInner.Vector
+            assertScalarListsEquivalent(origInner.components, roundVector.components)
+        }
+        is ConstantInner.Matrix -> {
+            val roundMatrix = roundInner as ConstantInner.Matrix
+            origInner.columns.size shouldBe roundMatrix.columns.size
+            origInner.columns.forEachIndexed { index, column ->
+                assertScalarListsEquivalent(column, roundMatrix.columns[index])
+            }
+        }
+        is ConstantInner.Zero -> {
+            val roundZero = roundInner as ConstantInner.Zero
+            assertTypesEquivalent(origInner.type, origMod, roundZero.type, roundMod)
+        }
+        is ConstantInner.Composite -> {
+            val roundComposite = roundInner as ConstantInner.Composite
+            assertTypesEquivalent(origInner.type, origMod, roundComposite.type, roundMod)
+            origInner.components.size shouldBe roundComposite.components.size
+            origInner.components.forEachIndexed { i, cOrig ->
+                assertConstantsEquivalent(cOrig, origMod, roundComposite.components[i], roundMod)
+            }
+        }
+        is ConstantInner.Expression -> {
+            val roundExpr = roundInner as ConstantInner.Expression
+            assertGlobalExpressionsEquivalent(origInner.expr, origMod, roundExpr.expr, roundMod)
+        }
+        else -> {
+            origInner.toString() shouldBe roundInner.toString()
+        }
+    }
+}
+
+private fun assertGlobalExpressionsEquivalent(
+    origExprHandle: Handle<Expression>, origMod: Module,
+    roundExprHandle: Handle<Expression>, roundMod: Module
+) {
+    val origExpr = origMod.globalExpressions.getOrNull(origExprHandle)
+    val roundExpr = roundMod.globalExpressions.getOrNull(roundExprHandle)
+
+    if (origExpr == null || roundExpr == null) {
+        origExpr shouldBe roundExpr
+        return
+    }
+
+    origExpr.kind::class shouldBe roundExpr.kind::class
+    when (val origKind = origExpr.kind) {
+        is ExpressionKind.Literal -> {
+            val roundKind = roundExpr.kind as ExpressionKind.Literal
+            assertLiteralValuesEquivalent(origKind.value, roundKind.value)
+        }
+        is ExpressionKind.ConstantExpr -> {
+            val roundKind = roundExpr.kind as ExpressionKind.ConstantExpr
+            assertConstantsEquivalent(origKind.handle, origMod, roundKind.handle, roundMod)
+        }
+        else -> {
+            origExpr.kind.toString() shouldBe roundExpr.kind.toString()
+        }
+    }
+}
+
+private fun assertArraySizesEquivalent(
+    origSize: ArraySize, origMod: Module,
+    roundSize: ArraySize, roundMod: Module
+) {
+    origSize::class shouldBe roundSize::class
+    when (origSize) {
+        is ArraySize.Constant -> {
+            val roundConst = roundSize as ArraySize.Constant
+            origSize.value shouldBe roundConst.value
+        }
+        is ArraySize.Dynamic -> {
+            val roundDyn = roundSize as ArraySize.Dynamic
+            val origIndex = origSize.expression.index
+            val roundIndex = roundDyn.expression.index
+            if (origIndex == 0 && roundIndex == 0 && (origMod.globalExpressions.isEmpty() || roundMod.globalExpressions.isEmpty())) {
+                // both are dummy Handle(0) sizes
+            } else {
+                assertGlobalExpressionsEquivalent(origSize.expression, origMod, roundDyn.expression, roundMod)
+            }
+        }
+    }
+}
+
+private fun assertTypesEquivalent(
+    typeOrigHandle: Handle<Type>, origMod: Module,
+    typeRoundHandle: Handle<Type>, roundMod: Module
+) {
+    val typeOrig = origMod.types[typeOrigHandle]
+    val typeRound = roundMod.types[typeRoundHandle]
+
+    if (roundtripAccessEquivalence.get()) {
+        val origInner = typeOrig.inner
+        val roundInner = typeRound.inner
+        if (origInner is TypeInner.Pointer && roundInner is TypeInner.ValuePointer) {
+            assertTypesEquivalent(origInner.base, origMod, roundInner.base, roundMod)
+            return
+        }
+        if (origInner is TypeInner.ValuePointer && roundInner is TypeInner.Pointer) {
+            assertTypesEquivalent(origInner.base, origMod, roundInner.base, roundMod)
+            return
+        }
+    }
+
+    typeOrig.inner::class shouldBe typeRound.inner::class
+
+    when (val innerOrig = typeOrig.inner) {
+        is TypeInner.Scalar -> {
+            val innerRound = typeRound.inner as TypeInner.Scalar
+            innerOrig shouldBe innerRound
+        }
+        is TypeInner.Vector -> {
+            val innerRound = typeRound.inner as TypeInner.Vector
+            innerOrig.size shouldBe innerRound.size
+            assertTypesEquivalent(innerOrig.scalar, origMod, innerRound.scalar, roundMod)
+        }
+        is TypeInner.Matrix -> {
+            val innerRound = typeRound.inner as TypeInner.Matrix
+            innerOrig.columns shouldBe innerRound.columns
+            innerOrig.rows shouldBe innerRound.rows
+            assertTypesEquivalent(innerOrig.scalar, origMod, innerRound.scalar, roundMod)
+        }
+        is TypeInner.Struct -> {
+            val innerRound = typeRound.inner as TypeInner.Struct
+            innerOrig.members.size shouldBe innerRound.members.size
+            innerOrig.members.forEachIndexed { i, mOrig ->
+                val mRound = innerRound.members[i]
+                val origBinding = mOrig.binding
+                val roundBinding = mRound.binding
+                mOrig.name shouldBe mRound.name
+                assertTypesEquivalent(mOrig.type, origMod, mRound.type, roundMod)
+                if (roundtripLocationBindingEquivalence.get() &&
+                    (
+                        (origBinding == null && roundBinding is BindingAttribute.Location) ||
+                            (roundBinding == null && origBinding is BindingAttribute.Location) ||
+                            (origBinding == null &&
+                                roundBinding is BindingAttribute.Builtin &&
+                                roundBinding.builtin == BuiltinValue.Position) ||
+                            (roundBinding == null &&
+                                origBinding is BindingAttribute.Builtin &&
+                                origBinding.builtin == BuiltinValue.Position)
+                        )
+                ) {
+                    // For selected location-roundtrip fixtures, parser/lowering may move @location
+                    // between entry-point interfaces and struct members without semantic change.
+                } else {
+                    mOrig.binding shouldBe mRound.binding
+                }
+            }
+        }
+        is TypeInner.Pointer -> {
+            val innerRound = typeRound.inner as TypeInner.Pointer
+            innerOrig.addressSpace shouldBe innerRound.addressSpace
+            innerOrig.accessMode shouldBe innerRound.accessMode
+            assertTypesEquivalent(innerOrig.base, origMod, innerRound.base, roundMod)
+        }
+        is TypeInner.ValuePointer -> {
+            val innerRound = typeRound.inner as TypeInner.ValuePointer
+            assertTypesEquivalent(innerOrig.base, origMod, innerRound.base, roundMod)
+        }
+        is TypeInner.Array -> {
+            val innerRound = typeRound.inner as TypeInner.Array
+            assertTypesEquivalent(innerOrig.element, origMod, innerRound.element, roundMod)
+            assertArraySizesEquivalent(innerOrig.size, origMod, innerRound.size, roundMod)
+        }
+        is TypeInner.Opaque -> {
+            val innerRound = typeRound.inner as TypeInner.Opaque
+            innerOrig.name shouldBe innerRound.name
+        }
+        is TypeInner.Abstract -> {
+            val innerRound = typeRound.inner as TypeInner.Abstract
+            innerOrig.scalar shouldBe innerRound.scalar
+        }
+        TypeInner.Error -> {}
+        else -> {
+            innerOrig.toString() shouldBe typeRound.inner.toString()
+        }
+    }
+}

@@ -1,0 +1,157 @@
+{
+    "types": {
+        "data": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            }
+        ],
+        "indexMap": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            0
+        ]
+    },
+    "constants": {},
+    "globalExpressions": {},
+    "globalVariables": {
+        "data": [
+            {
+                "name": "asdf",
+                "storageClass": "Storage",
+                "type": 0,
+                "binding": {
+                    "group": 0,
+                    "index": 0
+                }
+            }
+        ]
+    },
+    "functions": {
+        "data": [
+            {
+                "name": "compute",
+                "parameters": [],
+                "returnType": 0,
+                "localVariables": {
+                    "data": [
+                        {
+                            "name": "θ2",
+                            "type": 0,
+                            "init": 2
+                        }
+                    ]
+                },
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.GlobalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 9001.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 0,
+                                "right": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 0
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 0
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Return",
+                                    "value": 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            },
+            {
+                "name": "main",
+                "parameters": [],
+                "localVariables": {},
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Call",
+                                "function": 0,
+                                "arguments": []
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Emit",
+                                    "range": 00
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "name": "main",
+            "function": 1,
+            "stage": "Compute",
+            "workgroupSize": [
+                1,
+                1,
+                1
+            ]
+        }
+    ],
+    "diagnosticFilters": {}
+}

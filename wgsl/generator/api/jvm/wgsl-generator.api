@@ -1,0 +1,100 @@
+public final class org/graphiks/wgsl/generator/glsl/GlslModule {
+	public static final field INSTANCE Lorg/graphiks/wgsl/generator/glsl/GlslModule;
+	public final fun writeString (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/GlslOptions;)Ljava/lang/String;
+	public static synthetic fun writeString$default (Lorg/graphiks/wgsl/generator/glsl/GlslModule;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/GlslOptions;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/generator/glsl/GlslWriter : org/graphiks/wgsl/back/WriterBase, org/graphiks/wgsl/back/BackendWriter {
+	public fun <init> (Ljava/lang/StringBuilder;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/GlslOptions;Lorg/graphiks/wgsl/proc/Namer;Lorg/graphiks/wgsl/proc/Layouter;)V
+	public fun canHandle (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Z
+	public synthetic fun withOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun withOptions (Lorg/graphiks/wgsl/back/GlslOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun write (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/generator/glsl/GlslWriterFactory : org/graphiks/wgsl/back/BackendRegistry$BackendFactory {
+	public fun <init> ()V
+	public fun create ()Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun createWithOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+}
+
+public final class org/graphiks/wgsl/generator/glsl/GlslWriterFactoryKt {
+	public static final fun registerGlslBackend ()V
+}
+
+public final class org/graphiks/wgsl/generator/hlsl/HlslModule {
+	public static final field INSTANCE Lorg/graphiks/wgsl/generator/hlsl/HlslModule;
+	public final fun writeString (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/HlslOptions;)Ljava/lang/String;
+	public static synthetic fun writeString$default (Lorg/graphiks/wgsl/generator/hlsl/HlslModule;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/HlslOptions;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/generator/hlsl/HlslWriter : org/graphiks/wgsl/back/WriterBase, org/graphiks/wgsl/back/BackendWriter {
+	public fun <init> (Ljava/lang/StringBuilder;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/HlslOptions;Lorg/graphiks/wgsl/proc/Namer;Lorg/graphiks/wgsl/proc/Layouter;)V
+	public fun canHandle (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Z
+	public synthetic fun withOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun withOptions (Lorg/graphiks/wgsl/back/HlslOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun write (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/generator/hlsl/HlslWriterFactory : org/graphiks/wgsl/back/BackendRegistry$BackendFactory {
+	public fun <init> ()V
+	public fun create ()Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun createWithOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+}
+
+public final class org/graphiks/wgsl/generator/hlsl/HlslWriterFactoryKt {
+	public static final fun registerHlslBackend ()V
+}
+
+public final class org/graphiks/wgsl/generator/msl/Keywords {
+	public static final field INSTANCE Lorg/graphiks/wgsl/generator/msl/Keywords;
+	public final fun getMSL_RESERVED ()Ljava/util/Set;
+}
+
+public final class org/graphiks/wgsl/generator/msl/MslModule {
+	public static final field INSTANCE Lorg/graphiks/wgsl/generator/msl/MslModule;
+	public final fun writeString (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/MslOptions;)Ljava/lang/String;
+	public static synthetic fun writeString$default (Lorg/graphiks/wgsl/generator/msl/MslModule;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/MslOptions;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/generator/msl/MslWriter : org/graphiks/wgsl/back/WriterBase, org/graphiks/wgsl/back/BackendWriter {
+	public fun <init> (Ljava/lang/StringBuilder;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/MslOptions;Lorg/graphiks/wgsl/proc/Namer;Lorg/graphiks/wgsl/proc/Layouter;)V
+	public fun canHandle (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Z
+	public synthetic fun withOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun withOptions (Lorg/graphiks/wgsl/back/MslOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun write (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/generator/msl/MslWriterFactory : org/graphiks/wgsl/back/BackendRegistry$BackendFactory {
+	public fun <init> ()V
+	public fun create ()Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun createWithOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+}
+
+public final class org/graphiks/wgsl/generator/msl/MslWriterFactoryKt {
+	public static final fun registerMslBackend ()V
+}
+
+public final class org/graphiks/wgsl/wgsl/WgslModule {
+	public static final field INSTANCE Lorg/graphiks/wgsl/wgsl/WgslModule;
+	public final fun writeString (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/WgslOptions;)Ljava/lang/String;
+	public static synthetic fun writeString$default (Lorg/graphiks/wgsl/wgsl/WgslModule;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/WgslOptions;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/wgsl/WgslWriter : org/graphiks/wgsl/back/WriterBase, org/graphiks/wgsl/back/BackendWriter {
+	public fun <init> (Ljava/lang/StringBuilder;Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;Lorg/graphiks/wgsl/back/WgslOptions;Lorg/graphiks/wgsl/proc/Namer;Lorg/graphiks/wgsl/proc/Layouter;)V
+	public fun canHandle (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Z
+	public synthetic fun withOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun withOptions (Lorg/graphiks/wgsl/back/WgslOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun write (Lorg/graphiks/wgsl/ir/Module;Lorg/graphiks/wgsl/valid/ModuleInfo;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/wgsl/WgslWriterFactory : org/graphiks/wgsl/back/BackendRegistry$BackendFactory {
+	public fun <init> ()V
+	public fun create ()Lorg/graphiks/wgsl/back/BackendWriter;
+	public fun createWithOptions (Lorg/graphiks/wgsl/back/BackendOptions;)Lorg/graphiks/wgsl/back/BackendWriter;
+}
+
+public final class org/graphiks/wgsl/wgsl/WgslWriterFactoryKt {
+	public static final fun registerWgslBackend ()V
+}

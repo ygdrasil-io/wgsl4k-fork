@@ -1,0 +1,2783 @@
+public final class org/graphiks/wgsl/ast/AbstractFloatType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/AbstractFloatType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/AbstractFloatType;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/AbstractFloatType;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/AbstractIntType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/AbstractIntType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/AbstractIntType;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/AbstractIntType;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/AddressMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/Always : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Always;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Always;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Always;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ArrayType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/Integer;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/Integer;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ArrayType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ArrayType;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/Integer;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ArrayType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun getLength ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getStride ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/AssignmentStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/AssignmentStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/AssignmentStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/AssignmentStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLhs ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getOp ()Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public final fun getRhs ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/AtomicType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/AtomicType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/AtomicType;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/AtomicType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Attribute {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Attribute;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Attribute;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Attribute;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BinaryExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BinaryExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/BinaryExpr;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BinaryExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLeft ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getOp ()Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public final fun getRight ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BinaryOperator : java/lang/Enum {
+	public static final field ADD Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field ARROW Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field BITWISE_AND Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field BITWISE_OR Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field BITWISE_XOR Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field DIVIDE Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field DOT Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field EQ Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field GT Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field GTE Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field LEFT_SHIFT Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field LOGICAL_AND Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field LOGICAL_OR Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field LT Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field LTE Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field MODULO Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field MULTIPLY Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field NEQ Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field RIGHT_SHIFT Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static final field SUBTRACT Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/BinaryOperator;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/BinaryOperator;
+}
+
+public final class org/graphiks/wgsl/ast/BitcastExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BitcastExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/BitcastExpr;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BitcastExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BlockStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BlockStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/BlockStatement;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BlockStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getStatements ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BoolLiteral : org/graphiks/wgsl/ast/Literal {
+	public fun <init> (ZLorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BoolLiteral;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/BoolLiteral;ZLorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BoolLiteral;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getValue ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BreakIfStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BreakIfStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/BreakIfStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BreakIfStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCondition ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BreakStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BreakStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/BreakStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BreakStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/BuiltinValue : java/lang/Enum {
+	public static final field CLIP_DISTANCES Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field CULL_DISTANCES Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field DEVICE_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field DRAW_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field FRONT_FACING Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field GLOBAL_INVOCATION_ID Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field INSTANCE_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field LOCAL_INVOCATION_ID Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field LOCAL_INVOCATION_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field NUM_WORKGROUPS Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field POINTSIZE Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field POSITION Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field PRIMITIVE_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field SAMPLE_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field SAMPLE_MASK Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field VERTEX_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field VIEWPORT_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field VIEW_INDEX Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static final field WORKGROUP_ID Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/BuiltinValue;
+}
+
+public abstract class org/graphiks/wgsl/ast/BuiltinValueEnum : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/CallExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/CallExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/CallExpr;Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/CallExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/util/List;
+	public final fun getCallee ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getTemplateArgs ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Case : org/graphiks/wgsl/ast/SwitchCase {
+	public fun <init> (Ljava/util/List;ZLorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;ZLorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Case;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Case;Ljava/util/List;ZLorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Case;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun getSelectors ()Ljava/util/List;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public final fun isDefault ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Center : org/graphiks/wgsl/ast/InterpolationSampling {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Center;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Center;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Center;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Centroid : org/graphiks/wgsl/ast/InterpolationSampling {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Centroid;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Centroid;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Centroid;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ClampToBorder : org/graphiks/wgsl/ast/SamplerAddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ClampToBorder;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ClampToBorder;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ClampToBorder;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ClampToEdge : org/graphiks/wgsl/ast/AddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ClampToEdge;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ClampToEdge;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ClampToEdge;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/ComparisonFunction : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/ConstAssertDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ConstAssertDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ConstAssertDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ConstAssertDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpression ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ConstAssertStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ConstAssertStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ConstAssertStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ConstAssertStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpression ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ConstantType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ConstantType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ConstantType;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ConstantType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpression ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ContinueStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ContinueStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ContinueStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ContinueStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/DefaultCase : org/graphiks/wgsl/ast/SwitchCase {
+	public fun <init> (Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DefaultCase;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/DefaultCase;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DefaultCase;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/DiagnosticDirective : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DiagnosticDirective;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/DiagnosticDirective;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DiagnosticDirective;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRule ()Ljava/lang/String;
+	public final fun getSeverity ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/DiagnosticStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DiagnosticStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/DiagnosticStatement;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DiagnosticStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRule ()Ljava/lang/String;
+	public final fun getSeverity ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/DiscardStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DiscardStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/DiscardStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DiscardStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/DrawIndex : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DrawIndex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/DrawIndex;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DrawIndex;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EmptyStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EmptyStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EmptyStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EmptyStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EnableDirective : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EnableDirective;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EnableDirective;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnableDirective;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExtensions ()Ljava/util/List;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/EntryPointAttribute {
+}
+
+public final class org/graphiks/wgsl/ast/EntryPointAttribute$Compute : org/graphiks/wgsl/ast/EntryPointAttribute {
+	public static final field INSTANCE Lorg/graphiks/wgsl/ast/EntryPointAttribute$Compute;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EntryPointAttribute$Fragment : org/graphiks/wgsl/ast/EntryPointAttribute {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Fragment;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EntryPointAttribute$Fragment;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Fragment;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInputs ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EntryPointAttribute$Vertex : org/graphiks/wgsl/ast/EntryPointAttribute {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Vertex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EntryPointAttribute$Vertex;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Vertex;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOutputs ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EnumDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EnumDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EnumDecl;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnumDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getMembers ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EnumKt {
+	public static final fun toEnumValue (Lorg/graphiks/wgsl/ast/EnumMember;)Lorg/graphiks/wgsl/ast/EnumValue;
+	public static final fun toEnumValue (Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;)Lorg/graphiks/wgsl/ast/EnumValue;
+	public static final fun tryResolveToEnumExpr (Lorg/graphiks/wgsl/ast/MemberAccessExpr;Lorg/graphiks/wgsl/ast/TranslationUnit;)Lorg/graphiks/wgsl/ast/Expression;
+}
+
+public final class org/graphiks/wgsl/ast/EnumMember {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EnumMember;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EnumMember;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnumMember;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getValue ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EnumMemberExpr : org/graphiks/wgsl/ast/EnumValueExpr {
+	public fun <init> (Lorg/graphiks/wgsl/ast/EnumDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/EnumDecl;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/EnumDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EnumMemberExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EnumMemberExpr;Lorg/graphiks/wgsl/ast/EnumDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnumMemberExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnumDecl ()Lorg/graphiks/wgsl/ast/EnumDecl;
+	public fun getEnumTypeName ()Ljava/lang/String;
+	public fun getEnumValue ()Lorg/graphiks/wgsl/ast/EnumValue;
+	public final fun getMemberName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EnumType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EnumType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EnumType;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnumType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/graphiks/wgsl/ast/EnumValue {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getQualifiedName ()Ljava/lang/String;
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public abstract fun getValue ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/EnumValueExpr : org/graphiks/wgsl/ast/Expression {
+	public abstract fun getEnumTypeName ()Ljava/lang/String;
+	public abstract fun getEnumValue ()Lorg/graphiks/wgsl/ast/EnumValue;
+	public final fun getQualifiedName ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/EnumValueImpl : org/graphiks/wgsl/ast/EnumValue {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)Lorg/graphiks/wgsl/ast/EnumValueImpl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/EnumValueImpl;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnumValueImpl;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName ()Ljava/lang/String;
+	public fun getQualifiedName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Equal : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Equal;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Equal;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Equal;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/Expression {
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/ExpressionStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ExpressionStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ExpressionStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ExpressionStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/ExpressionTransformer {
+	public fun <init> ()V
+	public fun transform (Lorg/graphiks/wgsl/ast/Expression;)Lorg/graphiks/wgsl/ast/Expression;
+	public fun transform (Lorg/graphiks/wgsl/ast/MemberAccessExpr;)Lorg/graphiks/wgsl/ast/Expression;
+	public final fun transform (Lorg/graphiks/wgsl/ast/TranslationUnit;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+}
+
+public abstract class org/graphiks/wgsl/ast/FilterMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/Flat : org/graphiks/wgsl/ast/InterpolationType {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Flat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Flat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Flat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/FloatLiteral : org/graphiks/wgsl/ast/Literal {
+	public fun <init> (DLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (DLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/FloatLiteral;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/FloatLiteral;DLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FloatLiteral;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getSuffix ()Ljava/lang/String;
+	public final fun getValue ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ForStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Statement;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/Statement;
+	public final fun component4 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component5 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ForStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ForStatement;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ForStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun getCondition ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getInit ()Lorg/graphiks/wgsl/ast/Statement;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getUpdate ()Lorg/graphiks/wgsl/ast/Statement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/FragmentInput {
+	public fun <init> (Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun copy (Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;)Lorg/graphiks/wgsl/ast/FragmentInput;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/FragmentInput;Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FragmentInput;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBuiltin ()Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public final fun getLocation ()Ljava/lang/Integer;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/FrontFacing : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/FrontFacing;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/FrontFacing;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FrontFacing;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/FunctionDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component7 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component8 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/FunctionDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/FunctionDecl;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FunctionDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getParameters ()Ljava/util/List;
+	public final fun getReturnAttributes ()Ljava/util/List;
+	public final fun getReturnType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getTemplateParams ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/GlobalDecl {
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/Greater : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Greater;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Greater;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Greater;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/GreaterEqual : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/GreaterEqual;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/GreaterEqual;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/GreaterEqual;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/IdentExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IdentExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/IdentExpr;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IdentExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/IfStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Statement;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/Statement;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IfStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/IfStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IfStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCondition ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getElseBranch ()Lorg/graphiks/wgsl/ast/Statement;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getThenBranch ()Lorg/graphiks/wgsl/ast/Statement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/IncDecStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;ZLorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Z
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IncDecStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/IncDecStatement;Lorg/graphiks/wgsl/ast/Expression;ZLorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IncDecStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public final fun isIncrement ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/IndexExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IndexExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/IndexExpr;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IndexExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIndex ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getObjectExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/InstanceIndex : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/InstanceIndex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/InstanceIndex;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/InstanceIndex;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/IntLiteral : org/graphiks/wgsl/ast/Literal {
+	public fun <init> (JLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (JLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IntLiteral;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/IntLiteral;JLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IntLiteral;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getSuffix ()Ljava/lang/String;
+	public final fun getValue ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/InterpolationSampling : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public abstract class org/graphiks/wgsl/ast/InterpolationType : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/Less : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Less;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Less;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Less;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/LessEqual : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/LessEqual;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/LessEqual;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/LessEqual;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Linear : org/graphiks/wgsl/ast/FilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Linear;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Linear;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Linear;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/LinearInterpolation : org/graphiks/wgsl/ast/InterpolationType {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/LinearInterpolation;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/LinearInterpolation;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/LinearInterpolation;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/Literal : org/graphiks/wgsl/ast/Expression {
+}
+
+public final class org/graphiks/wgsl/ast/LoopStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/LoopStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/LoopStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/LoopStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun getContinuing ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/MatrixType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (IILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (IILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MatrixType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/MatrixType;IILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MatrixType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColumns ()I
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun getRows ()I
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/MemberAccessExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MemberAccessExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/MemberAccessExpr;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MemberAccessExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMember ()Ljava/lang/String;
+	public final fun getObjectExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/MipmapFilterMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/MipmapLinear : org/graphiks/wgsl/ast/MipmapFilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MipmapLinear;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/MipmapLinear;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MipmapLinear;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/MipmapNearest : org/graphiks/wgsl/ast/MipmapFilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MipmapNearest;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/MipmapNearest;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MipmapNearest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/MirrorRepeat : org/graphiks/wgsl/ast/AddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MirrorRepeat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/MirrorRepeat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MirrorRepeat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/NamedType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/NamedType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/NamedType;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/NamedType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Nearest : org/graphiks/wgsl/ast/FilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Nearest;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Nearest;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Nearest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Never : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Never;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Never;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Never;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/NotEqual : org/graphiks/wgsl/ast/ComparisonFunction {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/NotEqual;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/NotEqual;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/NotEqual;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/OpaqueBlack : org/graphiks/wgsl/ast/SamplerBorderColor {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/OpaqueBlack;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/OpaqueBlack;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/OpaqueBlack;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/OpaqueWhite : org/graphiks/wgsl/ast/SamplerBorderColor {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/OpaqueWhite;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/OpaqueWhite;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/OpaqueWhite;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/OverrideDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component4 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component5 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/OverrideDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/OverrideDecl;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/OverrideDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getInitializer ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Param {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component4 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component5 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Param;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Param;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Param;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getDefaultValue ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Perspective : org/graphiks/wgsl/ast/InterpolationType {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Perspective;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Perspective;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Perspective;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/PhonyAssignmentStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PhonyAssignmentStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/PhonyAssignmentStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/PhonyAssignmentStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpression ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/PointerType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/StorageClass;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PointerType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/PointerType;Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/PointerType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessMode ()Ljava/lang/String;
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getStorageClass ()Lorg/graphiks/wgsl/ast/StorageClass;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Position : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Position;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Position;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Position;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public abstract fun getCategory ()Ljava/lang/String;
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public abstract fun getValue ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/PredeclaredEnumerantExpr : org/graphiks/wgsl/ast/EnumValueExpr {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PredeclaredEnumerantExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/PredeclaredEnumerantExpr;Ljava/lang/String;Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/PredeclaredEnumerantExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCategory ()Ljava/lang/String;
+	public fun getEnumTypeName ()Ljava/lang/String;
+	public fun getEnumValue ()Lorg/graphiks/wgsl/ast/EnumValue;
+	public final fun getEnumerant ()Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/PredeclaredEnumsKt {
+	public static final fun getAllPredeclaredEnumerantCategories ()Ljava/util/List;
+	public static final fun getPredeclaredEnumerant (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PredeclaredEnumerant;
+	public static final fun getPredeclaredEnumerantValues (Ljava/lang/String;)Ljava/util/List;
+}
+
+public final class org/graphiks/wgsl/ast/PrimitiveIndex : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PrimitiveIndex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/PrimitiveIndex;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/PrimitiveIndex;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/RayQueryType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/RayQueryType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/RayQueryType;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/RayQueryType;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ReferenceType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/StorageClass;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ReferenceType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ReferenceType;Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ReferenceType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getStorageClass ()Lorg/graphiks/wgsl/ast/StorageClass;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Repeat : org/graphiks/wgsl/ast/AddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Repeat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Repeat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Repeat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/RequiresDirective : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/RequiresDirective;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/RequiresDirective;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/RequiresDirective;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFeatures ()Ljava/util/List;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ReturnStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ReturnStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ReturnStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ReturnStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getValue ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/Sample : org/graphiks/wgsl/ast/InterpolationSampling {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Sample;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/Sample;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Sample;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SampleIndex : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SampleIndex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SampleIndex;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SampleIndex;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SampleMask : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SampleMask;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SampleMask;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SampleMask;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/SamplerAddressMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public abstract class org/graphiks/wgsl/ast/SamplerBorderColor : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerClampToEdge : org/graphiks/wgsl/ast/SamplerAddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerClampToEdge;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerClampToEdge;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerClampToEdge;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/SamplerFilterMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerLinear : org/graphiks/wgsl/ast/SamplerFilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerLinear;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerLinear;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerLinear;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/SamplerMipmapFilterMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerMipmapLinear : org/graphiks/wgsl/ast/SamplerMipmapFilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerMipmapLinear;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerMipmapLinear;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerMipmapLinear;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerMipmapNearest : org/graphiks/wgsl/ast/SamplerMipmapFilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerMipmapNearest;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerMipmapNearest;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerMipmapNearest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerMirrorRepeat : org/graphiks/wgsl/ast/SamplerAddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerMirrorRepeat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerMirrorRepeat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerMirrorRepeat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerNearest : org/graphiks/wgsl/ast/SamplerFilterMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerNearest;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerNearest;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerNearest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerRepeat : org/graphiks/wgsl/ast/SamplerAddressMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerRepeat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerRepeat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerRepeat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SamplerType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (ZLorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SamplerType;ZLorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerType;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public final fun isComparison ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ScalarKind : java/lang/Enum {
+	public static final field BOOL Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field F16 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field F32 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field F64 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field I16 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field I32 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field I64 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field I8 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field U16 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field U32 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field U64 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static final field U8 Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/ScalarKind;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/ScalarKind;
+}
+
+public final class org/graphiks/wgsl/ast/ScalarType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/ScalarKind;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/ScalarKind;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/ScalarKind;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ScalarType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ScalarType;Lorg/graphiks/wgsl/ast/ScalarKind;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ScalarType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKind ()Lorg/graphiks/wgsl/ast/ScalarKind;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/Statement {
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/StorageClass : java/lang/Enum {
+	public static final field FUNCTION Lorg/graphiks/wgsl/ast/StorageClass;
+	public static final field HANDLE Lorg/graphiks/wgsl/ast/StorageClass;
+	public static final field PRIVATE Lorg/graphiks/wgsl/ast/StorageClass;
+	public static final field PUSH_CONSTANT Lorg/graphiks/wgsl/ast/StorageClass;
+	public static final field STORAGE Lorg/graphiks/wgsl/ast/StorageClass;
+	public static final field UNIFORM Lorg/graphiks/wgsl/ast/StorageClass;
+	public static final field WORKGROUP Lorg/graphiks/wgsl/ast/StorageClass;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/StorageClass;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/StorageClass;
+}
+
+public final class org/graphiks/wgsl/ast/StringLiteral : org/graphiks/wgsl/ast/Literal {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StringLiteral;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/StringLiteral;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StringLiteral;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/StructDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StructDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/StructDecl;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StructDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getMembers ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getTemplateParams ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/StructMember {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component4 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component5 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StructMember;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/StructMember;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StructMember;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getDefaultValue ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/StructType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StructType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/StructType;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StructType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SwitchBody {
+	public fun <init> (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SwitchBody;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SwitchBody;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SwitchBody;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCases ()Ljava/util/List;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/SwitchCase {
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/SwitchStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/SwitchBody;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/SwitchBody;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/SwitchBody;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SwitchStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SwitchStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/SwitchBody;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SwitchStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/SwitchBody;
+	public final fun getExpression ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/SwizzleExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SwizzleExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/SwizzleExpr;Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SwizzleExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComponents ()Ljava/util/List;
+	public final fun getObjectExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TemplateParam {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TemplateParam;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TemplateParam;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TemplateParam;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConstraint ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TemplateType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TemplateType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TemplateType;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TemplateType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TernaryExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TernaryExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TernaryExpr;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TernaryExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCondition ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getFalseExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getTrueExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TextureKind : java/lang/Enum {
+	public static final field TEXTURE_1D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_1D_ARRAY Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_2D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_2D_ARRAY Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_3D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_CUBE Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_CUBE_ARRAY Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_DEPTH_2D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_DEPTH_2D_ARRAY Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_DEPTH_CUBE Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_DEPTH_CUBE_ARRAY Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_DEPTH_MULTISAMPLED_2D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_EXTERNAL Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_MULTISAMPLED_2D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_STORAGE_1D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_STORAGE_2D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_STORAGE_2D_ARRAY Lorg/graphiks/wgsl/ast/TextureKind;
+	public static final field TEXTURE_STORAGE_3D Lorg/graphiks/wgsl/ast/TextureKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/TextureKind;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/TextureKind;
+}
+
+public final class org/graphiks/wgsl/ast/TextureType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/TextureKind;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ast/TextureKind;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/TextureKind;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/TextureKind;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TextureType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TextureType;Lorg/graphiks/wgsl/ast/TextureKind;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TextureType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessMode ()Ljava/lang/String;
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun getKind ()Lorg/graphiks/wgsl/ast/TextureKind;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TranslationUnit {
+	public static final field Companion Lorg/graphiks/wgsl/ast/TranslationUnit$Companion;
+	public fun <init> (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeclarations ()Ljava/util/List;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TranslationUnit$Companion {
+	public final fun empty ()Lorg/graphiks/wgsl/ast/TranslationUnit;
+}
+
+public final class org/graphiks/wgsl/ast/TransparentBlack : org/graphiks/wgsl/ast/SamplerBorderColor {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TransparentBlack;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TransparentBlack;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TransparentBlack;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TypeAliasDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component5 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TypeAliasDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TypeAliasDecl;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TypeAliasDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getTemplateParams ()Ljava/util/List;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/TypeCastExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TypeCastExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/TypeCastExpr;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TypeCastExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpr ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/TypeDecl {
+	public abstract fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/TypeDeclKt {
+	public static final fun isFloat (Lorg/graphiks/wgsl/ast/ScalarKind;)Z
+	public static final fun isInteger (Lorg/graphiks/wgsl/ast/ScalarKind;)Z
+}
+
+public final class org/graphiks/wgsl/ast/UnaryExpr : org/graphiks/wgsl/ast/Expression {
+	public fun <init> (Lorg/graphiks/wgsl/ast/UnaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/UnaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/UnaryExpr;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/UnaryExpr;Lorg/graphiks/wgsl/ast/UnaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/UnaryExpr;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOp ()Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public final fun getOperand ()Lorg/graphiks/wgsl/ast/Expression;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/UnaryOperator : java/lang/Enum {
+	public static final field ADDRESS_OF Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static final field BITWISE_NOT Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static final field DEREF Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static final field MINUS Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static final field NOT Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static final field PLUS Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/UnaryOperator;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/UnaryOperator;
+}
+
+public final class org/graphiks/wgsl/ast/VariableDecl : org/graphiks/wgsl/ast/GlobalDecl {
+	public fun <init> (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component7 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component8 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VariableDecl;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/VariableDecl;Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VariableDecl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessMode ()Ljava/lang/String;
+	public final fun getAttributes ()Ljava/util/List;
+	public final fun getInitializer ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getKind ()Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getStorageClass ()Ljava/lang/String;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/VariableDeclKind : java/lang/Enum {
+	public static final field CONST Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public static final field LET Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public static final field VAR Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public static fun values ()[Lorg/graphiks/wgsl/ast/VariableDeclKind;
+}
+
+public final class org/graphiks/wgsl/ast/VariableDeclStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component6 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component7 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VariableDeclStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/VariableDeclStatement;Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VariableDeclStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccessMode ()Ljava/lang/String;
+	public final fun getInitializer ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getKind ()Lorg/graphiks/wgsl/ast/VariableDeclKind;
+	public final fun getName ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getStorageClass ()Ljava/lang/String;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/VectorType : org/graphiks/wgsl/ast/TypeDecl {
+	public fun <init> (ILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()I
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (ILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VectorType;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/VectorType;ILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VectorType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getElementType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun getSize ()I
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/VertexIndex : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VertexIndex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/VertexIndex;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VertexIndex;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/VertexOutput {
+	public fun <init> (Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun copy (Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;)Lorg/graphiks/wgsl/ast/VertexOutput;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/VertexOutput;Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VertexOutput;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBuiltin ()Lorg/graphiks/wgsl/ast/BuiltinValue;
+	public final fun getLocation ()Ljava/lang/Integer;
+	public final fun getType ()Lorg/graphiks/wgsl/ast/TypeDecl;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/ViewportIndex : org/graphiks/wgsl/ast/BuiltinValueEnum {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ViewportIndex;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/ViewportIndex;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ViewportIndex;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/WhileStatement : org/graphiks/wgsl/ast/Statement {
+	public fun <init> (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun component2 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component3 ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun component4 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/WhileStatement;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/WhileStatement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/WhileStatement;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun getCondition ()Lorg/graphiks/wgsl/ast/Expression;
+	public final fun getContinuing ()Lorg/graphiks/wgsl/ast/BlockStatement;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/WrappingClampToEdge : org/graphiks/wgsl/ast/WrappingMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/WrappingClampToEdge;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/WrappingClampToEdge;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/WrappingClampToEdge;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/ast/WrappingMirrorRepeat : org/graphiks/wgsl/ast/WrappingMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/WrappingMirrorRepeat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/WrappingMirrorRepeat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/WrappingMirrorRepeat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/graphiks/wgsl/ast/WrappingMode : org/graphiks/wgsl/ast/PredeclaredEnumerant {
+	public synthetic fun <init> (Lorg/graphiks/wgsl/ir/Span;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCategory ()Ljava/lang/String;
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+}
+
+public final class org/graphiks/wgsl/ast/WrappingRepeat : org/graphiks/wgsl/ast/WrappingMode {
+	public fun <init> (Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/WrappingRepeat;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/ast/WrappingRepeat;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/WrappingRepeat;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/lexer/Lexer : org/graphiks/wgsl/lexer/TokenStream {
+	public fun <init> (Ljava/lang/String;)V
+	public fun isEof ()Z
+	public fun next ()Lorg/graphiks/wgsl/lexer/Token;
+	public fun peek ()Lorg/graphiks/wgsl/lexer/Token;
+	public fun position ()Lorg/graphiks/wgsl/lexer/SourcePosition;
+	public final fun tokenize ()Ljava/util/List;
+	public final fun tokenizeSignificant ()Ljava/util/List;
+}
+
+public final class org/graphiks/wgsl/lexer/LexerKt {
+	public static final fun tokenize (Ljava/lang/String;)Ljava/util/List;
+	public static final fun tokenizeSignificant (Ljava/lang/String;)Ljava/util/List;
+}
+
+public final class org/graphiks/wgsl/lexer/SourcePosition {
+	public static final field Companion Lorg/graphiks/wgsl/lexer/SourcePosition$Companion;
+	public fun <init> (III)V
+	public final fun advance (C)Lorg/graphiks/wgsl/lexer/SourcePosition;
+	public final fun advanceColumns (I)Lorg/graphiks/wgsl/lexer/SourcePosition;
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun copy (III)Lorg/graphiks/wgsl/lexer/SourcePosition;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/lexer/SourcePosition;IIIILjava/lang/Object;)Lorg/graphiks/wgsl/lexer/SourcePosition;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColumn ()I
+	public final fun getLine ()I
+	public final fun getOffset ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/lexer/SourcePosition$Companion {
+	public final fun getSTART ()Lorg/graphiks/wgsl/lexer/SourcePosition;
+	public final fun of (III)Lorg/graphiks/wgsl/lexer/SourcePosition;
+}
+
+public final class org/graphiks/wgsl/lexer/Token {
+	public static final field Companion Lorg/graphiks/wgsl/lexer/Token$Companion;
+	public fun <init> (Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/lexer/TokenKind;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)Lorg/graphiks/wgsl/lexer/Token;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/lexer/Token;Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;ILjava/lang/Object;)Lorg/graphiks/wgsl/lexer/Token;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKind ()Lorg/graphiks/wgsl/lexer/TokenKind;
+	public final fun getLiteral ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public final fun isComment ()Z
+	public final fun isEof ()Z
+	public final fun isKeyword ()Z
+	public final fun isLiteral ()Z
+	public final fun isOperator ()Z
+	public final fun isPunctuation ()Z
+	public final fun isWhitespace ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/lexer/Token$Companion {
+	public final fun boolLiteral (ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun eof (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun floatLiteral (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun identifier (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun intLiteral (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun of (Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)Lorg/graphiks/wgsl/lexer/Token;
+	public static synthetic fun of$default (Lorg/graphiks/wgsl/lexer/Token$Companion;Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;ILjava/lang/Object;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun simple (Lorg/graphiks/wgsl/lexer/TokenKind;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun stringLiteral (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun uintLiteral (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/lexer/Token;
+}
+
+public final class org/graphiks/wgsl/lexer/TokenKind : java/lang/Enum {
+	public static final field ABSTRACT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ALIAS Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ALIGNED Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field AMPERSAND Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field AND Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field AND_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ARROW Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field AT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ATOMIC Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field BITCAST Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field BOOL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field BOOL_LITERAL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field BREAK Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field BUILTIN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CARET Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CASE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CLIP_DISTANCES Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field COLON Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field COLON_COLON Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field COMMA Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field COMPUTE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CONST Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CONST_ASSERT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CONTINUE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CONTINUING Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field CULL_DISTANCES Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DECREMENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DEFAULT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DEVICE_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DIAGNOSTIC Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DISCARD Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DOC_COMMENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DOT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DOT_STAR Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field DRAW_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ELSE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ENABLE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field ENUM Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field EOF Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field EQ Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field F16 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field F32 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field F64 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FALSE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FAT_ARROW Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FLOAT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FLOAT_LITERAL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FOR Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FRAGMENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FRONT_FACING Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field FUNCTION Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field GLOBAL_INVOCATION_ID Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field GTE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field HANDLE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field I16 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field I32 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field I64 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field I8 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field IDENTIFIER Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field IF Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field INCREMENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field INSTANCE_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field INT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field INTERPOLATE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field INT_LITERAL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field INVARIANT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_ANGLE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_ANGLE_RIGHT_ANGLE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_BRACE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_BRACKET Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_PAREN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_SHIFT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LEFT_SHIFT_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LET Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LOCAL_INVOCATION_ID Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LOCAL_INVOCATION_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LOCATION Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LOOP Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field LTE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field MAT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field MINUS Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field MINUS_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field MULTI_LINE_COMMENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field MUST_USE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field NEQ Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field NOT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field NUM_WORKGROUPS Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field OR Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field OR_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field OVERRIDE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PACKED Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PERCENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PERCENT_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PIPE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PLUS Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PLUS_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field POINTSIZE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field POSITION Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PRIMITIVE_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PRIVATE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field PTR Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field QUESTION Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RAY_QUERY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field READ Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field READ_WRITE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field REQUIRES Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RETURN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RIGHT_ANGLE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RIGHT_BRACE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RIGHT_BRACKET Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RIGHT_PAREN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RIGHT_SHIFT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field RIGHT_SHIFT_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SAMPLER Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SAMPLER_COMPARISON Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SAMPLE_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SAMPLE_MASK Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SEMICOLON Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SINGLE_LINE_COMMENT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SLASH Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SLASH_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field STAR Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field STAR_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field STATIC_ASSERT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field STORAGE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field STRING_LITERAL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field STRUCT Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field SWITCH Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_1D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_1D_ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_2D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_2D_ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_3D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_CUBE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_CUBE_ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_DEPTH_2D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_DEPTH_2D_ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_DEPTH_CUBE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_DEPTH_CUBE_ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_DEPTH_MULTISAMPLED_2D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_EXTERNAL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_MULTISAMPLED_2D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_STORAGE_1D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_STORAGE_2D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_STORAGE_2D_ARRAY Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TEXTURE_STORAGE_3D Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TILDE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TRUE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field TYPE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field U16 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field U32 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field U64 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field U8 Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field UINT_LITERAL Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field UNDERSCORE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field UNIFORM Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field UNKNOWN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field VAR Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field VEC Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field VERTEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field VERTEX_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field VIEWPORT_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field VIEW_INDEX Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field WHERE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field WHILE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field WHITESPACE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field WORKGROUP Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field WORKGROUP_ID Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field WRITE Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static final field XOR_ASSIGN Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/lexer/TokenKind;
+	public static fun values ()[Lorg/graphiks/wgsl/lexer/TokenKind;
+}
+
+public final class org/graphiks/wgsl/lexer/TokenKindKt {
+	public static final fun isBinaryOperator (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isBuiltinValue (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isKeyword (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isLiteral (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isOperator (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isPunctuation (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isRightAssociative (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun isUnaryOperator (Lorg/graphiks/wgsl/lexer/TokenKind;)Z
+	public static final fun precedence (Lorg/graphiks/wgsl/lexer/TokenKind;)I
+}
+
+public abstract interface class org/graphiks/wgsl/lexer/TokenStream {
+	public fun isEof ()Z
+	public abstract fun next ()Lorg/graphiks/wgsl/lexer/Token;
+	public abstract fun peek ()Lorg/graphiks/wgsl/lexer/Token;
+	public abstract fun position ()Lorg/graphiks/wgsl/lexer/SourcePosition;
+}
+
+public final class org/graphiks/wgsl/lexer/TokenStream$DefaultImpls {
+	public static fun isEof (Lorg/graphiks/wgsl/lexer/TokenStream;)Z
+}
+
+public final class org/graphiks/wgsl/parser/AstBuilder {
+	public fun <init> ()V
+	public final fun ArrayType (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/Integer;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ArrayType;
+	public static synthetic fun ArrayType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/Integer;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ArrayType;
+	public final fun AssignmentStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/AssignmentStatement;
+	public static synthetic fun AssignmentStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/AssignmentStatement;
+	public final fun AtomicType (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/AtomicType;
+	public static synthetic fun AtomicType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/AtomicType;
+	public final fun Attribute (Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Attribute;
+	public static synthetic fun Attribute$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Attribute;
+	public final fun BinaryExpr (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BinaryExpr;
+	public static synthetic fun BinaryExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BinaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BinaryExpr;
+	public final fun BitcastExpr (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BitcastExpr;
+	public static synthetic fun BitcastExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BitcastExpr;
+	public final fun BlockStatement (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BlockStatement;
+	public static synthetic fun BlockStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BlockStatement;
+	public final fun BoolLiteral (ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BoolLiteral;
+	public static synthetic fun BoolLiteral$default (Lorg/graphiks/wgsl/parser/AstBuilder;ZLorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BoolLiteral;
+	public final fun BreakIfStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BreakIfStatement;
+	public static synthetic fun BreakIfStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BreakIfStatement;
+	public final fun BreakStatement (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/BreakStatement;
+	public static synthetic fun BreakStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/BreakStatement;
+	public final fun CallExpr (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/CallExpr;
+	public static synthetic fun CallExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/CallExpr;
+	public final fun Case (Ljava/util/List;ZLorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Case;
+	public static synthetic fun Case$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;ZLorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Case;
+	public final fun ConstAssertDecl (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ConstAssertDecl;
+	public static synthetic fun ConstAssertDecl$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ConstAssertDecl;
+	public final fun ConstantType (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ConstantType;
+	public static synthetic fun ConstantType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ConstantType;
+	public final fun ContinueStatement (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ContinueStatement;
+	public static synthetic fun ContinueStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ContinueStatement;
+	public final fun DefaultCase (Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DefaultCase;
+	public static synthetic fun DefaultCase$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DefaultCase;
+	public final fun DiagnosticDirective (Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DiagnosticDirective;
+	public static synthetic fun DiagnosticDirective$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DiagnosticDirective;
+	public final fun DiscardStatement (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/DiscardStatement;
+	public static synthetic fun DiscardStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/DiscardStatement;
+	public final fun EnableDirective (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/EnableDirective;
+	public static synthetic fun EnableDirective$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EnableDirective;
+	public final fun ExpressionStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ExpressionStatement;
+	public static synthetic fun ExpressionStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ExpressionStatement;
+	public final fun FloatLiteral (DLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/FloatLiteral;
+	public static synthetic fun FloatLiteral$default (Lorg/graphiks/wgsl/parser/AstBuilder;DLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FloatLiteral;
+	public final fun ForStatement (Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ForStatement;
+	public static synthetic fun ForStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ForStatement;
+	public final fun FunctionDecl (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/FunctionDecl;
+	public static synthetic fun FunctionDecl$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FunctionDecl;
+	public final fun IdentExpr (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IdentExpr;
+	public static synthetic fun IdentExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IdentExpr;
+	public final fun IfStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IfStatement;
+	public static synthetic fun IfStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ast/Statement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IfStatement;
+	public final fun IncDecStatement (Lorg/graphiks/wgsl/ast/Expression;ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IncDecStatement;
+	public static synthetic fun IncDecStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;ZLorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IncDecStatement;
+	public final fun IndexExpr (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IndexExpr;
+	public static synthetic fun IndexExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IndexExpr;
+	public final fun IntLiteral (JLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/IntLiteral;
+	public static synthetic fun IntLiteral$default (Lorg/graphiks/wgsl/parser/AstBuilder;JLjava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/IntLiteral;
+	public final fun LoopStatement (Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/LoopStatement;
+	public static synthetic fun LoopStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/LoopStatement;
+	public final fun MemberAccessExpr (Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MemberAccessExpr;
+	public static synthetic fun MemberAccessExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MemberAccessExpr;
+	public final fun NamedType (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/NamedType;
+	public static synthetic fun NamedType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/NamedType;
+	public final fun OverrideDecl (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/OverrideDecl;
+	public static synthetic fun OverrideDecl$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/OverrideDecl;
+	public final fun Param (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Param;
+	public static synthetic fun Param$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/Param;
+	public final fun PhonyAssignmentStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PhonyAssignmentStatement;
+	public static synthetic fun PhonyAssignmentStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/PhonyAssignmentStatement;
+	public final fun PointerType (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/PointerType;
+	public static synthetic fun PointerType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/PointerType;
+	public final fun RayQueryType (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/RayQueryType;
+	public static synthetic fun RayQueryType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/RayQueryType;
+	public final fun ReferenceType (Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ReferenceType;
+	public static synthetic fun ReferenceType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/StorageClass;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ReferenceType;
+	public final fun RequiresDirective (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/RequiresDirective;
+	public static synthetic fun RequiresDirective$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/RequiresDirective;
+	public final fun ReturnStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ReturnStatement;
+	public static synthetic fun ReturnStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ReturnStatement;
+	public final fun SamplerType (ZLorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SamplerType;
+	public static synthetic fun SamplerType$default (Lorg/graphiks/wgsl/parser/AstBuilder;ZLorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SamplerType;
+	public final fun StringLiteral (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StringLiteral;
+	public static synthetic fun StringLiteral$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StringLiteral;
+	public final fun StructDecl (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StructDecl;
+	public static synthetic fun StructDecl$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StructDecl;
+	public final fun StructMember (Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StructMember;
+	public static synthetic fun StructMember$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StructMember;
+	public final fun StructType (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/StructType;
+	public static synthetic fun StructType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/StructType;
+	public final fun SwitchBody (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SwitchBody;
+	public static synthetic fun SwitchBody$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SwitchBody;
+	public final fun SwitchStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/SwitchBody;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SwitchStatement;
+	public static synthetic fun SwitchStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/SwitchBody;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SwitchStatement;
+	public final fun SwizzleExpr (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/SwizzleExpr;
+	public static synthetic fun SwizzleExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/SwizzleExpr;
+	public final fun TemplateParam (Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TemplateParam;
+	public static synthetic fun TemplateParam$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TemplateParam;
+	public final fun TemplateType (Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TemplateType;
+	public static synthetic fun TemplateType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TemplateType;
+	public final fun TernaryExpr (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TernaryExpr;
+	public static synthetic fun TernaryExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TernaryExpr;
+	public final fun TextureType (Lorg/graphiks/wgsl/ast/TextureKind;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TextureType;
+	public static synthetic fun TextureType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/TextureKind;Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TextureType;
+	public final fun TranslationUnit (Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public static synthetic fun TranslationUnit$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public final fun TypeAliasDecl (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TypeAliasDecl;
+	public static synthetic fun TypeAliasDecl$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TypeAliasDecl;
+	public final fun TypeCastExpr (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TypeCastExpr;
+	public static synthetic fun TypeCastExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/TypeCastExpr;
+	public final fun UnaryExpr (Lorg/graphiks/wgsl/ast/UnaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/UnaryExpr;
+	public static synthetic fun UnaryExpr$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/UnaryOperator;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/UnaryExpr;
+	public final fun VariableDecl (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VariableDecl;
+	public static synthetic fun VariableDecl$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VariableDecl;
+	public final fun VariableDeclStatement (Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VariableDeclStatement;
+	public static synthetic fun VariableDeclStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/VariableDeclKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VariableDeclStatement;
+	public final fun WhileStatement (Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/WhileStatement;
+	public static synthetic fun WhileStatement$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/Expression;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ast/BlockStatement;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/WhileStatement;
+	public final fun entryPointCompute ()Lorg/graphiks/wgsl/ast/EntryPointAttribute$Compute;
+	public final fun entryPointFragment (Ljava/util/List;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Fragment;
+	public static synthetic fun entryPointFragment$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Fragment;
+	public final fun entryPointVertex (Ljava/util/List;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Vertex;
+	public static synthetic fun entryPointVertex$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/EntryPointAttribute$Vertex;
+	public final fun fragmentInput (Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;)Lorg/graphiks/wgsl/ast/FragmentInput;
+	public static synthetic fun fragmentInput$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/FragmentInput;
+	public final fun getDeclarationCount ()I
+	public final fun getExpressionCount ()I
+	public final fun getStatementCount ()I
+	public final fun getTotalCount ()I
+	public final fun getTypeCount ()I
+	public final fun matrixType (IILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/MatrixType;
+	public static synthetic fun matrixType$default (Lorg/graphiks/wgsl/parser/AstBuilder;IILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/MatrixType;
+	public final fun reset ()V
+	public final fun scalarType (Lorg/graphiks/wgsl/ast/ScalarKind;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/ScalarType;
+	public static synthetic fun scalarType$default (Lorg/graphiks/wgsl/parser/AstBuilder;Lorg/graphiks/wgsl/ast/ScalarKind;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/ScalarType;
+	public final fun vectorType (ILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/VectorType;
+	public static synthetic fun vectorType$default (Lorg/graphiks/wgsl/parser/AstBuilder;ILorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VectorType;
+	public final fun vertexOutput (Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;)Lorg/graphiks/wgsl/ast/VertexOutput;
+	public static synthetic fun vertexOutput$default (Lorg/graphiks/wgsl/parser/AstBuilder;Ljava/lang/Integer;Lorg/graphiks/wgsl/ast/BuiltinValue;Lorg/graphiks/wgsl/ast/TypeDecl;ILjava/lang/Object;)Lorg/graphiks/wgsl/ast/VertexOutput;
+}
+
+public final class org/graphiks/wgsl/parser/CompactDiagnosticFormatter : org/graphiks/wgsl/parser/DiagnosticFormatter {
+	public fun <init> ()V
+	public fun format (Lorg/graphiks/wgsl/parser/Diagnostic;Ljava/lang/String;)Ljava/lang/String;
+	public fun formatAll (Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/CycleDetectedException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+}
+
+public final class org/graphiks/wgsl/parser/DefaultDiagnosticFormatter : org/graphiks/wgsl/parser/DiagnosticFormatter {
+	public fun <init> ()V
+	public fun format (Lorg/graphiks/wgsl/parser/Diagnostic;Ljava/lang/String;)Ljava/lang/String;
+	public fun formatAll (Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/Diagnostic {
+	public static final field Companion Lorg/graphiks/wgsl/parser/Diagnostic$Companion;
+	public fun <init> (Lorg/graphiks/wgsl/parser/DiagnosticSeverity;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/parser/DiagnosticSeverity;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public final fun component2 ()Lorg/graphiks/wgsl/parser/ErrorCode;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Ljava/util/List;
+	public final fun copy (Lorg/graphiks/wgsl/parser/DiagnosticSeverity;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lorg/graphiks/wgsl/parser/Diagnostic;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/Diagnostic;Lorg/graphiks/wgsl/parser/DiagnosticSeverity;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/Diagnostic;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Lorg/graphiks/wgsl/parser/ErrorCode;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRelated ()Ljava/util/List;
+	public final fun getSeverity ()Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getSuggestions ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun isError ()Z
+	public final fun isWarning ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/Diagnostic$Companion {
+	public final fun error (Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;)Lorg/graphiks/wgsl/parser/Diagnostic;
+	public static synthetic fun error$default (Lorg/graphiks/wgsl/parser/Diagnostic$Companion;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/Diagnostic;
+	public final fun info (Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)Lorg/graphiks/wgsl/parser/Diagnostic;
+	public final fun warning (Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;)Lorg/graphiks/wgsl/parser/Diagnostic;
+	public static synthetic fun warning$default (Lorg/graphiks/wgsl/parser/Diagnostic$Companion;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/Diagnostic;
+}
+
+public final class org/graphiks/wgsl/parser/DiagnosticCollection {
+	public static final field Companion Lorg/graphiks/wgsl/parser/DiagnosticCollection$Companion;
+	public fun <init> ()V
+	public final fun add (Lorg/graphiks/wgsl/parser/Diagnostic;)V
+	public final fun addAll (Lorg/graphiks/wgsl/parser/DiagnosticCollection;)V
+	public final fun clear ()V
+	public final fun diagnostic (Lorg/graphiks/wgsl/parser/DiagnosticSeverity;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;)V
+	public static synthetic fun diagnostic$default (Lorg/graphiks/wgsl/parser/DiagnosticCollection;Lorg/graphiks/wgsl/parser/DiagnosticSeverity;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)V
+	public final fun error (Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;)V
+	public static synthetic fun error$default (Lorg/graphiks/wgsl/parser/DiagnosticCollection;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)V
+	public final fun getAll ()Ljava/util/List;
+	public final fun getErrorCount ()I
+	public final fun getErrors ()Ljava/util/List;
+	public final fun getForSpan (Lorg/graphiks/wgsl/ir/Span;)Ljava/util/List;
+	public final fun getHasErrors ()Z
+	public final fun getHasWarnings ()Z
+	public final fun getSize ()I
+	public final fun getWarningCount ()I
+	public final fun getWarnings ()Ljava/util/List;
+	public final fun groupBySeverity ()Ljava/util/Map;
+	public final fun hasCode (Lorg/graphiks/wgsl/parser/ErrorCode;)Z
+	public final fun isEmpty ()Z
+	public final fun merge (Lorg/graphiks/wgsl/parser/DiagnosticCollection;)Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public final fun sortBySpan ()Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public fun toString ()Ljava/lang/String;
+	public final fun warning (Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;)V
+	public static synthetic fun warning$default (Lorg/graphiks/wgsl/parser/DiagnosticCollection;Lorg/graphiks/wgsl/parser/ErrorCode;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)V
+}
+
+public final class org/graphiks/wgsl/parser/DiagnosticCollection$Companion {
+	public final fun empty ()Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public final fun of (Lorg/graphiks/wgsl/parser/Diagnostic;)Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public final fun of ([Lorg/graphiks/wgsl/parser/Diagnostic;)Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+}
+
+public abstract interface class org/graphiks/wgsl/parser/DiagnosticFormatter {
+	public abstract fun format (Lorg/graphiks/wgsl/parser/Diagnostic;Ljava/lang/String;)Ljava/lang/String;
+	public abstract fun formatAll (Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/DiagnosticSeverity : java/lang/Enum {
+	public static final field DEBUG Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public static final field ERROR Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public static final field INFO Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public static final field WARNING Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+	public static fun values ()[Lorg/graphiks/wgsl/parser/DiagnosticSeverity;
+}
+
+public final class org/graphiks/wgsl/parser/ErrorCode : java/lang/Enum {
+	public static final field CYCLIC_DEPENDENCY Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field DUPLICATE_DECLARATION Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field EXPECTED_DECLARATION Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field EXPECTED_EXPRESSION Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field EXPECTED_IDENTIFIER Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field EXPECTED_STATEMENT Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field EXPECTED_TOKEN Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field EXPECTED_TYPE Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field FORWARD_REFERENCE Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INTERNAL_ERROR Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_ASSIGNMENT Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_CALL Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_CAST Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_ESCAPE Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_INDEX Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_MEMBER_ACCESS Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_NUMBER Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_SYNTAX Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field INVALID_TYPE_ARGUMENT Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field MISSING_BRACE Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field MISSING_BRACKET Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field MISSING_PAREN Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field MISSING_SEMICOLON Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field TYPE_MISMATCH Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field UNDECLARED_IDENTIFIER Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field UNEXPECTED_CHARACTER Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field UNEXPECTED_TOKEN Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field UNKNOWN_TYPE Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field UNTERMINATED_COMMENT Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static final field UNTERMINATED_STRING Lorg/graphiks/wgsl/parser/ErrorCode;
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/parser/ErrorCode;
+	public static fun values ()[Lorg/graphiks/wgsl/parser/ErrorCode;
+}
+
+public final class org/graphiks/wgsl/parser/ErrorRecovery {
+	public static final field Companion Lorg/graphiks/wgsl/parser/ErrorRecovery$Companion;
+	public static final field DEFAULT_MAX_ERRORS I
+	public fun <init> ()V
+	public final fun createDummyExpression (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Expression;
+	public final fun createDummyStatement (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/Statement;
+	public final fun createDummyType (Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun getRecoveryStrategy (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;)Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+	public final fun recoverTo (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;Lorg/graphiks/wgsl/lexer/Token;Lkotlin/jvm/functions/Function0;Lorg/graphiks/wgsl/lexer/TokenKind;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun recoverToAny (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;Lorg/graphiks/wgsl/lexer/Token;Lkotlin/jvm/functions/Function0;[Lorg/graphiks/wgsl/lexer/TokenKind;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun recoverToNextDeclaration (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;Lorg/graphiks/wgsl/lexer/Token;Lkotlin/jvm/functions/Function0;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun recoverToNextStatement (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;Lorg/graphiks/wgsl/lexer/Token;Lkotlin/jvm/functions/Function0;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun shouldAttemptRecovery (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;)Z
+	public final fun skipUntil (Lorg/graphiks/wgsl/lexer/Token;Lkotlin/jvm/functions/Function0;Lorg/graphiks/wgsl/lexer/TokenKind;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun skipUntilAny (Lorg/graphiks/wgsl/lexer/Token;Lkotlin/jvm/functions/Function0;[Lorg/graphiks/wgsl/lexer/TokenKind;)Lorg/graphiks/wgsl/lexer/Token;
+	public final fun tryInsertToken (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;Lorg/graphiks/wgsl/lexer/TokenKind;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/parser/ErrorRecovery$VirtualToken;
+	public final fun tryReplaceToken (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;Lorg/graphiks/wgsl/lexer/Token;Lorg/graphiks/wgsl/lexer/TokenKind;)Lorg/graphiks/wgsl/lexer/Token;
+}
+
+public final class org/graphiks/wgsl/parser/ErrorRecovery$Companion {
+}
+
+public final class org/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext : java/lang/Enum {
+	public static final field DECLARATION Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static final field EXPRESSION Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static final field FUNCTION Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static final field STATEMENT Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static final field STRUCT Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static final field TYPE Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+	public static fun values ()[Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryContext;
+}
+
+public final class org/graphiks/wgsl/parser/ErrorRecovery$RecoveryState {
+	public fun <init> ()V
+	public fun <init> (ZIILorg/graphiks/wgsl/parser/DiagnosticCollection;Ljava/util/List;)V
+	public synthetic fun <init> (ZIILorg/graphiks/wgsl/parser/DiagnosticCollection;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public final fun component5 ()Ljava/util/List;
+	public final fun copy (ZIILorg/graphiks/wgsl/parser/DiagnosticCollection;Ljava/util/List;)Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;ZIILorg/graphiks/wgsl/parser/DiagnosticCollection;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryState;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDiagnostics ()Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public final fun getErrorCount ()I
+	public final fun getExpectedTokens ()Ljava/util/List;
+	public final fun getMaxErrors ()I
+	public fun hashCode ()I
+	public final fun isAtSynchronizationPoint (Lorg/graphiks/wgsl/lexer/Token;)Z
+	public final fun isRecovering ()Z
+	public final fun setErrorCount (I)V
+	public final fun setRecovering (Z)V
+	public final fun shouldStop ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy : java/lang/Enum {
+	public static final field DECLARATION Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+	public static final field EXPRESSION Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+	public static final field STATEMENT Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+	public static final field TYPE Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+	public static fun values ()[Lorg/graphiks/wgsl/parser/ErrorRecovery$RecoveryStrategy;
+}
+
+public final class org/graphiks/wgsl/parser/ErrorRecovery$VirtualToken {
+	public fun <init> (Lorg/graphiks/wgsl/lexer/TokenKind;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/lexer/TokenKind;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Lorg/graphiks/wgsl/lexer/TokenKind;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/parser/ErrorRecovery$VirtualToken;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/ErrorRecovery$VirtualToken;Lorg/graphiks/wgsl/lexer/TokenKind;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/ErrorRecovery$VirtualToken;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKind ()Lorg/graphiks/wgsl/lexer/TokenKind;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/Lowerer {
+	public fun <init> ()V
+	public final fun lower (Lorg/graphiks/wgsl/ast/TranslationUnit;)Lorg/graphiks/wgsl/ir/Module;
+}
+
+public final class org/graphiks/wgsl/parser/LoweringError : java/lang/RuntimeException {
+	public fun <init> (Ljava/lang/String;)V
+}
+
+public final class org/graphiks/wgsl/parser/ModuleIndexer {
+	public fun <init> ()V
+	public final fun buildDependencyGraph (Lorg/graphiks/wgsl/ast/TranslationUnit;)Ljava/util/Map;
+	public final fun findDependenciesInFunction (Lorg/graphiks/wgsl/ast/FunctionDecl;Ljava/util/Set;)Ljava/util/Set;
+	public final fun reorderDeclarations (Lorg/graphiks/wgsl/ast/TranslationUnit;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public final fun topologicalSort (Ljava/util/Map;)Ljava/util/List;
+}
+
+public final class org/graphiks/wgsl/parser/ParseError {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;)Lorg/graphiks/wgsl/parser/ParseError;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/ParseError;Ljava/lang/String;Lorg/graphiks/wgsl/ir/Span;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/ParseError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/ParseResult {
+	public fun <init> (Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;)Lorg/graphiks/wgsl/parser/ParseResult;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/ParseResult;Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/ParseResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrors ()Ljava/util/List;
+	public final fun getTranslationUnit ()Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public fun hashCode ()I
+	public final fun isSuccess ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/Parser {
+	public fun <init> (Lorg/graphiks/wgsl/lexer/Lexer;)V
+	public final fun getErrors ()Ljava/util/List;
+	public final fun parse ()Lorg/graphiks/wgsl/ast/TranslationUnit;
+}
+
+public final class org/graphiks/wgsl/parser/ParserKt {
+	public static final fun parseWgsl (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public static final fun parseWgslResult (Ljava/lang/String;)Lorg/graphiks/wgsl/parser/ParseResult;
+}
+
+public final class org/graphiks/wgsl/parser/PrettyPrintError {
+	public static final field Companion Lorg/graphiks/wgsl/parser/PrettyPrintError$Companion;
+	public fun <init> ()V
+	public final fun formatContext (Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;I)Ljava/lang/String;
+	public static synthetic fun formatContext$default (Lorg/graphiks/wgsl/parser/PrettyPrintError;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;IILjava/lang/Object;)Ljava/lang/String;
+	public final fun formatDiagnostic (Lorg/graphiks/wgsl/parser/Diagnostic;Ljava/lang/String;I)Ljava/lang/String;
+	public static synthetic fun formatDiagnostic$default (Lorg/graphiks/wgsl/parser/PrettyPrintError;Lorg/graphiks/wgsl/parser/Diagnostic;Ljava/lang/String;IILjava/lang/Object;)Ljava/lang/String;
+	public final fun formatDiagnosticCollection (Lorg/graphiks/wgsl/parser/DiagnosticCollection;Ljava/lang/String;I)Ljava/lang/String;
+	public static synthetic fun formatDiagnosticCollection$default (Lorg/graphiks/wgsl/parser/PrettyPrintError;Lorg/graphiks/wgsl/parser/DiagnosticCollection;Ljava/lang/String;IILjava/lang/Object;)Ljava/lang/String;
+	public final fun formatDiagnostics (Ljava/util/List;Ljava/lang/String;I)Ljava/lang/String;
+	public static synthetic fun formatDiagnostics$default (Lorg/graphiks/wgsl/parser/PrettyPrintError;Ljava/util/List;Ljava/lang/String;IILjava/lang/Object;)Ljava/lang/String;
+	public final fun formatLocation (Lorg/graphiks/wgsl/ir/Span;)Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/PrettyPrintError$Companion {
+}
+
+public final class org/graphiks/wgsl/parser/PrettyPrintError$SourceInfo {
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lorg/graphiks/wgsl/parser/PrettyPrintError$SourceInfo;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/PrettyPrintError$SourceInfo;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/PrettyPrintError$SourceInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLine (I)Ljava/lang/String;
+	public final fun getLines ()Ljava/util/List;
+	public final fun getSource ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/TooManyErrorsException : java/lang/Exception {
+	public fun <init> (ILorg/graphiks/wgsl/parser/DiagnosticCollection;)V
+	public final fun getDiagnostics ()Lorg/graphiks/wgsl/parser/DiagnosticCollection;
+	public final fun getMaxErrors ()I
+}
+
+public final class org/graphiks/wgsl/parser/TypeIndex {
+	public fun <init> ()V
+	public final fun findDeclaration (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/GlobalDecl;
+	public final fun findEnum (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/EnumDecl;
+	public final fun findFunction (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/FunctionDecl;
+	public final fun findGlobalConstant (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/VariableDecl;
+	public final fun findGlobalVariable (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/VariableDecl;
+	public final fun findStruct (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/StructDecl;
+	public final fun findTypeAlias (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/TypeAliasDecl;
+	public final fun getAllDeclaredNames ()Ljava/util/Set;
+	public final fun getAllEnums ()Ljava/util/Collection;
+	public final fun getAllFunctions ()Ljava/util/Collection;
+	public final fun getAllGlobalConstants ()Ljava/util/Collection;
+	public final fun getAllGlobalVariables ()Ljava/util/Collection;
+	public final fun getAllStructs ()Ljava/util/Collection;
+	public final fun getAllTypeAliases ()Ljava/util/Collection;
+	public final fun getBuiltinScalarKind (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/ScalarKind;
+	public final fun getBuiltinScalarType (Ljava/lang/String;)Lorg/graphiks/wgsl/ast/ScalarType;
+	public final fun index (Lorg/graphiks/wgsl/ast/TranslationUnit;)V
+	public final fun isBuiltinMatrixType (Ljava/lang/String;)Z
+	public final fun isBuiltinScalarType (Ljava/lang/String;)Z
+	public final fun isBuiltinValue (Ljava/lang/String;)Z
+	public final fun isBuiltinVectorType (Ljava/lang/String;)Z
+	public final fun isDeclared (Ljava/lang/String;)Z
+	public final fun isKnownType (Ljava/lang/String;)Z
+	public final fun isKnownValue (Ljava/lang/String;)Z
+	public final fun parseBuiltinMatrixType (Ljava/lang/String;)Lkotlin/Triple;
+	public final fun parseBuiltinVectorType (Ljava/lang/String;)Lkotlin/Pair;
+	public final fun reset ()V
+}
+
+public final class org/graphiks/wgsl/parser/TypeResolver {
+	public fun <init> ()V
+	public fun <init> (Lorg/graphiks/wgsl/parser/TypeIndex;Lorg/graphiks/wgsl/parser/ModuleIndexer;)V
+	public synthetic fun <init> (Lorg/graphiks/wgsl/parser/TypeIndex;Lorg/graphiks/wgsl/parser/ModuleIndexer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun areTypesCompatible (Lorg/graphiks/wgsl/ast/TypeDecl;Lorg/graphiks/wgsl/ast/TypeDecl;)Z
+	public final fun resolve (Lorg/graphiks/wgsl/ast/TranslationUnit;)Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult;
+	public final fun resolveExpression (Lorg/graphiks/wgsl/ast/Expression;Ljava/util/List;)Lorg/graphiks/wgsl/ast/Expression;
+	public final fun resolveTypeDecl (Lorg/graphiks/wgsl/ast/TypeDecl;Ljava/util/List;)Lorg/graphiks/wgsl/ast/TypeDecl;
+	public final fun validateResolution (Lorg/graphiks/wgsl/ast/TranslationUnit;)Ljava/util/List;
+}
+
+public final class org/graphiks/wgsl/parser/TypeResolver$ResolutionResult {
+	public static final field Companion Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult$Companion;
+	public fun <init> (Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;Z)V
+	public final fun component1 ()Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Z
+	public final fun copy (Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;Z)Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult;Lorg/graphiks/wgsl/ast/TranslationUnit;Ljava/util/List;ZILjava/lang/Object;)Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getResolvedUnit ()Lorg/graphiks/wgsl/ast/TranslationUnit;
+	public final fun getUnresolvedReferences ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun isSuccess ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/TypeResolver$ResolutionResult$Companion {
+	public final fun failure (Ljava/util/List;)Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult;
+	public final fun success (Lorg/graphiks/wgsl/ast/TranslationUnit;)Lorg/graphiks/wgsl/parser/TypeResolver$ResolutionResult;
+}
+
+public final class org/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError {
+	public fun <init> (Ljava/lang/String;Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+	public final fun component3 ()Lorg/graphiks/wgsl/ir/Span;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;)Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError;
+	public static synthetic fun copy$default (Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError;Ljava/lang/String;Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;Lorg/graphiks/wgsl/ir/Span;Ljava/lang/String;ILjava/lang/Object;)Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKind ()Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSpan ()Lorg/graphiks/wgsl/ir/Span;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind : java/lang/Enum {
+	public static final field FUNCTION Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+	public static final field TYPE Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+	public static final field VALUE Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+	public static fun values ()[Lorg/graphiks/wgsl/parser/TypeResolver$UnresolvedReferenceError$ReferenceKind;
+}
+
+public final class org/graphiks/wgsl/parser/WgslValidationKt {
+	public static final fun validateAndReflectWgsl (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/graphiks/wgsl/proc/WgslReflectionReport;
+	public static synthetic fun validateAndReflectWgsl$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/graphiks/wgsl/proc/WgslReflectionReport;
+}

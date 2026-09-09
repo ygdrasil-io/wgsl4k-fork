@@ -26,6 +26,35 @@ This project follows a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, 
 - Explain why this feature would be useful
 - If possible, suggest an implementation approach
 
+## Fork and Pull Request Workflow
+
+`Graphiks-org/wgsl4k` is the upstream repository. Contributors must work from
+their own fork and submit a pull request back to the upstream repository.
+
+```bash
+# Clone your fork
+git clone https://github.com/<your-account>/wgsl4k.git
+cd wgsl4k
+
+# Track the upstream repository
+git remote add upstream https://github.com/Graphiks-org/wgsl4k.git
+git fetch upstream
+
+# Create a topic branch from the upstream release branch
+git switch -c feat/<short-description> upstream/master
+```
+
+Push the topic branch to your fork, then open the pull request with this exact
+target:
+
+- Base repository: `Graphiks-org/wgsl4k`
+- Base branch: `master`
+- Head repository: your fork
+- Head branch: `feat/*`, `fix/*`, or `chore/*`
+
+Before requesting review, rebase the branch on the latest `upstream/master` and
+push the updated branch to your fork.
+
 ## Submitting a Pull Request
 
 Every pull request must satisfy the repository contract below before it can merge.
@@ -38,7 +67,7 @@ These are the checks that must pass before merge. They are enforced by the PR po
 - Keep history linear: rebase on the latest `master`, do not introduce merge commits, and keep the branch ancestry aligned with `master`.
 - Use Conventional Commits for the PR title and every commit subject: `<type>(<scope>): <description>`.
 - Allowed PR and commit types are `feat`, `fix`, `build`, `chore`, `ci`, `docs`, `perf`, `refactor`, `test`, and `style`.
-- Allowed scopes are `shared`, `buildSrc`, `docs`, and `release`.
+- Allowed scopes are `wgsl`, `ci`, `test`, `docs`, `buildSrc`, and `release`.
 - Use the exact [PR template](.github/PULL_REQUEST_TEMPLATE.md) headings: `Description`, `Type of Change`, `Checklist`, `Screenshots (if applicable)`, and `Additional Notes`.
 - Select exactly one change type checkbox in the PR body.
 - Record the changelog decision explicitly in the PR checklist:
@@ -56,7 +85,13 @@ Repository settings automatically delete head branches after successful merges.
 These items are reviewed by maintainers when applicable; they are not automatically enforced by CI or the branch ruleset.
 
 - Keep commits atomic when practical.
-- Run local verification before requesting review: `./gradlew :shared:jvmTest`.
+- Run the full multiplatform validation before requesting review:
+  `./gradlew allTests checkKotlinAbi koverVerifyJvm compileAndroidMain`.
+- Use `./gradlew jvmTest` for fast local feedback, but do not treat it as a
+  replacement for the multiplatform validation.
+- Native test tasks without a discoverable runner are reported as `SKIPPED`;
+  require a Native runtime test runner explicitly with
+  `./gradlew allTests -PrequireNativeTests=true` when that gate is required.
 - Reference the related issue in the PR description when relevant.
 - Add screenshots when relevant.
 - Keep the `Screenshots (if applicable)` and `Additional Notes` sections when relevant.
@@ -72,13 +107,13 @@ Before submitting a PR, make sure:
 - [ ] PR body uses the required template headings and exactly one change type
 - [ ] `CHANGELOG.md` is updated, or the PR body justifies why no changelog update is needed
 - [ ] Documentation decision is recorded in the PR body
-- [ ] Branch is rebased on `master` with no merge commits
+- [ ] Branch is rebased on `upstream/master` with no merge commits
 - [ ] Branch uses a permitted prefix: `feat/`, `fix/`, or `chore/`
-- [ ] The PR targets a branch that satisfies the protected `master` ruleset
+- [ ] The PR targets `Graphiks-org/wgsl4k:master`
 
 **Maintainer-reviewed expectations**
 
-- [ ] Tests pass locally (`./gradlew :shared:jvmTest`)
+- [ ] Multiplatform validation passes locally (`./gradlew allTests checkKotlinAbi koverVerifyJvm compileAndroidMain`)
 - [ ] Commits are atomic when practical
 - [ ] The PR description references the related issue when relevant
 - [ ] Screenshots are included when relevant
@@ -87,11 +122,14 @@ Before submitting a PR, make sure:
 ### Local Build
 
 ```bash
-# Fast JVM tests
-./gradlew :shared:jvmTest
+# Fast feedback: JVM tests for all modules
+./gradlew jvmTest
 
-# All tests
-./gradlew allTests
+# Full multiplatform validation: tests, ABI, coverage, and Android compilation
+./gradlew allTests checkKotlinAbi koverVerifyJvm compileAndroidMain
+
+# Require discovered Native runtime tests (opt-in; fails when unavailable)
+./gradlew allTests -PrequireNativeTests=true
 
 # Generate and embed API docs into MkDocs
 ./gradlew :docs:embedDokkaIntoMkDocs
@@ -118,11 +156,11 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/).
 | `test`    | Adding or fixing tests                             |
 | `style`   | Code style (formatting, imports ordering)          |
 
-**Scopes:** `shared`, `buildSrc`, `docs`, `release`
+**Scopes:** `wgsl`, `ci`, `test`, `docs`, `buildSrc`, `release`
 
 **Examples:**
 ```
-feat(shared): add caching layer to PlatformRepository
+feat(wgsl): add caching layer to the WGSL pipeline
 fix(buildSrc): resolve AGP compatibility issue
 docs: update README with new badges
 ```
@@ -137,7 +175,7 @@ docs: update README with new badges
 
 **Rules:**
 - No direct commits to `master`
-- Branches must be rebased on `master` before PR
+- Branches must be rebased on `upstream/master` before PR
 - Merge commits are not allowed
 - Commits should be atomic (one change per commit)
 
@@ -155,7 +193,7 @@ docs: update README with new badges
    - At least 1 approval is required
    - `PR policy` and `build-and-test` must pass as blocking checks
    - All review conversations must be resolved
-   - The branch must be up to date with `master`
+   - The branch must be up to date with `upstream/master`
 
 3. **Merge**
    - Strategy: squash merge only

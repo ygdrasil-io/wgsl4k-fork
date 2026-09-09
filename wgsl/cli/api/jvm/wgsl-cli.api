@@ -1,0 +1,26 @@
+public final class org/graphiks/wgsl/cli/ConvertCommand : com/github/ajalt/clikt/core/CliktCommand {
+	public fun <init> ()V
+	public final fun getFormat ()Lorg/graphiks/wgsl/cli/OutputFormat;
+	public final fun getInput ()Ljava/lang/String;
+	public final fun getOutput ()Ljava/lang/String;
+	public fun run ()V
+}
+
+public final class org/graphiks/wgsl/cli/MainKt {
+	public static final fun main ([Ljava/lang/String;)V
+}
+
+public final class org/graphiks/wgsl/cli/OutputFormat : java/lang/Enum {
+	public static final field glsl Lorg/graphiks/wgsl/cli/OutputFormat;
+	public static final field hlsl Lorg/graphiks/wgsl/cli/OutputFormat;
+	public static final field msl Lorg/graphiks/wgsl/cli/OutputFormat;
+	public static final field wgsl Lorg/graphiks/wgsl/cli/OutputFormat;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/graphiks/wgsl/cli/OutputFormat;
+	public static fun values ()[Lorg/graphiks/wgsl/cli/OutputFormat;
+}
+
+public final class org/graphiks/wgsl/cli/WgslKTypes : com/github/ajalt/clikt/core/CliktCommand {
+	public fun <init> ()V
+	public fun run ()V
+}

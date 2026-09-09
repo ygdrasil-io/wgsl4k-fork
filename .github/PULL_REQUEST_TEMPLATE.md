@@ -22,11 +22,11 @@ Relates to #(issue)
 Before submitting this PR:
 
 - [ ] Title follows Conventional Commits format
-- [ ] Tests pass locally (`./gradlew :shared:jvmTest`)
+- [ ] Tests pass locally (`./gradlew jvmTest`)
 - [ ] CHANGELOG.md has been updated
 - [ ] No changelog update needed: explain why no changelog entry is required
 - [ ] Documentation updated if needed
-- [ ] Changes are compatible with all targets (Android, iOS, JVM)
+- [ ] Target compatibility was assessed for the supported targets (Android, iOS, JVM); Native runtime skips are documented when applicable
 
 ## Screenshots (if applicable)
 

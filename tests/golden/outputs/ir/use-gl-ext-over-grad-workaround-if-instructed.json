@@ -1,0 +1,295 @@
+{
+    "types": {
+        "data": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Opaque",
+                    "name": "texture_depth_2d_array"
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Opaque",
+                    "name": "sampler_comparison"
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 2
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Sint",
+                    "width": 4
+                }
+            }
+        ],
+        "indexMap": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Opaque",
+                    "name": "texture_depth_2d_array"
+                }
+            },
+            0,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Opaque",
+                    "name": "sampler_comparison"
+                }
+            },
+            1,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            2,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 2
+                }
+            },
+            3,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Sint",
+                    "width": 4
+                }
+            },
+            4
+        ]
+    },
+    "constants": {},
+    "globalExpressions": {},
+    "globalVariables": {
+        "data": [
+            {
+                "name": "texture",
+                "storageClass": "Handle",
+                "type": 0,
+                "binding": {
+                    "group": 0,
+                    "index": 0
+                }
+            },
+            {
+                "name": "texture_sampler",
+                "storageClass": "Handle",
+                "type": 1,
+                "binding": {
+                    "group": 0,
+                    "index": 1
+                }
+            }
+        ]
+    },
+    "functions": {
+        "data": [
+            {
+                "name": "main",
+                "parameters": [],
+                "returnType": 2,
+                "localVariables": {
+                    "data": [
+                        {
+                            "name": "pos",
+                            "type": 3,
+                            "init": 1
+                        },
+                        {
+                            "name": "array_index",
+                            "type": 4,
+                            "init": 2
+                        },
+                        {
+                            "name": "depth",
+                            "type": 2,
+                            "init": 3
+                        }
+                    ]
+                },
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 3,
+                                "arguments": [
+                                    0
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                                        "value": 0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.GlobalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.GlobalVar",
+                                "handle": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 2
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Call",
+                                "function": 1,
+                                "arguments": [
+                                    4,
+                                    5,
+                                    6,
+                                    7,
+                                    8
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 0
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 1
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 2
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Return",
+                                    "value": 9
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            },
+            {
+                "name": "textureSampleCompareLevel",
+                "parameters": [
+                    {
+                        "name": "arg_0",
+                        "type": 0
+                    },
+                    {
+                        "name": "arg_1",
+                        "type": 1
+                    },
+                    {
+                        "name": "arg_2",
+                        "type": 3
+                    },
+                    {
+                        "name": "arg_3",
+                        "type": 4
+                    },
+                    {
+                        "name": "arg_4",
+                        "type": 2
+                    }
+                ],
+                "returnType": 2,
+                "localVariables": {},
+                "expressions": {},
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        }
+                    ]
+                },
+                "body": 0
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "name": "main",
+            "function": 0,
+            "stage": "Fragment"
+        }
+    ],
+    "diagnosticFilters": {}
+}
