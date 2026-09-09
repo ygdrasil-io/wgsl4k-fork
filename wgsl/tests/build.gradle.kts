@@ -2,9 +2,9 @@ import java.io.File
 import java.util.TreeMap
 
 plugins {
-    id("ygdrasil.conventions.kmp-library")
-    id("ygdrasil.conventions.kmp-publish")
-    id("ygdrasil.conventions.kmp-dokka")
+    id("org.graphiks.wgsl.conventions.kmp-library")
+    id("org.graphiks.wgsl.conventions.kmp-publish")
+    id("org.graphiks.wgsl.conventions.kmp-dokka")
     id("dev.opensavvy.dokka-mkdocs") version "0.6.3"
 }
 

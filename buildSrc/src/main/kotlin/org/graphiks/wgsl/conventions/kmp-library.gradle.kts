@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
-package ygdrasil.conventions
+package org.graphiks.wgsl.conventions
 
 import com.android.build.api.variant.KotlinMultiplatformAndroidComponentsExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi

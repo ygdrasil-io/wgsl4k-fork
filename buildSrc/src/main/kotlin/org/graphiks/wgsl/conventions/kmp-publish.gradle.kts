@@ -1,4 +1,4 @@
-package ygdrasil.conventions
+package org.graphiks.wgsl.conventions
 
 plugins {
     id("com.vanniktech.maven.publish")
@@ -9,7 +9,7 @@ version = (project.findProperty("releaseVersion") as? String)
     ?.takeIf { it.isNotBlank() }
     ?: (project.findProperty("VERSION") as? String)
         ?.takeIf { it.isNotBlank() }
-    ?: "1.0.0-SNAPSHOT"
+        ?: "1.0.0-SNAPSHOT"
 
 val artifactId = project.name
 val repositoryUrl = "https://github.com/ygdrasil-io/wgsl4k-fork"

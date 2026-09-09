@@ -1,4 +1,4 @@
-package ygdrasil.conventions
+package org.graphiks.wgsl.conventions
 
 import java.net.URI
 
