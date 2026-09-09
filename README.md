@@ -6,6 +6,26 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Project status: Incubating](https://img.shields.io/badge/Status-Incubating-orange)](https://github.com/ygdrasil-io/wgsl4k-fork)
 
+<!-- ==========================================
+     BADGES DE STATUT DE PROJET PERSONNALISABLES
+     Décommentez/copiez simplement le badge correspondant au statut actuel de votre projet.
+     ========================================== -->
+
+<!-- STATUT : EN PLANIFICATION (PLANNING) -->
+<!-- [![Projet: Planning](https://img.shields.io/badge/Statut-Planning-blue)](https://github.com) -->
+
+<!-- STATUT : INCUBATION / EN DÉVELOPPEMENT (INCUBATING) -->
+<!-- [![Projet: Incubating](https://img.shields.io/badge/Statut-Incubating-orange)](https://github.com) -->
+
+<!-- STATUT : STABLE / PRÊT PRODUCTION (STABLE) -->
+<!-- [![Projet: Stable](https://img.shields.io/badge/Statut-Stable-green)](https://github.com) -->
+
+<!-- STATUT : DEPRÉCIÉ (DEPRECATED) -->
+<!-- [![Projet: Deprecated](https://img.shields.io/badge/Statut-Deprecated-red)](https://github.com) -->
+
+<!-- STATUT : ARCHIVÉ (ARCHIVED) -->
+<!-- [![Projet: Archived](https://img.shields.io/badge/Statut-Archived-lightgrey)](https://github.com) -->
+
 `wgsl4k` is an incubating Kotlin Multiplatform toolkit for reading, validating,
 transforming, and emitting WebGPU Shading Language (WGSL) programs. It keeps a
 typed intermediate representation (IR) between parsing and code generation so
