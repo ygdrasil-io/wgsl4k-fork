@@ -2,9 +2,9 @@
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.4.10-purple?logo=kotlin)](https://kotlinlang.org)
 [![Gradle](https://img.shields.io/badge/Gradle-9.6.1-blue?logo=gradle)](https://gradle.org)
-[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?logo=github-actions)](https://github.com/ygdrasil-io/wgsl4k-fork/actions)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?logo=github-actions)](https://github.com/Graphiks-org/wgsl4k/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Project status: Incubating](https://img.shields.io/badge/Status-Incubating-orange)](https://github.com/ygdrasil-io/wgsl4k-fork)
+[![Project status: Incubating](https://img.shields.io/badge/Status-Incubating-orange)](https://github.com/Graphiks-org/wgsl4k)
 
 <!-- ==========================================
      BADGES DE STATUT DE PROJET PERSONNALISABLES
@@ -64,7 +64,7 @@ mkdocs build -f docs/mkdocs.yml
 ```
 
 The published documentation is built from the `:docs` project. See the site
-for the [getting-started guide](https://ygdrasil-io.github.io/wgsl4k-fork/getting-started/)
+for the [getting-started guide](https://graphiks-org.github.io/wgsl4k/getting-started/)
 and generated API references.
 
 ## Supported targets

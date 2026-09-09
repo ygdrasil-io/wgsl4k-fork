@@ -5,7 +5,7 @@ plugins {
 }
 
 val artifactId = project.name
-val repositoryUrl = "https://github.com/ygdrasil-io/wgsl4k-fork"
+val repositoryUrl = "https://github.com/Graphiks-org/wgsl4k"
 val hasPublishingCredentials = project.findProperty("mavenCentralUsername")?.toString()?.isNotBlank() == true
     && project.findProperty("mavenCentralPassword")?.toString()?.isNotBlank() == true
 val hasSigningCredentials = project.findProperty("signingInMemoryKey")?.toString()?.isNotBlank() == true
@@ -38,8 +38,8 @@ mavenPublishing {
         }
 
         scm {
-            connection.set("scm:git:git://github.com/ygdrasil-io/wgsl4k-fork.git")
-            developerConnection.set("scm:git:ssh://github.com/ygdrasil-io/wgsl4k-fork.git")
+            connection.set("scm:git:git://github.com/Graphiks-org/wgsl4k.git")
+            developerConnection.set("scm:git:ssh://github.com/Graphiks-org/wgsl4k.git")
             url.set(repositoryUrl)
         }
     }
