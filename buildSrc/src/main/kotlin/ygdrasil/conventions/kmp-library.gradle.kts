@@ -72,7 +72,7 @@ tasks.matching { it.name == "internalDumpKotlinAbi" }.configureEach {
             .filter { it.isFile && it.extension == "api" }
             .forEach { file ->
                 val contents = file.readText()
-                val normalized = contents.replace(Regex("[ \\t\\r\\n]+$"), "\n")
+                val normalized = contents.replace(Regex("[ \\t\\r\\n]+$"), "\\n")
                 if (contents != normalized) {
                     file.writeText(normalized)
                 }
