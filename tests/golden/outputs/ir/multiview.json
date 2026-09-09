@@ -1,0 +1,64 @@
+{
+    "types": {
+        "data": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            }
+        ],
+        "indexMap": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            0
+        ]
+    },
+    "constants": {},
+    "globalExpressions": {},
+    "globalVariables": {},
+    "functions": {
+        "data": [
+            {
+                "name": "main",
+                "parameters": [
+                    {
+                        "name": "view_index",
+                        "type": 0,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "ViewIndex"
+                        }
+                    }
+                ],
+                "localVariables": {},
+                "expressions": {},
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": []
+                        }
+                    ]
+                },
+                "body": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "name": "main",
+            "function": 0,
+            "stage": "Fragment"
+        }
+    ],
+    "diagnosticFilters": {}
+}

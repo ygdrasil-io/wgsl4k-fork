@@ -1,0 +1,69 @@
+{
+    "types": {},
+    "constants": {},
+    "globalExpressions": {},
+    "globalVariables": {},
+    "functions": {
+        "data": [
+            {
+                "name": "main",
+                "parameters": [],
+                "localVariables": {},
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Call",
+                                "function": 1,
+                                "arguments": []
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Emit",
+                                    "range": 00
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            },
+            {
+                "name": "subgroupBarrier",
+                "parameters": [],
+                "localVariables": {},
+                "expressions": {},
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        }
+                    ]
+                },
+                "body": 0
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "name": "main",
+            "function": 0,
+            "stage": "Compute",
+            "workgroupSize": [
+                1,
+                1,
+                1
+            ]
+        }
+    ],
+    "diagnosticFilters": {}
+}

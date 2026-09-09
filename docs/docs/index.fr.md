@@ -1,54 +1,51 @@
-# Bienvenue sur la Documentation du KMP Starter Pack
+# Documentation wgsl4k
 
-Ce site regroupe l'ensemble des documentations techniques, des guides d'architecture et de la référence API du **Starter Pack Kotlin Multiplatform (KMP)**.
+`wgsl4k` est une boîte à outils Kotlin Multiplatform, actuellement en
+incubation, pour travailler avec le WebGPU Shading Language (WGSL). Elle analyse
+le WGSL dans une représentation intermédiaire typée (IR), la valide et la
+transforme, puis produit du WGSL, GLSL, HLSL, MSL ou une représentation JSON de
+l'IR.
 
----
+## Structure du projet
 
-## 🚀 Fonctionnalités Clés
+L'implémentation WGSL est organisée dans cinq projets Gradle sous `wgsl/` :
 
-*   **Multiplateforme Complet** : Partage de code ciblant **Android**, **iOS** et **Desktop (JVM)**.
-*   **Architecture Guidée (Clean Architecture / DDD)** : Séparation stricte de la logique métier (Domaine), de l'infrastructure (Données) et de l'interface (Présentation).
-*   **Pile Technique Moderne** : **Kotlin 2.4.0**, **Gradle 9.5.0**, **AGP 9.0.0** et **Java 25**.
-*   **Intégration Continue Conditionnelle** : Un workflow CI/CD à double-vitesse (JVM Fast-Track de 10 secondes vs Deep-Testing complet avant merge sur `master`).
-*   **Moteur de Documentation API** : Génération automatisée de la documentation d'API via **Dokka v2** et rendu via **MkDocs Material**.
+| Projet | Rôle |
+| --- | --- |
+| `:wgsl:wgsl-core` | IR, arenas, validation, layout et contrats de backend. |
+| `:wgsl:wgsl-parser` | Lexer, AST, diagnostics, parser, résolution et lowering. |
+| `:wgsl:wgsl-generator` | Générateurs WGSL, GLSL, HLSL et MSL. |
+| `:wgsl:wgsl-tests` | Corpus golden JVM et rapports de couverture des backends. |
+| `:wgsl:wgsl-cli` | CLI JVM de conversion de shaders. |
 
----
+Les packages Kotlin publics restent sous `org.graphiks.wgsl.*`. Le sample de
+démarrage a été supprimé : seuls les modules WGSL sont construits et testés.
 
-## 🧱 Organisation Architecturales du Projet
+## Commandes utiles
 
-Le module partagé `:shared` suit les directives fournies par le skill **Architecte Kotlin** :
-
-1.  **Couche Domaine (Domain)** :
-    *   Écrite en Kotlin pur (sans dépendance).
-    *   Contient les UseCases autonomes modélisant les cas d'utilisation métier.
-    *   Modèles de données robustes auto-validés (utilisation de `value class` inline).
-2.  **Couche Données (Data)** :
-    *   Implémentation des dépôts et communication de bas niveau (réseau via Ktor, persistance).
-    *   Gestion d'exceptions Flow transparente (garantissant que `AbortFlowException` n'est pas intercepté accidentellement).
-3.  **Couche Présentation (Presentation)** :
-    *   Interface réactive basée sur des `StateFlow` immuables.
-    *   Scopes coroutines proprement gérés et ViewModels autonomes.
-
----
-
-## 💻 Commandes Utiles
-
-### Exécuter la suite de tests (Fast-Track JVM)
 ```bash
-./gradlew :shared:jvmTest
+./gradlew :wgsl:wgsl-core:jvmTest \
+  :wgsl:wgsl-parser:jvmTest \
+  :wgsl:wgsl-generator:jvmTest \
+  :wgsl:wgsl-tests:jvmTest \
+  :wgsl:wgsl-cli:jvmTest --no-daemon
 ```
 
-### Lancer tous les tests (Toutes cibles)
-```bash
-./gradlew allTests
-```
+Générer et intégrer les modules API Dokka, puis construire le site :
 
-### Générer et intégrer localement la documentation de l'API (Dokka → MkDocs)
 ```bash
-./gradlew :docs:embedDokkaIntoMkDocs
-```
-
-### Compiler localement le site MkDocs
-```bash
+./gradlew :docs:embedDokkaIntoMkDocs --no-daemon
 mkdocs build -f docs/mkdocs.yml
 ```
+
+Consultez [Bien démarrer](getting-started.md) pour la stratégie de migration,
+le flux de développement local et les commandes de la CLI.
+
+## Targets supportées
+
+Les modules de bibliothèque compilent pour JVM, Android, iOS Arm64, iOS
+Simulator Arm64 et iOS X64. Les tests golden et les smoke tests de la CLI
+s’exécutent sur JVM. JS, WasmJs, watchOS, macOS, Linux, MinGW et Android Native
+ne sont pas déclarées : la CLI ne fournit pas encore les implémentations de
+fichiers spécifiques requises, et les targets Native hors Apple n’ont pas de
+runner CI compatible.

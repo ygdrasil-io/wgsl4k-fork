@@ -1,0 +1,257 @@
+{
+    "types": {
+        "data": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 512
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Sint",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Atomic",
+                    "inner": 2
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 3,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 8
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 4,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 8
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "arr",
+                            "type": 1
+                        },
+                        {
+                            "name": "atom",
+                            "type": 3
+                        },
+                        {
+                            "name": "atom_arr",
+                            "type": 5
+                        }
+                    ]
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 512
+                    }
+                }
+            }
+        ],
+        "indexMap": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            0,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 512
+                    }
+                }
+            },
+            1,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Sint",
+                    "width": 4
+                }
+            },
+            2,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Atomic",
+                    "inner": 2
+                }
+            },
+            3,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 3,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 8
+                    }
+                }
+            },
+            4,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 4,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 8
+                    }
+                }
+            },
+            5,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "arr",
+                            "type": 1
+                        },
+                        {
+                            "name": "atom",
+                            "type": 3
+                        },
+                        {
+                            "name": "atom_arr",
+                            "type": 5
+                        }
+                    ]
+                }
+            },
+            6,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 512
+                    }
+                }
+            },
+            7
+        ]
+    },
+    "constants": {},
+    "globalExpressions": {},
+    "globalVariables": {
+        "data": [
+            {
+                "name": "output",
+                "storageClass": "Storage",
+                "accessMode": "ReadWrite",
+                "type": 7,
+                "binding": {
+                    "group": 0,
+                    "index": 0
+                }
+            },
+            {
+                "name": "w_mem",
+                "storageClass": "Workgroup",
+                "type": 6
+            }
+        ]
+    },
+    "functions": {
+        "data": [
+            {
+                "name": "main",
+                "parameters": [],
+                "localVariables": {},
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.GlobalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.GlobalVar",
+                                "handle": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 1,
+                                "index": 0
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Assign",
+                                    "pointer": 0,
+                                    "value": 2
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "name": "main",
+            "function": 0,
+            "stage": "Compute",
+            "workgroupSize": [
+                1,
+                1,
+                1
+            ]
+        }
+    ],
+    "diagnosticFilters": {}
+}

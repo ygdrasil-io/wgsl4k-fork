@@ -1,0 +1,987 @@
+{
+    "types": {
+        "data": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Quad",
+                    "scalar": 0
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "position",
+                            "type": 1,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "Position"
+                            }
+                        },
+                        {
+                            "name": "_varying",
+                            "type": 0,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Location",
+                                "location": 1
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "depth",
+                            "type": 0
+                        },
+                        {
+                            "name": "sample_mask",
+                            "type": 3,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "SampleMask"
+                            }
+                        },
+                        {
+                            "name": "color",
+                            "type": 0,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Location",
+                                "location": 0
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "index",
+                            "type": 3,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "VertexIndex"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "index",
+                            "type": 3,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "InstanceIndex"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 3,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 1
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Bool",
+                    "width": 1
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Tri",
+                    "scalar": 3
+                }
+            }
+        ],
+        "indexMap": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            0,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Quad",
+                    "scalar": 0
+                }
+            },
+            1,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "position",
+                            "type": 1,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "Position"
+                            }
+                        },
+                        {
+                            "name": "_varying",
+                            "type": 0,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Location",
+                                "location": 1
+                            }
+                        }
+                    ]
+                }
+            },
+            2,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            3,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "depth",
+                            "type": 0
+                        },
+                        {
+                            "name": "sample_mask",
+                            "type": 3,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "SampleMask"
+                            }
+                        },
+                        {
+                            "name": "color",
+                            "type": 0,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Location",
+                                "location": 0
+                            }
+                        }
+                    ]
+                }
+            },
+            4,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "index",
+                            "type": 3,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "VertexIndex"
+                            }
+                        }
+                    ]
+                }
+            },
+            5,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "index",
+                            "type": 3,
+                            "binding": {
+                                "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                                "builtin": "InstanceIndex"
+                            }
+                        }
+                    ]
+                }
+            },
+            6,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 3,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 1
+                    }
+                }
+            },
+            7,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Bool",
+                    "width": 1
+                }
+            },
+            8,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Tri",
+                    "scalar": 3
+                }
+            },
+            9
+        ]
+    },
+    "constants": {},
+    "globalExpressions": {},
+    "globalVariables": {
+        "data": [
+            {
+                "name": "output",
+                "storageClass": "Workgroup",
+                "type": 7
+            }
+        ]
+    },
+    "functions": {
+        "data": [
+            {
+                "name": "vertex",
+                "parameters": [
+                    {
+                        "name": "vertex_index",
+                        "type": 3,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "VertexIndex"
+                        }
+                    },
+                    {
+                        "name": "instance_index",
+                        "type": 3,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "InstanceIndex"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "type": 3,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Location",
+                            "location": 10
+                        }
+                    }
+                ],
+                "returnType": 2,
+                "localVariables": {
+                    "data": [
+                        {
+                            "name": "tmp",
+                            "type": 3,
+                            "init": 4
+                        }
+                    ]
+                },
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 0,
+                                "right": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 2
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 2,
+                                "right": 3
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 1.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 1,
+                                "arguments": [
+                                    5
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 0,
+                                "arguments": [
+                                    7
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 2,
+                                "arguments": [
+                                    6,
+                                    8
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 0
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Return",
+                                    "value": 9
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            },
+            {
+                "name": "fragment",
+                "parameters": [
+                    {
+                        "name": "in",
+                        "type": 2
+                    },
+                    {
+                        "name": "front_facing",
+                        "type": 8,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "FrontFacing"
+                        }
+                    },
+                    {
+                        "name": "sample_index",
+                        "type": 3,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "SampleIndex"
+                        }
+                    },
+                    {
+                        "name": "sample_mask",
+                        "type": 3,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "SampleMask"
+                        }
+                    }
+                ],
+                "returnType": 4,
+                "localVariables": {
+                    "data": [
+                        {
+                            "name": "mask",
+                            "type": 3,
+                            "init": 4
+                        },
+                        {
+                            "name": "color",
+                            "type": 0,
+                            "init": 8
+                        }
+                    ]
+                },
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 3
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                                        "value": 1
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 2
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "ShiftLeft",
+                                "left": 1,
+                                "right": 2
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "BitAnd",
+                                "left": 0,
+                                "right": 3
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 1.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Call",
+                                "function": 2,
+                                "arguments": [
+                                    5,
+                                    6,
+                                    7
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 9,
+                                "index": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 4,
+                                "arguments": [
+                                    10,
+                                    11,
+                                    12
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 0
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 1
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Return",
+                                    "value": 13
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            },
+            {
+                "name": "select",
+                "parameters": [
+                    {
+                        "name": "arg_0",
+                        "type": 0
+                    },
+                    {
+                        "name": "arg_1",
+                        "type": 0
+                    },
+                    {
+                        "name": "arg_2",
+                        "type": 8
+                    }
+                ],
+                "returnType": 0,
+                "localVariables": {},
+                "expressions": {},
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        }
+                    ]
+                },
+                "body": 0
+            },
+            {
+                "name": "compute",
+                "parameters": [
+                    {
+                        "name": "global_id",
+                        "type": 9,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "GlobalInvocationId"
+                        }
+                    },
+                    {
+                        "name": "local_id",
+                        "type": 9,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "LocalInvocationId"
+                        }
+                    },
+                    {
+                        "name": "local_index",
+                        "type": 3,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "LocalInvocationIndex"
+                        }
+                    },
+                    {
+                        "name": "wg_id",
+                        "type": 9,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "WorkgroupId"
+                        }
+                    },
+                    {
+                        "name": "num_wgs",
+                        "type": 9,
+                        "binding": {
+                            "__type": "org.graphiks.wgsl.ir.BindingAttribute.Builtin",
+                            "builtin": "NumWorkgroups"
+                        }
+                    }
+                ],
+                "localVariables": {},
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.GlobalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 0,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 2,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 4,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 3,
+                                "right": 5
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 2
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 6,
+                                "right": 7
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 3
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 9,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 8,
+                                "right": 10
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 4
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 12,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Binary",
+                                "operator": "Add",
+                                "left": 11,
+                                "right": 13
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Assign",
+                                    "pointer": 1,
+                                    "value": 14
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            },
+            {
+                "name": "vertex_two_structs",
+                "parameters": [
+                    {
+                        "name": "in1",
+                        "type": 5
+                    },
+                    {
+                        "name": "in2",
+                        "type": 6
+                    }
+                ],
+                "returnType": 1,
+                "localVariables": {
+                    "data": [
+                        {
+                            "name": "index",
+                            "type": 3,
+                            "init": 0
+                        }
+                    ]
+                },
+                "expressions": {
+                    "data": [
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                                        "value": 2
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 1,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 0,
+                                "arguments": [
+                                    2
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.FunctionArgument",
+                                "index": 1
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.AccessIndex",
+                                "expr": 4,
+                                "index": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 0,
+                                "arguments": [
+                                    5
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.LocalVar",
+                                "handle": 0
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 0,
+                                "arguments": [
+                                    7
+                                ]
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                                "value": {
+                                    "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                                    "value": {
+                                        "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                                        "value": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": {
+                                "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                                "type": 1,
+                                "arguments": [
+                                    3,
+                                    6,
+                                    8,
+                                    9
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "blocks": {
+                    "data": [
+                        {
+                            "statements": []
+                        },
+                        {
+                            "statements": [
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Init",
+                                    "variable": 0
+                                },
+                                {
+                                    "__type": "org.graphiks.wgsl.ir.Statement.Return",
+                                    "value": 10
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "body": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "name": "vertex",
+            "function": 0,
+            "stage": "Vertex"
+        },
+        {
+            "name": "fragment",
+            "function": 1,
+            "stage": "Fragment"
+        },
+        {
+            "name": "compute",
+            "function": 3,
+            "stage": "Compute",
+            "workgroupSize": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "name": "vertex_two_structs",
+            "function": 4,
+            "stage": "Vertex"
+        }
+    ],
+    "diagnosticFilters": {}
+}

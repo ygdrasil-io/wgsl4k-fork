@@ -1,8 +1,8 @@
-site_name: KMP Starter Pack
-site_description: API & Technical Documentation for KMP Starter Pack
-site_url: https://ygdrasil-io.github.io/project-template/
-repo_url: https://github.com/ygdrasil-io/project-template
-repo_name: ygdrasil-io/project-template
+site_name: wgsl4k
+site_description: Kotlin Multiplatform toolkit for WGSL parsing, IR, and code generation
+site_url: https://ygdrasil-io.github.io/wgsl4k-fork/
+repo_url: https://github.com/ygdrasil-io/wgsl4k-fork
+repo_name: ygdrasil-io/wgsl4k-fork
 
 docs_dir: docs
 site_dir: ../_site
@@ -64,5 +64,5 @@ plugins:
         - locale: fr
           name: Français
           build: true
-          site_name: Starter Pack KMP
-          site_description: Documentation Technique pour KMP Starter Pack
+          site_name: Documentation wgsl4k
+          site_description: Boîte à outils Kotlin Multiplatform pour WGSL

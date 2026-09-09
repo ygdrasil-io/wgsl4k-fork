@@ -1,0 +1,3434 @@
+{
+    "types": {
+        "data": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Sint",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "f",
+                            "type": 0
+                        },
+                        {
+                            "name": "i",
+                            "type": 1
+                        },
+                        {
+                            "name": "u",
+                            "type": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 1
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 0
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 2
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Matrix",
+                    "columns": "Bi",
+                    "rows": "Bi",
+                    "scalar": 0
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 1,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 1,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 1,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 2,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Tri",
+                    "scalar": 0
+                }
+            }
+        ],
+        "indexMap": [
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "F32",
+                    "width": 4
+                }
+            },
+            0,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Sint",
+                    "width": 4
+                }
+            },
+            1,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Scalar",
+                    "kind": "Uint",
+                    "width": 4
+                }
+            },
+            2,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Struct",
+                    "members": [
+                        {
+                            "name": "f",
+                            "type": 0
+                        },
+                        {
+                            "name": "i",
+                            "type": 1
+                        },
+                        {
+                            "name": "u",
+                            "type": 2
+                        }
+                    ]
+                }
+            },
+            3,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 1
+                }
+            },
+            4,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 0
+                }
+            },
+            5,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Bi",
+                    "scalar": 2
+                }
+            },
+            6,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Matrix",
+                    "columns": "Bi",
+                    "rows": "Bi",
+                    "scalar": 0
+                }
+            },
+            7,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            8,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            9,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 1,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            10,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 1,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            11,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            12,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            13,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 1,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            14,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 2,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            15,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            16,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            17,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Array",
+                    "element": 0,
+                    "size": {
+                        "__type": "org.graphiks.wgsl.ir.ArraySize.Constant",
+                        "value": 2
+                    }
+                }
+            },
+            18,
+            {
+                "inner": {
+                    "__type": "org.graphiks.wgsl.ir.TypeInner.Vector",
+                    "size": "Tri",
+                    "scalar": 0
+                }
+            },
+            19
+        ]
+    },
+    "constants": {},
+    "globalExpressions": {
+        "data": [
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 42
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 43
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 44
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 45
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        3,
+                        4
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 46
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 47
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        6,
+                        7
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 48.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 49.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        9,
+                        10
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 48
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 49.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        12,
+                        13
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 42
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 43
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        15,
+                        16
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 42
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 43
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        18,
+                        19
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 42
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 43
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 6,
+                    "arguments": [
+                        21,
+                        22
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 42
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 43
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 6,
+                    "arguments": [
+                        24,
+                        25
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": []
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": []
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": []
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": []
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": []
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        30,
+                        31
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        33,
+                        34,
+                        35,
+                        36
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        38,
+                        39,
+                        40,
+                        41
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        43,
+                        44,
+                        45,
+                        46
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        48,
+                        49,
+                        50,
+                        51
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 4.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        53,
+                        54,
+                        55,
+                        56
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        58,
+                        59,
+                        60,
+                        61
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 4
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        63,
+                        64,
+                        65,
+                        66
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 4.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 7,
+                    "arguments": [
+                        68,
+                        69,
+                        70,
+                        71
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        73
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        75
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 4,
+                    "arguments": [
+                        77
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 6,
+                    "arguments": [
+                        79
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        81
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        83
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 8,
+                    "arguments": [
+                        85,
+                        86
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 9,
+                    "arguments": [
+                        88,
+                        89
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 10,
+                    "arguments": [
+                        91,
+                        92
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 11,
+                    "arguments": [
+                        94,
+                        95
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 12,
+                    "arguments": [
+                        97,
+                        98
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 13,
+                    "arguments": [
+                        100,
+                        101
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 14,
+                    "arguments": [
+                        103,
+                        104
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 15,
+                    "arguments": [
+                        106,
+                        107
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 16,
+                    "arguments": [
+                        109,
+                        110
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 17,
+                    "arguments": [
+                        112,
+                        113
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 18,
+                    "arguments": [
+                        115,
+                        116
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        118
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        120
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        122
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        124
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        126,
+                        127
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        128,
+                        129
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        131,
+                        132
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        133,
+                        134
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        136,
+                        137
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        138,
+                        139
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        141,
+                        142
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        143,
+                        144
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        147,
+                        148
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        146,
+                        149
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        152,
+                        153
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        151,
+                        154
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        157,
+                        158
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        156,
+                        159
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        162,
+                        163
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        161,
+                        164
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        166,
+                        167
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        168,
+                        169
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        171,
+                        172
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        173,
+                        174
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        176,
+                        177
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        178,
+                        179
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        182,
+                        183
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        181,
+                        184
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 2.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 3.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        187,
+                        188
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        186,
+                        189
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 2
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 3
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 5,
+                    "arguments": [
+                        192,
+                        193
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 19,
+                    "arguments": [
+                        191,
+                        194
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        196,
+                        197,
+                        198
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        200,
+                        201,
+                        202
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        204,
+                        205,
+                        206
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        208,
+                        209,
+                        210
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        212,
+                        213,
+                        214
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        216,
+                        217,
+                        218
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.U32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        220,
+                        221,
+                        222
+                    ]
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.F32",
+                            "value": 1.0
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.Literal",
+                    "value": {
+                        "__type": "org.graphiks.wgsl.ir.LiteralValue.Scalar",
+                        "value": {
+                            "__type": "org.graphiks.wgsl.ir.ScalarValue.I32",
+                            "value": 1
+                        }
+                    }
+                }
+            },
+            {
+                "kind": {
+                    "__type": "org.graphiks.wgsl.ir.ExpressionKind.TypeConstructor",
+                    "type": 3,
+                    "arguments": [
+                        224,
+                        225,
+                        226
+                    ]
+                }
+            }
+        ]
+    },
+    "globalVariables": {
+        "data": [
+            {
+                "name": "xvipaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 4,
+                "init": 2
+            },
+            {
+                "name": "xvupaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 5
+            },
+            {
+                "name": "xvfpaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 8
+            },
+            {
+                "name": "xvfpafaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 11
+            },
+            {
+                "name": "xvfpaiaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 14
+            },
+            {
+                "name": "xvupuai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 17
+            },
+            {
+                "name": "xvupaiu",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 20
+            },
+            {
+                "name": "xvuuai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 23
+            },
+            {
+                "name": "xvuaiu",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 26
+            },
+            {
+                "name": "xvip____",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 4,
+                "init": 27
+            },
+            {
+                "name": "xvup____",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 28
+            },
+            {
+                "name": "xvfp____",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 29
+            },
+            {
+                "name": "xmfp____",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 32
+            },
+            {
+                "name": "xmfpaiaiaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 37
+            },
+            {
+                "name": "xmfpafaiaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 42
+            },
+            {
+                "name": "xmfpaiafaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 47
+            },
+            {
+                "name": "xmfpaiaiafai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 52
+            },
+            {
+                "name": "xmfpaiaiaiaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 57
+            },
+            {
+                "name": "imfpaiaiaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 62
+            },
+            {
+                "name": "imfpafaiaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 67
+            },
+            {
+                "name": "imfpafafafaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 7,
+                "init": 72
+            },
+            {
+                "name": "ivispai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 74
+            },
+            {
+                "name": "ivfspaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 76
+            },
+            {
+                "name": "ivis_ai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 4,
+                "init": 78
+            },
+            {
+                "name": "ivus_ai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 80
+            },
+            {
+                "name": "ivfs_ai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 82
+            },
+            {
+                "name": "ivfs_af",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 84
+            },
+            {
+                "name": "iafafaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 8,
+                "init": 87
+            },
+            {
+                "name": "iafaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 9,
+                "init": 90
+            },
+            {
+                "name": "iaipaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 10,
+                "init": 93
+            },
+            {
+                "name": "iafpaiaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 11,
+                "init": 96
+            },
+            {
+                "name": "iafpafai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 12,
+                "init": 99
+            },
+            {
+                "name": "iafpafaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 13,
+                "init": 102
+            },
+            {
+                "name": "xaipaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 14,
+                "init": 105
+            },
+            {
+                "name": "xaupaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 15,
+                "init": 108
+            },
+            {
+                "name": "xafpaiaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 16,
+                "init": 111
+            },
+            {
+                "name": "xafpafai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 17,
+                "init": 114
+            },
+            {
+                "name": "xafpafaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 18,
+                "init": 117
+            },
+            {
+                "name": "xvisai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 4,
+                "init": 119
+            },
+            {
+                "name": "xvusai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 6,
+                "init": 121
+            },
+            {
+                "name": "xvfsai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 123
+            },
+            {
+                "name": "xvfsaf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 5,
+                "init": 125
+            },
+            {
+                "name": "ivfr_f__f",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 130
+            },
+            {
+                "name": "ivfr_f_af",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 135
+            },
+            {
+                "name": "ivfraf__f",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 140
+            },
+            {
+                "name": "ivfraf_af",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 145
+            },
+            {
+                "name": "ivf__fr_f",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 150
+            },
+            {
+                "name": "ivf__fraf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 155
+            },
+            {
+                "name": "ivf_afr_f",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 160
+            },
+            {
+                "name": "ivf_afraf",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 165
+            },
+            {
+                "name": "ivfr_f_ai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 170
+            },
+            {
+                "name": "ivfrai__f",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 175
+            },
+            {
+                "name": "ivfrai_ai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 180
+            },
+            {
+                "name": "ivf__frai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 185
+            },
+            {
+                "name": "ivf_air_f",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 190
+            },
+            {
+                "name": "ivf_airai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 19,
+                "init": 195
+            },
+            {
+                "name": "s_f_i_u",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 199
+            },
+            {
+                "name": "s_f_iai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 203
+            },
+            {
+                "name": "s_fai_u",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 207
+            },
+            {
+                "name": "s_faiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 211
+            },
+            {
+                "name": "saf_i_u",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 215
+            },
+            {
+                "name": "saf_iai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 219
+            },
+            {
+                "name": "safai_u",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 223
+            },
+            {
+                "name": "safaiai",
+                "declaration": "Const",
+                "storageClass": "Private",
+                "type": 3,
+                "init": 227
+            }
+        ]
+    },
+    "functions": {},
+    "diagnosticFilters": {}
+}

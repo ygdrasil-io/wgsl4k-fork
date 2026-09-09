@@ -4,45 +4,50 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-group = "io.ygdrasil.shared"
+group = "org.graphiks"
 version = (project.findProperty("releaseVersion") as? String)
     ?.takeIf { it.isNotBlank() }
+    ?: (project.findProperty("VERSION") as? String)
+        ?.takeIf { it.isNotBlank() }
     ?: "1.0.0-SNAPSHOT"
 
-val isPublishing = project.findProperty("signingInMemoryKey")?.toString()?.isNotBlank() == true
+val artifactId = project.name
+val repositoryUrl = "https://github.com/ygdrasil-io/wgsl4k-fork"
+val hasPublishingCredentials = project.findProperty("mavenCentralUsername")?.toString()?.isNotBlank() == true
+    && project.findProperty("mavenCentralPassword")?.toString()?.isNotBlank() == true
+val hasSigningCredentials = project.findProperty("signingInMemoryKey")?.toString()?.isNotBlank() == true
     || project.findProperty("signing.keyId")?.toString()?.isNotBlank() == true
 
 mavenPublishing {
-    if (isPublishing) {
+    if (hasPublishingCredentials && hasSigningCredentials) {
         publishToMavenCentral()
         signAllPublications()
     }
-    coordinates(group.toString(), "shared", version.toString())
+    coordinates(group.toString(), artifactId, version.toString())
 
     pom {
-        name.set("KMP Starter Pack Shared Library")
-        description.set("Shared library logic for KMP Starter Pack")
-        url.set("https://github.com/ygdrasil-io/project-template")
+        name.set("wgsl4k $artifactId")
+        description.set("Kotlin Multiplatform tooling for WebGPU Shading Language (WGSL)")
+        url.set(repositoryUrl)
 
         licenses {
             license {
-                name.set("The Apache License, Version 2.0")
-                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                name.set("MIT License")
+                url.set("$repositoryUrl/blob/master/LICENSE")
             }
         }
 
         developers {
             developer {
-                id.set("ygdrasil-io")
-                name.set("Ygdrasil team")
-                email.set("contact@ygdrasil.com")
+                id.set("graphiks")
+                name.set("graphiks contributors")
             }
         }
 
         scm {
-            connection.set("scm:git:git://github.com/ygdrasil-io/project-template.git")
-            developerConnection.set("scm:git:ssh://github.com/ygdrasil-io/project-template.git")
-            url.set("https://github.com/ygdrasil-io/project-template")
+            connection.set("scm:git:git://github.com/ygdrasil-io/wgsl4k-fork.git")
+            developerConnection.set("scm:git:ssh://github.com/ygdrasil-io/wgsl4k-fork.git")
+            url.set(repositoryUrl)
         }
     }
 }
