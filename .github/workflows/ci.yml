@@ -37,24 +37,8 @@ jobs:
 
       - name: Run JVM fast-track tests
         if: steps.test-strategy.outputs.strategy == 'fast-track'
-        run: >-
-          ./gradlew :wgsl:wgsl-core:jvmTest :wgsl:wgsl-parser:jvmTest
-          :wgsl:wgsl-generator:jvmTest :wgsl:wgsl-tests:jvmTest :wgsl:wgsl-cli:jvmTest
-          :wgsl:wgsl-core:checkKotlinAbi :wgsl:wgsl-parser:checkKotlinAbi
-          :wgsl:wgsl-generator:checkKotlinAbi :wgsl:wgsl-tests:checkKotlinAbi
-          :wgsl:wgsl-cli:checkKotlinAbi :wgsl:wgsl-parser:koverVerifyJvm
-          :wgsl:wgsl-core:compileAndroidMain :wgsl:wgsl-parser:compileAndroidMain
-          :wgsl:wgsl-generator:compileAndroidMain :wgsl:wgsl-tests:compileAndroidMain
-          :wgsl:wgsl-cli:compileAndroidMain
-          --no-daemon --stacktrace
+        run: ./gradlew jvmTest checkKotlinAbi koverVerifyJvm compileAndroidMain --no-daemon --stacktrace
 
       - name: Run integration test suite
         if: steps.test-strategy.outputs.strategy == 'deep'
-        run: >-
-          ./gradlew allTests
-          :wgsl:wgsl-core:checkKotlinAbi :wgsl:wgsl-parser:checkKotlinAbi
-          :wgsl:wgsl-generator:checkKotlinAbi :wgsl:wgsl-tests:checkKotlinAbi
-          :wgsl:wgsl-cli:checkKotlinAbi :wgsl:wgsl-parser:koverVerifyJvm
-          :wgsl:wgsl-core:compileAndroidMain :wgsl:wgsl-parser:compileAndroidMain
-          :wgsl:wgsl-generator:compileAndroidMain :wgsl:wgsl-tests:compileAndroidMain
-          :wgsl:wgsl-cli:compileAndroidMain --no-daemon --stacktrace
+        run: ./gradlew allTests checkKotlinAbi koverVerifyJvm compileAndroidMain --no-daemon --stacktrace
